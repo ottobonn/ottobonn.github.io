@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="I am researching microfluidic droplets this summer. We run aqueous fluid through
+a flow-focusing region in a micro-channel, which causes little drops ">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Travis Geis">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Tracking Microfluidic Droplets in ImageJ"/>
+    
+
+    <!--Open Graph Description-->
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="travisgeis.com"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+        <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>Tracking Microfluidic Droplets in ImageJ - travisgeis.com</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../../../css/style.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- PhotoSwipe Gallery -->
+    <link rel="stylesheet" href="../../../../photoswipe/photoswipe.css">
+    <link rel="stylesheet" href="../../../../photoswipe/default-skin.css">
+    <script src="../../../../photoswipe/photoswipe.min.js"></script>
+    <script src="../../../../photoswipe/photoswipe-ui-default.min.js"></script>
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+
+<body>
+
+    <!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">travisgeis.com</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="../../../../contact">
+                            
+                                Contact
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="../../../../archives">
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="https://github.com/ottobonn">
+                            
+                                <i class="fa fa-github fa-stack-2x"></i>
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('/img/grand-canyon-2880.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>Tracking Microfluidic Droplets in ImageJ</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        2013-08-02
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/cv/">#CV</a> <a href="/tags/fiji/">#Fiji</a> <a href="/tags/imagej/">#ImageJ</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                        
+
+<a href="/categories/image-processing/">Image Processing</a>
+
+                    
+                </div>
+            
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <p>I am researching microfluidic droplets this summer. We run aqueous fluid through
+a flow-focusing region in a micro-channel, which causes little drops to shear
+off and flow through the chip. We observe the drops with an inverted microscope
+and the high-speed Andor Zyla camera.</p>
+<p>I am developing
+<a href="https://github.com/ottobonn/DropletTracker" title="DropletTracker on GitHub" target="_blank" rel="external">a plugin for ImageJ</a>
+to track the droplets. We want to see their shape, velocity, orientation, area,
+and other geometric properties, but it takes a long time to track them by hand
+(and it’s silly, when we have computers).</p>
+<p>The problem is that these droplets are hard to track. They have a similar
+brightness to the background, their borders aren’t always well-defined, and they
+move quickly relative to the speed of the camera. So I am brainstorming new ways
+to isolate the droplets from the background.</p>
+<p>Right now, the tracker relies on various steps of removing noise, subtracting
+static background pixels, and binarizing the image to convert the droplets to
+black binary blobs on a white binary background. The tracker itself just
+observes these binary blobs, so the important work happens before the tracker is
+even involved. The way in which we convert these noisy, grainy images of
+real-world droplets into representative binary form directly affects the quality
+of the tracking results.</p>
+<p>I have some thoughts on how to do better. Right now, I am treating each still
+frame in the stack as independent from the others. The filters are stateless, in
+that they work the same on each frame regardless of what frames came before or
+after in the stack (in time).</p>
+<p>But the droplets are moving, so I should be able to use that crucial bit of
+detail to massively improve the tracker. When I, a human, see the following
+image (a photo of a droplet in a channel), I can guess where the droplet is. I
+expect something oval-shaped, somewhere in the center of attention. But if I
+look at the image without any bias, I really don’t know whether that droplet is
+part of the background or not.</p>
+<img src="/uploads/2013/08/body-BackgroundOrForeground.png" alt="Background Or Foreground?">
+<p>I am biased, in that I look for simple geometry. It’s what my vision is trained
+to do well. However, as soon as I see the next frame in the stack, it’s obvious
+what I can ignore as the background.</p>
+<img src="/uploads/2013/08/body-TwoShots.png" alt="Two Shots">
+<p>The droplet in the center moved down a bit, but everything else stayed still. I
+can easily isolate it from the background with my eye, especially when it’s
+moving. So maybe I can get the tracker to do the same.</p>
+<p>Using a subtraction, I can find the literal difference between the later and
+earlier frames shown above. This yields a “heat map” of everything that moves in
+the images.</p>
+<img src="/uploads/2013/08/body-Subtraction.png" alt="Subtraction">
+<p>The blue area represents the moving front edge of the drop. Unfortunately, it
+isn’t round, and it doesn’t look like a drop, because the subtraction removed
+everything except the change.</p>
+<p>When a droplet moved between frames, most of it (by area) will seem to stay
+still. Only the front and rear edges will change. So this subtraction can’t be
+the full solution, but maybe I can use it as a place to look for drops.</p>
+<p>Interestingly, I can do the same on the binary version of the image.</p>
+<img src="/uploads/2013/08/body-BinaryXOR.png" alt="Binary XOR">
+<p>The two left images above are the messy, thresholded representation of two of
+the original images (not exactly the ones above, by similar). I can make out the
+droplet in the center, but so much mess surrounds it that the tracker gets
+confused.</p>
+<p>The image on the right is the result of XORing the two left images. Where one
+has a dark pixel, and the other doesn’t, the XOR is illuminated. This yields a
+robust hot spot where the drop is moving, and it also creates some noise from
+the blinking background pixels (an artifact of the thresholding).</p>
+<p>It isn’t directly trackable, but I hope I can work it in to my system soon.</p>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/ottobonn" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
+                <p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

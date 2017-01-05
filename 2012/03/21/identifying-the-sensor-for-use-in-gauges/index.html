@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="I am prototyping the software for Gauges from the Ubuntu partition on my white
+MacBook from 2007. One of the early tasks was finding the name of the
+t">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Travis Geis">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Identifying the sensor for use in Gauges"/>
+    
+
+    <!--Open Graph Description-->
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="travisgeis.com"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+        <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>Identifying the sensor for use in Gauges - travisgeis.com</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../../../css/style.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- PhotoSwipe Gallery -->
+    <link rel="stylesheet" href="../../../../photoswipe/photoswipe.css">
+    <link rel="stylesheet" href="../../../../photoswipe/default-skin.css">
+    <script src="../../../../photoswipe/photoswipe.min.js"></script>
+    <script src="../../../../photoswipe/photoswipe-ui-default.min.js"></script>
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+
+<body>
+
+    <!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">travisgeis.com</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="../../../../contact">
+                            
+                                Contact
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="../../../../archives">
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="https://github.com/ottobonn">
+                            
+                                <i class="fa fa-github fa-stack-2x"></i>
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('/img/grand-canyon-2880.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>Identifying the sensor for use in Gauges</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        2012-03-21
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+<a href="/categories/gauges/">Gauges</a>
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                </div>
+            
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <p>I am prototyping the software for Gauges from the Ubuntu partition on my white
+MacBook from 2007. One of the early tasks was finding the name of the
+temperature sensor corresponding to the main CPU. I installed a cool utility
+called Psensor that charts sensor outputs over time. Then I opened every
+application I could think of, and waited for the CPU temperature to increase.
+Psensor clearly showed that the sensor named “TC0D” corresponded to the CPU
+temperature. That acronym may mean “Temp-CPU 0 Die”, but I don’t know for sure.</p>
+<img src="/uploads/2012/03/body-Screenshot-at-2012-03-13-130526.png" alt="Psensors Screenshot">
+<p>Once I knew the sensor name, I ran “sensors” in a terminal and found that my
+computer uses a chip called “applesmc-isa-300”:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">travis@travis-ubuntu:~/Projects/Gauges$ sensors</div><div class="line">applesmc-isa-0300</div><div class="line">Adapter: ISA adapter</div><div class="line">Exhaust  :   3074 RPM  (min = 1800 RPM)</div><div class="line">TB0T:         +32.5°C</div><div class="line">TC0D:         +57.2°C</div><div class="line">TC0P:         +55.0°C</div><div class="line">TM0P:         +58.0°C</div><div class="line">TN0P:         +54.0°C</div><div class="line">TTF0:         +55.0°C</div><div class="line">TW0P:         +74.0°C</div><div class="line">Th0H:         +54.8°C</div><div class="line">Th0S:         +54.5°C</div><div class="line">Th1H:         +54.2°C</div></pre></td></tr></table></figure>
+<p>Every Linux sensor has a corresponding pseudo-file for reading programmatically.
+I dug through online references of various sorts until I found the directory of
+my chipset, called ‘/sys/bus/platform/devices/applesmc.768/‘. Once I had the
+directory, I ran sensors again with the -u flag set for “debugging” output:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">travis@travis-ubuntu:~/Projects/Gauges$ sensors -u</div><div class="line">applesmc-isa-0300</div><div class="line">Adapter: ISA adapter</div><div class="line">Exhaust  :</div><div class="line">  fan1_input: 2309.000</div><div class="line">  fan1_min: 1800.000</div><div class="line">TB0T:</div><div class="line">  temp1_input: 32.500</div><div class="line">TC0D:</div><div class="line">  temp2_input: 58.250</div><div class="line">TC0P:</div><div class="line">  temp3_input: 56.000</div><div class="line">TM0P:</div><div class="line">  temp4_input: 57.750</div><div class="line">TN0P:</div><div class="line">  temp5_input: 54.500</div><div class="line">TTF0:</div><div class="line">  temp6_input: 56.250</div><div class="line">TW0P:</div><div class="line">  temp7_input: 74.000</div><div class="line">Th0H:</div><div class="line">  temp8_input: 56.000</div><div class="line">Th0S:</div><div class="line">  temp9_input: 55.750</div><div class="line">Th1H:</div><div class="line">  temp10_input: 55.500</div></pre></td></tr></table></figure>
+<p>The verbose output told me that the sensor I want, TC0D, is also called
+“temp2_input”. Looking in the <code>/sys/bus/platform/devices/applesmc.768/</code>
+directory, I found a pseudo-file called “temp2_input”. Perfect!</p>
+<p>When my Python script reads
+<code>/sys/bus/platform/devices/applesmc.768/temp2_input</code>, it gets a string something
+like “59500” corresponding to 59.5°C. My script converts the number to a float,
+divides by 1000, then rounds off to the nearest integer so I can fit the number
+in one byte. Awesome!</p>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/ottobonn" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
+                <p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

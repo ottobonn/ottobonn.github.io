@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="I took a look at the
+great work David Carr has done
+with his Mantis CNC mill for PCB fabrication. I love the simplicity of his
+design. I decided to bu">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Travis Geis">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="A Modded Mantis: The BeeCNC"/>
+    
+
+    <!--Open Graph Description-->
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="travisgeis.com"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+        <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>A Modded Mantis: The BeeCNC - travisgeis.com</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../../../css/style.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- PhotoSwipe Gallery -->
+    <link rel="stylesheet" href="../../../../photoswipe/photoswipe.css">
+    <link rel="stylesheet" href="../../../../photoswipe/default-skin.css">
+    <script src="../../../../photoswipe/photoswipe.min.js"></script>
+    <script src="../../../../photoswipe/photoswipe-ui-default.min.js"></script>
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+
+<body>
+
+    <!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">travisgeis.com</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="../../../../contact">
+                            
+                                Contact
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="../../../../archives">
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="https://github.com/ottobonn">
+                            
+                                <i class="fa fa-github fa-stack-2x"></i>
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('/img/grand-canyon-2880.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>A Modded Mantis: The BeeCNC</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        2011-06-09
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+<a href="/categories/beecnc/">BeeCNC</a>
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                </div>
+            
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <img src="/uploads/2011/06/body-beecnc.png" alt="The CNC side art">
+<p>I took a look at the
+<a href="http://makeyourbot.org/mantis9-1" title="David Carr" target="_blank" rel="external">great work David Carr has done</a>
+with his Mantis CNC mill for PCB fabrication. I love the simplicity of his
+design. I decided to build my own CNC mill, in the spirit of the Mantis but with
+a few modifications. My mill had some extra requirements:</p>
+<ul>
+<li>Build area suitable for 6.125” x 4.5” PCB from Radioshack</li>
+<li>Use salvage stepper motors from discarded printers</li>
+<li>Use ground rods from discarded printers</li>
+<li>Hold a Dremel tool as the primary spindle</li>
+</ul>
+<p>I started my design at the build platform, a 5” x 7” layer of half-inch plywood.
+The tooltip needs to reach every edge of the platform, so the travel should be
+twice the length and twice the width in those respective dimensions. So, the
+interior bounding box is 10” by 14”, and the whole thing is a bit taller than
+the Mantis to accommodate the Dremel.</p>
+<p>I don’t have the oft-used Arduino Mega for the brains of the machine, so I did
+some searching for suitable GCode-parsing firmware that would fit on a
+Duemilanove (with ATmega328P, 32K of program flash). I hope to use
+<a href="http://replicat.org/" title="ReplicatorG Home" target="_blank" rel="external">ReplicatorG</a> with <a href="http://wiki.bitsfrombytes.com/index.php?title=Skeinforge" title="Skeinforge Page" target="_blank" rel="external">Skeinforge</a>
+as the go-between for machine and design.</p>
+<p>I found a great project called
+<a href="http://reprap.org/wiki/Teacup_Firmware" title="The Teacup Project" target="_blank" rel="external">Teacup</a>,
+an optimized rewrite of the FiveD firmware used with RepRaps. The firmware fits
+on the mega328, interprets GCode in real time, and has all the settings I need.
+I believe it’s made for 3D printers, but it should work fine for milling, a
+simpler operation.</p>
+<p>I ordered three
+<a href="http://www.sparkfun.com/products/10267" title="Sparkfun" target="_blank" rel="external">Sparkfun EasyDriver</a>
+chips for controlling the stepper motors. The motors in question are NEMA 17
+steppers, EM-257, from Epson, 1.8 degrees per step (200 step per rev). They seem
+to be manufactured by Astrosyn, and I found
+<a href="http://www.motors.wrobots.com/EM-257_17PM-K212-PIT.php" title="The EM257 Motors" target="_blank" rel="external">a datasheet</a>.
+They’re fairly powerful little motors, but are a little bit difficult to mount.</p>
+<p>For the power supply I’m repurposing an old HP server power supply brick. The
+whole machine should make quite a buzzing racket, and for that reason I decided
+I would call the machine the BeeCNC (in the spirit of insects like the Mantis,
+but a bit noisier). I’ll post some pictures soon.</p>
+<img src="/uploads/2011/06/body-IMG_2002-e1307679550649.jpg" alt="BeeCNC side wall">
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/ottobonn" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
+                <p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>
