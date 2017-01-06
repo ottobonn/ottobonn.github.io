@@ -260,7 +260,18 @@ synclient AreaTopEdge=150
 make typing way better. Now I don’t get any trackpad interference while I type!</p>
 <p>I noticed that <a href="https://samtinkers.wordpress.com/2016/06/13/3-finger-gestures-in-ubuntu-16-04/" target="_blank" rel="external">there may be a way</a> to get more gesture support on the
 trackpad, but I haven’t tried it yet.</p>
-<h2 id="4-Stability"><a href="#4-Stability" class="headerlink" title="4. Stability"></a>4. Stability</h2><p>The new laptop is stable so far, except for a crash I experienced yesterday.
+<h2 id="4-Disable-Bluetooth-LE-to-pair-with-Bose-QC-35"><a href="#4-Disable-Bluetooth-LE-to-pair-with-Bose-QC-35" class="headerlink" title="4. Disable Bluetooth LE to pair with Bose QC 35"></a>4. Disable Bluetooth LE to pair with Bose QC 35</h2><p>I was to use my new laptop with Bose QuietComfort 35 headphones, which use
+Bluetooth LE (low energy) to pair with the host. Unfortunately, it looks like
+Linux’s BlueZ doesn’t support that pairing strategy yet, so in order to pair
+the QC 35s, I had to disable the BLE mode for my laptop’s Bluetooth adapter.</p>
+<p>In <code>/etc/bluetooth/main.conf</code>, I changed</p>
+<pre><code># ControllerMode = dual
+</code></pre><p>to</p>
+<pre><code>ControllerMode = bredr
+</code></pre><p>Then I restarted bluetooth with <code>sudo service bluetooth restart</code>.</p>
+<p>Thanks to Victor over <a href="https://askubuntu.com/questions/833322/pair-bose-quietcomfort-35-with-ubuntu-16-04-over-bluetooth" target="_blank" rel="external">on AskUbuntu</a>
+for these steps.</p>
+<h2 id="Stability"><a href="#Stability" class="headerlink" title="Stability"></a>Stability</h2><p>The new laptop is stable so far, except for a crash I experienced yesterday.
 The laptop froze and <code>dmesg</code> revealed that NVMe, the storage controller, had
 an error. The system failed into read-only mode and I restarted it (luckily,
 I have a photo of the logs, because the drive became read-only).</p>
