@@ -271,6 +271,14 @@ the QC 35s, I had to disable the BLE mode for my laptop’s Bluetooth adapter.</
 </code></pre><p>Then I restarted bluetooth with <code>sudo service bluetooth restart</code>.</p>
 <p>Thanks to Victor over <a href="https://askubuntu.com/questions/833322/pair-bose-quietcomfort-35-with-ubuntu-16-04-over-bluetooth" target="_blank" rel="external">on AskUbuntu</a>
 for these steps.</p>
+<h2 id="5-Fix-the-tearing"><a href="#5-Fix-the-tearing" class="headerlink" title="5. Fix the tearing"></a>5. Fix the tearing</h2><p>It took me some time to get around to working on the tearing issue. I usually
+use the Intel graphics card, and Firefox was tearing badly on scroll and when
+playing video. I discovered an <a href="https://github.com/linuxmint/Cinnamon/issues/3423" target="_blank" rel="external">issue on GitHub</a>
+relevant to my setup and tried what they recommend, which is to remove the
+<code>xserver-xorg-video-intel</code> package. Now the tearing is gone. There’s another
+possible fix specific to Firefox, but as far as I’m concerned removing a
+package to fix an issue is preferable unless I see stability or
+power-consumption side effects.</p>
 <h2 id="Stability"><a href="#Stability" class="headerlink" title="Stability"></a>Stability</h2><p>The new laptop is stable so far, except for a crash I experienced yesterday.
 The laptop froze and <code>dmesg</code> revealed that NVMe, the storage controller, had
 an error. The system failed into read-only mode and I restarted it (luckily,
@@ -341,13 +349,13 @@ Error Information (NVMe Log 0x01, max 128 entries)
 No Errors Logged
 </code></pre><p>We’ll see how the drive holds up; hopefully this error was a minor software
 issue and not a hardware fault.</p>
-<h3 id="Update-5-Jan-2017"><a href="#Update-5-Jan-2017" class="headerlink" title="Update 5 Jan 2017"></a>Update 5 Jan 2017</h3><img src="/uploads/2017/01/05/body-5510-repair.jpg" alt="Dell Precision 5510 repair">
-<img src="/uploads/2017/01/05/body-5510-internals.jpg" alt="Dell Precision 5510 internals">
-<p>The NVMe crash returned once a day for a total of three crashes. I contacted
+<h3 id="Update-5-Jan-2017"><a href="#Update-5-Jan-2017" class="headerlink" title="Update 5 Jan 2017"></a>Update 5 Jan 2017</h3><p>The NVMe crash returned once a day for a total of three crashes. I contacted
 Dell support and they were incredibly responsive. The technician came to my
 house the next day and replaced the SSD and motherboard on my laptop. So far,
 so good. Ideally, there would be no problem to begin with, but the service has
 been a great experience.</p>
+<img src="/uploads/2017/01/05/body-5510-repair.jpg" alt="Dell Precision 5510 repair">
+<img src="/uploads/2017/01/05/body-5510-internals.jpg" alt="Dell Precision 5510 internals">
 <p>The new SSD is a made by Lite-on instead of Toshiba. The motherboard is
 indistinguishable from the old one, and it comes with a new CPU and GPU.</p>
 
