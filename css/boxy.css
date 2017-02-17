@@ -1,0 +1,69 @@
+a {
+  color: inherit;
+}
+a:hover {
+  color: #f00;
+}
+body {
+  font: 20px Lato, sans-serif;
+  line-height: 150%;
+}
+.container {
+  max-width: 850px;
+}
+#titles-container {
+  background-color: #f00;
+  margin-left: 0.5rem;
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+}
+#titles {
+  font-size: 3rem;
+  background-color: #fff;
+  padding: 1rem;
+  position: relative;
+  top: -0.5rem;
+  left: -0.5rem;
+  border: 2px solid #000;
+}
+#titles h1 {
+  font-family: "Permanent Marker";
+  font-size: 3rem;
+}
+#titles h2 {
+  font-size: 1.5rem;
+}
+#titles h3.date {
+  font-size: 1.2rem;
+}
+#posts {
+  list-style: none;
+  padding: 0;
+}
+#posts .card {
+  border: none;
+}
+#posts .card .title a {
+  color: inherit;
+  font-weight: bold;
+}
+#posts .card .title a:hover {
+  color: #f00;
+}
+pre {
+  font-size: 1rem;
+  padding: 1rem;
+  background-color: #f9f9f9;
+}
+.inline-icon {
+  margin-left: 0.3em;
+  margin-right: 0.3em;
+}
+#content img {
+  padding: 1rem;
+  max-width: 100%;
+}
+#content h2 {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
