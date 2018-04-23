@@ -3,13 +3,13 @@ for schematic capture. I completed the schematics to the best of my ability, and
 I will elaborate on them in this post.</p>
 <h3 id="The-Bill-of-Materials"><a href="#The-Bill-of-Materials" class="headerlink" title="The Bill of Materials"></a>The Bill of Materials</h3><p>I chose to base my
 <a href="/2011/04/23/capstone-project-propov-the-propeller-clock/" title="Capstone Project: ProPOV the Propeller Clock">ProPOV</a>
-off of the <a href="http://www.arduino.cc/" target="_blank" rel="external">Arduino</a>, so I could leverage the powerful
+off of the <a href="http://www.arduino.cc/" target="_blank" rel="noopener">Arduino</a>, so I could leverage the powerful
 development environment it offers. Accordingly, the whole clock runs on an Atmel
 ATmega328P-AU (the 8-bit microcontroller with 32KB of program flash and 8 DACs).
 The real-time portion of the clock uses a Maxim/Dallas
-<a href="http://www.ladyada.net/learn/breakoutplus/ds1307rtc.html" title="Ladyada" target="_blank" rel="external">DS1307</a>
-<a href="http://en.wikipedia.org/wiki/Real-time_clock" title="Wikipedia: Real Time Clock" target="_blank" rel="external">RTC</a>
-with <a href="http://en.wikipedia.org/wiki/I2c" title="Wikipedia: I2C Interface" target="_blank" rel="external">I2C</a>
+<a href="http://www.ladyada.net/learn/breakoutplus/ds1307rtc.html" title="Ladyada" target="_blank" rel="noopener">DS1307</a>
+<a href="http://en.wikipedia.org/wiki/Real-time_clock" title="Wikipedia: Real Time Clock" target="_blank" rel="noopener">RTC</a>
+with <a href="http://en.wikipedia.org/wiki/I2c" title="Wikipedia: I2C Interface" target="_blank" rel="noopener">I2C</a>
 interface.</p>
 <p>Keeping things compact is important, so the backup cell for the RTC is an
 Energizer CR1632 3V coin cell. I found a surface-mount battery holder for 1632s
@@ -47,8 +47,8 @@ quantities once I’ve built the thing.</p>
 <td align="LEFT">MCU AVR 32K FLASH 32TQFP</td>
 <td align="RIGHT">$4.87</td>
 <td align="RIGHT">$4.87</td>
-<td align="LEFT"><a href="http://search.digikey.com/scripts/DkSearch/dksus.dll?Detail&amp;name=ATMEGA328P-AU-ND" target="_blank" rel="external">Digi-Key</a></td>
-<td align="LEFT"><a href="http://www.atmel.com/dyn/resources/prod_documents/8271S.pdf" target="_blank" rel="external">Atmel</a></td>
+<td align="LEFT"><a href="http://search.digikey.com/scripts/DkSearch/dksus.dll?Detail&amp;name=ATMEGA328P-AU-ND" target="_blank" rel="noopener">Digi-Key</a></td>
+<td align="LEFT"><a href="http://www.atmel.com/dyn/resources/prod_documents/8271S.pdf" target="_blank" rel="noopener">Atmel</a></td>
 <td align="LEFT">
 </td>
 </tr>
@@ -59,8 +59,8 @@ quantities once I’ve built the thing.</p>
 <td align="LEFT">CRYSTAL 16.00MHZ 20PF SMD</td>
 <td align="RIGHT">$0.56</td>
 <td align="RIGHT">$0.56</td>
-<td align="LEFT"><a href="http://search.digikey.com/scripts/DkSearch/dksus.dll?Detail&amp;name=XC1282TR-ND" target="_blank" rel="external">Digi-Key</a></td>
-<td align="LEFT"><a href="http://www.ecsxtal.com/store/pdf/csm-7x.pdf" target="_blank" rel="external">ECS Crystal</a></td>
+<td align="LEFT"><a href="http://search.digikey.com/scripts/DkSearch/dksus.dll?Detail&amp;name=XC1282TR-ND" target="_blank" rel="noopener">Digi-Key</a></td>
+<td align="LEFT"><a href="http://www.ecsxtal.com/store/pdf/csm-7x.pdf" target="_blank" rel="noopener">ECS Crystal</a></td>
 <td align="LEFT">
 </td>
 </tr>
@@ -71,8 +71,8 @@ quantities once I’ve built the thing.</p>
 <td align="LEFT">CAP ELECT 10UF 50V VS SMD</td>
 <td align="RIGHT">$0.44</td>
 <td align="RIGHT">$4.40</td>
-<td align="LEFT"><a href="http://search.digikey.com/scripts/DkSearch/dksus.dll?Detail&amp;name=PCE3915TR-ND" target="_blank" rel="external">Digi-Key</a></td>
-<td align="LEFT"><a href="http://industrial.panasonic.com/www-cgi/jvcr13pz.cgi?E+PZ+3+ABA0002+EEE1HA100WR+7+WW" target="_blank" rel="external">Panasonic</a></td>
+<td align="LEFT"><a href="http://search.digikey.com/scripts/DkSearch/dksus.dll?Detail&amp;name=PCE3915TR-ND" target="_blank" rel="noopener">Digi-Key</a></td>
+<td align="LEFT"><a href="http://industrial.panasonic.com/www-cgi/jvcr13pz.cgi?E+PZ+3+ABA0002+EEE1HA100WR+7+WW" target="_blank" rel="noopener">Panasonic</a></td>
 <td align="LEFT">
 </td>
 </tr>
@@ -83,8 +83,8 @@ quantities once I’ve built the thing.</p>
 <td align="LEFT">CAP ELECT 1UF 50V VS SMD</td>
 <td align="RIGHT">$0.45</td>
 <td align="RIGHT">$4.50</td>
-<td align="LEFT"><a href="http://search.digikey.com/scripts/DkSearch/dksus.dll?Detail&amp;name=PCE3912CT-ND" target="_blank" rel="external">Digi-Key</a></td>
-<td align="LEFT"><a href="http://industrial.panasonic.com/www-cgi/jvcr13pz.cgi?E+PZ+3+ABA0002+EEE1HA010SR+7+WW" target="_blank" rel="external">Panasonic</a></td>
+<td align="LEFT"><a href="http://search.digikey.com/scripts/DkSearch/dksus.dll?Detail&amp;name=PCE3912CT-ND" target="_blank" rel="noopener">Digi-Key</a></td>
+<td align="LEFT"><a href="http://industrial.panasonic.com/www-cgi/jvcr13pz.cgi?E+PZ+3+ABA0002+EEE1HA010SR+7+WW" target="_blank" rel="noopener">Panasonic</a></td>
 <td align="LEFT">
 </td>
 </tr>
@@ -95,8 +95,8 @@ quantities once I’ve built the thing.</p>
 <td align="LEFT">IC REG LDO 5A 5.0V TO-252</td>
 <td align="RIGHT">$1.52</td>
 <td align="RIGHT">$1.52</td>
-<td align="LEFT"><a href="http://search.digikey.com/scripts/DkSearch/dksus.dll?Detail&amp;name=AP1084D50LDITR-ND" target="_blank" rel="external">Digi-Key</a></td>
-<td align="LEFT"><a href="http://www.diodes.com/datasheets/AP1084.pdf" target="_blank" rel="external">Diodes, Inc.</a></td>
+<td align="LEFT"><a href="http://search.digikey.com/scripts/DkSearch/dksus.dll?Detail&amp;name=AP1084D50LDITR-ND" target="_blank" rel="noopener">Digi-Key</a></td>
+<td align="LEFT"><a href="http://www.diodes.com/datasheets/AP1084.pdf" target="_blank" rel="noopener">Diodes, Inc.</a></td>
 <td align="LEFT">
 </td>
 </tr>
@@ -107,8 +107,8 @@ quantities once I’ve built the thing.</p>
 <td align="LEFT">IC SHIFT REGISTER 8BIT 16SOIC</td>
 <td align="RIGHT">$0.31</td>
 <td align="RIGHT">$1.24</td>
-<td align="LEFT"><a href="http://search.digikey.com/scripts/DkSearch/dksus.dll?Detail&amp;name=568-1483-2-ND" target="_blank" rel="external">Digi-Key</a></td>
-<td align="LEFT"><a href="http://www.nxp.com/documents/data_sheet/74HC_HCT595.pdf" target="_blank" rel="external">NXP</a></td>
+<td align="LEFT"><a href="http://search.digikey.com/scripts/DkSearch/dksus.dll?Detail&amp;name=568-1483-2-ND" target="_blank" rel="noopener">Digi-Key</a></td>
+<td align="LEFT"><a href="http://www.nxp.com/documents/data_sheet/74HC_HCT595.pdf" target="_blank" rel="noopener">NXP</a></td>
 <td align="LEFT">
 </td>
 </tr>
@@ -119,8 +119,8 @@ quantities once I’ve built the thing.</p>
 <td align="LEFT">RES 10K OHM 1/4W 5% 0805 SMD</td>
 <td align="RIGHT">$0.14</td>
 <td align="RIGHT">$1.42</td>
-<td align="LEFT"><a href="http://search.digikey.com/scripts/DkSearch/dksus.dll?Detail&amp;name=RHM10KKCT-ND" target="_blank" rel="external">Digi-Key</a></td>
-<td align="LEFT"><a href="http://www.rohm.com/products/databook/r/pdf/esr10.pdf" target="_blank" rel="external">Rohm Semiconductor</a></td>
+<td align="LEFT"><a href="http://search.digikey.com/scripts/DkSearch/dksus.dll?Detail&amp;name=RHM10KKCT-ND" target="_blank" rel="noopener">Digi-Key</a></td>
+<td align="LEFT"><a href="http://www.rohm.com/products/databook/r/pdf/esr10.pdf" target="_blank" rel="noopener">Rohm Semiconductor</a></td>
 <td align="LEFT"></td>
 </tr>
 <tr>
@@ -130,8 +130,8 @@ quantities once I’ve built the thing.</p>
 <td align="LEFT">RES 220 OHM 1/4W 1% 0805 SMD</td>
 <td align="RIGHT">$0.23</td>
 <td align="RIGHT">$2.29</td>
-<td align="LEFT"><a href="http://search.digikey.com/scripts/DkSearch/dksus.dll?Detail&amp;name=RHM220AECT-ND" target="_blank" rel="external">Digi-Key</a></td>
-<td align="LEFT"><a href="http://search.digikey.com/scripts/DkSearch/dksus.dll?Detail&amp;name=RHM220AECT-ND" target="_blank" rel="external">Rohm Semiconductor</a></td>
+<td align="LEFT"><a href="http://search.digikey.com/scripts/DkSearch/dksus.dll?Detail&amp;name=RHM220AECT-ND" target="_blank" rel="noopener">Digi-Key</a></td>
+<td align="LEFT"><a href="http://search.digikey.com/scripts/DkSearch/dksus.dll?Detail&amp;name=RHM220AECT-ND" target="_blank" rel="noopener">Rohm Semiconductor</a></td>
 <td align="LEFT">
 </td>
 </tr>
@@ -142,8 +142,8 @@ quantities once I’ve built the thing.</p>
 <td align="LEFT">SWITCH LT 6MM 50GF H=3.1MM SMD</td>
 <td align="RIGHT">$0.30</td>
 <td align="RIGHT">$0.60</td>
-<td align="LEFT"><a href="http://search.digikey.com/scripts/DkSearch/dksus.dll?Detail&amp;name=P12932SCT-ND" target="_blank" rel="external">Digi-Key</a></td>
-<td align="LEFT"><a href="http://industrial.panasonic.com/www-data/pdf/ATK0000/ATK0000CE28.pdf" target="_blank" rel="external">Panasonic</a></td>
+<td align="LEFT"><a href="http://search.digikey.com/scripts/DkSearch/dksus.dll?Detail&amp;name=P12932SCT-ND" target="_blank" rel="noopener">Digi-Key</a></td>
+<td align="LEFT"><a href="http://industrial.panasonic.com/www-data/pdf/ATK0000/ATK0000CE28.pdf" target="_blank" rel="noopener">Panasonic</a></td>
 <td align="LEFT">
 </td>
 </tr>
@@ -154,8 +154,8 @@ quantities once I’ve built the thing.</p>
 <td align="LEFT">CAP CERM 22PF 5% 200V NP0 0805</td>
 <td align="RIGHT">$0.22</td>
 <td align="RIGHT">$2.20</td>
-<td align="LEFT"><a href="http://search.digikey.com/scripts/DkSearch/dksus.dll?Detail&amp;name=478-1268-1-ND" target="_blank" rel="external">Digi-Key</a></td>
-<td align="LEFT"><a href="http://www.avx.com/docs/Catalogs/ccog.pdf" target="_blank" rel="external">AVX</a></td>
+<td align="LEFT"><a href="http://search.digikey.com/scripts/DkSearch/dksus.dll?Detail&amp;name=478-1268-1-ND" target="_blank" rel="noopener">Digi-Key</a></td>
+<td align="LEFT"><a href="http://www.avx.com/docs/Catalogs/ccog.pdf" target="_blank" rel="noopener">AVX</a></td>
 <td align="LEFT">
 </td>
 </tr>
@@ -166,7 +166,7 @@ quantities once I’ve built the thing.</p>
 <td align="LEFT">Energizer Lithium 3V coin cell</td>
 <td align="RIGHT">$4.49</td>
 <td align="RIGHT">$4.49</td>
-<td align="LEFT"><a href="http://www.walgreens.com/store/c/energizer-watch/electronic-lithium-battery/ID=prod6047410-product" target="_blank" rel="external">Walgreens</a></td>
+<td align="LEFT"><a href="http://www.walgreens.com/store/c/energizer-watch/electronic-lithium-battery/ID=prod6047410-product" target="_blank" rel="noopener">Walgreens</a></td>
 <td align="LEFT">
 </td>
 <td align="LEFT"></td>
@@ -178,8 +178,8 @@ quantities once I’ve built the thing.</p>
 <td align="LEFT">CRYSTAL 32.768KHZ 12.5PF SMD</td>
 <td align="RIGHT">$1.05</td>
 <td align="RIGHT">$1.05</td>
-<td align="LEFT"><a href="http://search.digikey.com/scripts/DkSearch/dksus.dll?Detail&amp;name=728-1003-1-ND" target="_blank" rel="external">Digi-Key</a></td>
-<td align="LEFT"><a href="http://media.digikey.com/pdf/Data%20Sheets/Seiko%20Instruments%20PDFs/SSPT7F-12.5PF20PPM.pdf" target="_blank" rel="external">Digi-Key</a></td>
+<td align="LEFT"><a href="http://search.digikey.com/scripts/DkSearch/dksus.dll?Detail&amp;name=728-1003-1-ND" target="_blank" rel="noopener">Digi-Key</a></td>
+<td align="LEFT"><a href="http://media.digikey.com/pdf/Data%20Sheets/Seiko%20Instruments%20PDFs/SSPT7F-12.5PF20PPM.pdf" target="_blank" rel="noopener">Digi-Key</a></td>
 <td align="LEFT">
 </td>
 </tr>
@@ -190,8 +190,8 @@ quantities once I’ve built the thing.</p>
 <td align="LEFT">HOLDER COIN CELL 1632 GOLD SMD</td>
 <td align="RIGHT">$0.65</td>
 <td align="RIGHT">$0.65</td>
-<td align="LEFT"><a href="http://search.digikey.com/scripts/DkSearch/dksus.dll?Detail&amp;name=BU1632SM-JJ-GCT-ND" target="_blank" rel="external">Digi-Key</a></td>
-<td align="LEFT"><a href="http://www.batteryholders.com/bu1632sm-jj-gtr.pdf" target="_blank" rel="external">MPD</a></td>
+<td align="LEFT"><a href="http://search.digikey.com/scripts/DkSearch/dksus.dll?Detail&amp;name=BU1632SM-JJ-GCT-ND" target="_blank" rel="noopener">Digi-Key</a></td>
+<td align="LEFT"><a href="http://www.batteryholders.com/bu1632sm-jj-gtr.pdf" target="_blank" rel="noopener">MPD</a></td>
 <td rowspan="2" align="CENTER" valign="MIDDLE">Choose one of the battery holders.</td>
 </tr>
 <tr>
@@ -201,8 +201,8 @@ quantities once I’ve built the thing.</p>
 <td align="LEFT">HOLDER COIN CELL 16MM SMD</td>
 <td align="RIGHT">$1.19</td>
 <td align="RIGHT">$1.19</td>
-<td align="LEFT"><a href="http://search.digikey.com/scripts/DkSearch/dksus.dll?WT.z_header=search_go&amp;lang=en&amp;site=us&amp;keywords=BH600SM-G-ND&amp;x=0&amp;y=0" target="_blank" rel="external">Digi-Key</a></td>
-<td align="LEFT"><a href="http://www.batteryholders.com/bh600sm-g.pdf" target="_blank" rel="external">MPD</a></td>
+<td align="LEFT"><a href="http://search.digikey.com/scripts/DkSearch/dksus.dll?WT.z_header=search_go&amp;lang=en&amp;site=us&amp;keywords=BH600SM-G-ND&amp;x=0&amp;y=0" target="_blank" rel="noopener">Digi-Key</a></td>
+<td align="LEFT"><a href="http://www.batteryholders.com/bh600sm-g.pdf" target="_blank" rel="noopener">MPD</a></td>
 </tr>
 <tr>
 <td height="20" align="RIGHT">15</td>
@@ -211,8 +211,8 @@ quantities once I’ve built the thing.</p>
 <td align="LEFT">IC SENSOR HALL EFFECT SOT23W</td>
 <td align="RIGHT">$1.58</td>
 <td align="RIGHT">$1.58</td>
-<td align="LEFT"><a href="http://search.digikey.com/scripts/DkSearch/dksus.dll?Detail&amp;name=620-1021-1-ND" target="_blank" rel="external">Digi-Key</a></td>
-<td align="LEFT"><a href="http://www.allegromicro.com/en/Products/Part_Numbers/1301/1301.pdf" target="_blank" rel="external">Allegro Microsystems</a></td>
+<td align="LEFT"><a href="http://search.digikey.com/scripts/DkSearch/dksus.dll?Detail&amp;name=620-1021-1-ND" target="_blank" rel="noopener">Digi-Key</a></td>
+<td align="LEFT"><a href="http://www.allegromicro.com/en/Products/Part_Numbers/1301/1301.pdf" target="_blank" rel="noopener">Allegro Microsystems</a></td>
 <td align="LEFT"></td>
 </tr>
 <tr>
@@ -222,8 +222,8 @@ quantities once I’ve built the thing.</p>
 <td align="LEFT">MAGNET 1/4”DIA X 1/8”THICK</td>
 <td align="RIGHT">$0.30</td>
 <td align="RIGHT">$0.30</td>
-<td align="LEFT"><a href="http://search.digikey.com/scripts/DkSearch/dksus.dll?WT.z_header=search_go&amp;lang=en&amp;site=us&amp;keywords=469-1004-ND&amp;x=0&amp;y=0" target="_blank" rel="external">Digi-Key</a></td>
-<td align="LEFT">Photo: <a href="http://media.digikey.com/photos/Radial%20Magnet%20Inc%20Photos/469-1004.jpg" target="_blank" rel="external">Digi-Key</a></td>
+<td align="LEFT"><a href="http://search.digikey.com/scripts/DkSearch/dksus.dll?WT.z_header=search_go&amp;lang=en&amp;site=us&amp;keywords=469-1004-ND&amp;x=0&amp;y=0" target="_blank" rel="noopener">Digi-Key</a></td>
+<td align="LEFT">Photo: <a href="http://media.digikey.com/photos/Radial%20Magnet%20Inc%20Photos/469-1004.jpg" target="_blank" rel="noopener">Digi-Key</a></td>
 <td align="LEFT">
 </td>
 </tr>
@@ -234,8 +234,8 @@ quantities once I’ve built the thing.</p>
 <td align="LEFT">IC RTC SERIAL 512K 8-SOIC</td>
 <td align="RIGHT">$3.72</td>
 <td align="RIGHT">$3.72</td>
-<td align="LEFT"><a href="http://search.digikey.com/scripts/DkSearch/dksus.dll?Detail&amp;name=DS1307Z+-ND" target="_blank" rel="external">Digi-Key</a></td>
-<td align="LEFT"><a href="http://datasheets.maxim-ic.com/en/ds/DS1307.pdf" target="_blank" rel="external">Maxim IC</a></td>
+<td align="LEFT"><a href="http://search.digikey.com/scripts/DkSearch/dksus.dll?Detail&amp;name=DS1307Z+-ND" target="_blank" rel="noopener">Digi-Key</a></td>
+<td align="LEFT"><a href="http://datasheets.maxim-ic.com/en/ds/DS1307.pdf" target="_blank" rel="noopener">Maxim IC</a></td>
 <td align="LEFT">
 </td>
 </tr>
@@ -246,7 +246,7 @@ quantities once I’ve built the thing.</p>
 <td align="LEFT">100PCS,0603 Ultra Bright SMD, White LEDs, 500mcd</td>
 <td align="RIGHT">$9.39</td>
 <td align="RIGHT">$9.39</td>
-<td align="LEFT"><a href="http://cgi.ebay.com/100PCS-0603-Ultra-Bright-SMD-White-LEDs-500mcd-/260779857903?pt=LH_DefaultDomain_0&amp;hash=item3cb7b0d7ef" target="_blank" rel="external">eBay</a></td>
+<td align="LEFT"><a href="http://cgi.ebay.com/100PCS-0603-Ultra-Bright-SMD-White-LEDs-500mcd-/260779857903?pt=LH_DefaultDomain_0&amp;hash=item3cb7b0d7ef" target="_blank" rel="noopener">eBay</a></td>
 <td align="LEFT">
 </td>
 <td align="LEFT"></td>
@@ -258,7 +258,7 @@ quantities once I’ve built the thing.</p>
 <td align="LEFT">100 pcs SMD Chip Surface Mount 0805 Resistor 100 ohm</td>
 <td align="RIGHT">$3.50</td>
 <td align="RIGHT">$3.50</td>
-<td align="LEFT"><a href="http://cgi.ebay.com/100-pcs-SMD-Chip-Surface-Mount-0805-Resistor-100-ohm-/110550216380?pt=LH_DefaultDomain_0&amp;hash=item19bd4e6ebc" target="_blank" rel="external">eBay</a></td>
+<td align="LEFT"><a href="http://cgi.ebay.com/100-pcs-SMD-Chip-Surface-Mount-0805-Resistor-100-ohm-/110550216380?pt=LH_DefaultDomain_0&amp;hash=item19bd4e6ebc" target="_blank" rel="noopener">eBay</a></td>
 <td align="LEFT">
 </td>
 <td align="LEFT">
@@ -322,21 +322,21 @@ the design quite a bit.</p>
 <li>Must be surface-mount</li>
 </ul>
 <p>For these requirements I chose the ATmega328, in a
-<a href="http://en.wikipedia.org/wiki/Thin_Quad_Flat_Pack" title="Wikipedia: Thin Quad Flat Pack" target="_blank" rel="external">TQFP32</a>
+<a href="http://en.wikipedia.org/wiki/Thin_Quad_Flat_Pack" title="Wikipedia: Thin Quad Flat Pack" target="_blank" rel="noopener">TQFP32</a>
 (Thin Quad Flat Pack, 32-lead) package. I’m clocking it (get it? eh? because
 it’s a clock) at 16 MHz with a standard
-<a href="http://en.wikipedia.org/wiki/Crystal_oscillator" title="Wikipedia: Crystal Oscillator" target="_blank" rel="external">HC49/US crystal</a>
+<a href="http://en.wikipedia.org/wiki/Crystal_oscillator" title="Wikipedia: Crystal Oscillator" target="_blank" rel="noopener">HC49/US crystal</a>
 in surface-mount style. I’ve included headers for both ICSP (bootloader burning)
 and FTDI (serial programming through the bootloader). There’s also a reset
 switch, which pulls the RST line low (it’s active-low) from it’s high-floating
 normal state.</p>
-<img src="/uploads/2011/05/body-propov-cpu.png" alt="ProPOV CPU Module v1">
+<a href="/uploads/2011/05/propov-cpu.png"><img src="/uploads/2011/05/body-propov-cpu.png" alt="ProPOV CPU Module v1" title="ProPOV CPU Module v1"></a>
 <h4 id="The-LED-Module"><a href="#The-LED-Module" class="headerlink" title="The LED Module"></a>The LED Module</h4><p>The LED module comprises 32 0603 LEDs that I found on eBay for a good price. I
 didn’t order these from a parts distributor, because they get pretty pricey. You
 can always find some good sales of factory leftover on eBay, perfect for
 small-scale hobbyists.</p>
 <p>Driving the LEDs are 4 74HC595
-<a href="http://en.wikipedia.org/wiki/Shift_register#Serial-in.2C_parallel-out_.28SIPO.29" title="SIPO Shift Register on Wikipedia" target="_blank" rel="external">Serial-in, Parallel-out (SIPO) </a>
+<a href="http://en.wikipedia.org/wiki/Shift_register#Serial-in.2C_parallel-out_.28SIPO.29" title="SIPO Shift Register on Wikipedia" target="_blank" rel="noopener">Serial-in, Parallel-out (SIPO) </a>
 shift registers. These registers take a serial input of 8 bits, and when
 signalled to do so, they expose all 8 stores bits simultaneously on individual
 output pins. So, you get 8 outputs for every single input line, which is great
@@ -347,14 +347,14 @@ own resistor. Because the LEDs are asynchronously on and off, they cannot share
 resistors; the changing load current would create unsteady voltages.</p>
 <p>Each register also had two capacitors, one on its power line and one on the
 serial line. These
-<a href="http://en.wikipedia.org/wiki/Decoupling_capacitor" title="Wikipedia: Decoupling capacitor" target="_blank" rel="external">decouple</a>
+<a href="http://en.wikipedia.org/wiki/Decoupling_capacitor" title="Wikipedia: Decoupling capacitor" target="_blank" rel="noopener">decouple</a>
 the registers from the rest of the circuit and help smooth those pesky voltage spikes.</p>
-<img src="/uploads/2011/05/body-propov-led.png" alt="ProPOV LED Module v1">
+<a href="/uploads/2011/05/propov-led.png"><img src="/uploads/2011/05/body-propov-led.png" alt="ProPOV LED Module v1" title="ProPOV LED Module v1"></a>
 <h4 id="The-Peripheral-Module"><a href="#The-Peripheral-Module" class="headerlink" title="The Peripheral Module"></a>The Peripheral Module</h4><p>The clock is of course incomplete without some valid way of keeping time! I
 chose to use the hobbyist-friendly DS1307 from Dallas/Maxim. It uses a standard
 32.768 kHz watch crystal as its reference frequency generator, and communicates
 with the CPU with
-<a href="http://en.wikipedia.org/wiki/I2c" title="Wikipedia: I2C" target="_blank" rel="external">I2C (Inter-Integrated Circuits)</a>.</p>
+<a href="http://en.wikipedia.org/wiki/I2c" title="Wikipedia: I2C" target="_blank" rel="noopener">I2C (Inter-Integrated Circuits)</a>.</p>
 <p>I also included a liner/ratiometric Hall effect sensor. This sensor can detect a
 magnetic field and generates a linear voltage based on the field strength. It
 will tell the clock when it passes over a calibration magnet attached to the
@@ -362,13 +362,13 @@ mounting bracket, so the CPU can determine the frequency of revolution and thus
 how quickly to draw.</p>
 <p>Finally, there’s an infrared phototransistor in there. I included it just in
 case I want to use a TV remote to control the thing later on.</p>
-<img src="/uploads/2011/05/body-propov-peripheral.png" alt="ProPOV Peripheral Module v1">
+<a href="/uploads/2011/05/propov-peripheral.png"><img src="/uploads/2011/05/body-propov-peripheral.png" alt="ProPOV Peripheral Module v1" title="ProPOV Peripheral Module v1"></a>
 <h4 id="The-Power-Module"><a href="#The-Power-Module" class="headerlink" title="The Power Module"></a>The Power Module</h4><p>The power module is all based on the AP1084 from Diodes, Inc. The AP1084 is a
 low-dropout linear voltage regulator
-(<a href="http://en.wikipedia.org/wiki/Low-dropout_regulator" title="Wikipedia: LDO" target="_blank" rel="external">LDO</a>)
+(<a href="http://en.wikipedia.org/wiki/Low-dropout_regulator" title="Wikipedia: LDO" target="_blank" rel="noopener">LDO</a>)
 capable of supplying the necessary current. It can vary its output voltage but I
 use it in fixed +5V mode. Some big aluminium filter capacitors keep the input
 clean.</p>
-<img src="/uploads/2011/05/body-propov-power.png" alt="ProPOV Power Module v1">
+<a href="/uploads/2011/05/propov-power.png"><img src="/uploads/2011/05/body-propov-power.png" alt="ProPOV Power Module v1" title="ProPOV Power Module v1"></a>
 <p>The next step is PCB layout, starting on day 2!</p>
 </article><nav id="pagination"><ul class="pagination justify-content-center"><li class="page-item"><a href="../../17/propov-capstone-day-2/" class="page-link">&larr; Prev</a></li><l class="page-item"><a href="../../../04/25/rgblamp-v1-complete/" class="page-link">Next &rarr;</a></l></ul></nav></div></div><script src="/js/boxy.js"></script></body></html>

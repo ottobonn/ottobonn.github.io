@@ -9,9 +9,9 @@ Motherboard to respond to programming commands!</p>
 <li>bad MCU chip</li>
 <li>RESET line problems</li>
 </ul>
-<img src="/uploads/2011/06/body-IMG_2039-e1308461619382.jpg" alt="Uploading with FTDI!">
-<img src="/uploads/2011/06/body-IMG_2025-e1308461522340.jpg" alt="Drilling the Holes">
-<img src="/uploads/2011/06/body-IMG_2024-e1308461575256.jpg" alt="Etching">
+<a href="/uploads/2011/06/IMG_2039-e1308461619382.jpg"><img src="/uploads/2011/06/body-IMG_2039-e1308461619382.jpg" alt="Uploading with FTDI!" title="Uploading with FTDI!"></a>
+<a href="/uploads/2011/06/IMG_2025-e1308461522340.jpg"><img src="/uploads/2011/06/body-IMG_2025-e1308461522340.jpg" alt="Drilling the Holes" title="Drilling the Holes"></a>
+<a href="/uploads/2011/06/IMG_2024-e1308461575256.jpg"><img src="/uploads/2011/06/body-IMG_2024-e1308461575256.jpg" alt="Etching" title="Etching"></a>
 <p>Unfortunately, the list didn’t include the problem: a short on one of the
 crystal pins to a data line! The data line was not in use and so the crystal
 could not oscillate at all: the microcontroller was stuck on cycle #1 after
@@ -29,7 +29,7 @@ RESET LOW the whole time, the ATmega can’t hear programming instructions!</p>
 the trace (or remove the wire) between the FTDI “DTR” pin and the AVR’s “RESET”
 pin. Instead of trusting the Arduino IDE to toggle the FTDI’s “DTR” line, just
 press the reset button on your breadboard
-(<a href="http://itp.nyu.edu/physcomp/Tutorials/ArduinoBreadboard" title="ITP Physical Computing" target="_blank" rel="external">like the one in this tutorial</a>)
+(<a href="http://itp.nyu.edu/physcomp/Tutorials/ArduinoBreadboard" title="ITP Physical Computing" target="_blank" rel="noopener">like the one in this tutorial</a>)
 right after the IDE says “Binary sketch size…”</p>
 <p>It may take a few tries, but fiddle with it and eventually you’ll get a good
 sync with successful upload!</p>

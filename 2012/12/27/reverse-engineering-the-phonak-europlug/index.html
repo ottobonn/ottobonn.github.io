@@ -11,14 +11,14 @@ completely broken, since no current would flow except in the ground return!</p>
 <p>I thought the discontinuity might be somewhere in the cheap cabling along the
 way, so I cut the Europlugs off (leaving whips for soldering later) and found
 that the connectors were intact.</p>
-<img src="/uploads/2012/12/body-Europlugs.png" alt="The Europlug schematic">
+<a href="/uploads/2012/12/Europlugs.png"><img src="/uploads/2012/12/body-Europlugs.png" alt="The Europlug schematic" title="Europlugs"></a>
 <p>I next checked the TRS end of the cable, and it too seemed okay. The only reason
 that the cable would not conduct, then, is if it had some sort of AC coupling
 capacitors for attenuation… I carefully cut away the cast silicone on the
 larger-than-normal Y splitter and indeed found an attenuator circuit inside. It
 was formed on a tiny two-sided PCB, but a little trace-following revealed the
 schematic:</p>
-<img src="/uploads/2012/12/body-Attenuator.png" alt="The Phonak attenuator circuit.">
+<a href="/uploads/2012/12/Attenuator.png"><img src="/uploads/2012/12/body-Attenuator.png" alt="The Phonak attenuator circuit." title="Attenuator"></a>
 <p>The attenuator turns out to be very important. Without it, headphone audio
 signals commonly reach up to 2Vpp (peak-to-peak). On the other hand, the
 low-voltage battery in the hearing aid sets its maximum allowable voltage to
@@ -30,7 +30,7 @@ millivolts, protecting the hearing aid from overvoltage. Without it, even the
 lowest volume settings would sound horribly loud!</p>
 <p>I used the schematic I harvested and the old connectors to build a new, better
 cable with fancy braided insulation for durability.</p>
-<img src="/uploads/2012/12/body-photo-e1356639022296.jpg" alt="The new cable, with old connectors salvaged">
+<a href="/uploads/2012/12/photo-e1356639022296.jpg"><img src="/uploads/2012/12/body-photo-e1356639022296.jpg" alt="The new cable, with old connectors salvaged" title="New Phonak Cable"></a>
 <h2 id="Files"><a href="#Files" class="headerlink" title="Files"></a>Files</h2><p>I made a <a href="/uploads/2012/12/Attenuator.sch_.zip">gEDA schematic</a> of the
 attenuator and connectors, in case anyone needs it. Hack on!</p>
 </article><nav id="pagination"><ul class="pagination justify-content-center"><li class="page-item"><a href="../../../../2013/06/08/the-hive-mind-of-instant-answers/" class="page-link">&larr; Prev</a></li><l class="page-item"><a href="../../../06/24/rethinking-the-alarm-clock/" class="page-link">Next &rarr;</a></l></ul></nav></div></div><script src="/js/boxy.js"></script></body></html>

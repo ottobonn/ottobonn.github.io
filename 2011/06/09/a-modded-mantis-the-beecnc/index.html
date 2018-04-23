@@ -1,6 +1,6 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>A Modded Mantis: The BeeCNC - travisgeis.com</title><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"><link href="https://fonts.googleapis.com/css?family=Lato|Permanent+Marker" rel="stylesheet"><link rel="stylesheet" href="/vendor/font-awesome-4.7.0/css/font-awesome.min.css"><link rel="stylesheet" href="/css/boxy.css"></head><body><nav id="menu" class="nav nav-pills flex-column flex-sm-row"><a href="/" class="flex-sm-fill text-sm-center nav-link"><i aria-hidden="true" class="fa inline-icon fa-home"></i>travisgeis.com</a><a href="/contact" class="flex-sm-fill text-sm-center nav-link"><i aria-hidden="true" class="fa inline-icon fa-comments"></i>Contact</a><a href="/archives" class="flex-sm-fill text-sm-center nav-link"><i aria-hidden="true" class="fa inline-icon fa-archive"></i>Archives</a></nav><div id="page" class="container"><div id="titles-container"><div id="titles"><h1>A Modded Mantis: The BeeCNC</h1><h3 class="date">9 June, 2011</h3></div></div><div id="content"><article id="post"><img src="/uploads/2011/06/body-beecnc.png" alt="The CNC side art">
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>A Modded Mantis: The BeeCNC - travisgeis.com</title><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"><link href="https://fonts.googleapis.com/css?family=Lato|Permanent+Marker" rel="stylesheet"><link rel="stylesheet" href="/vendor/font-awesome-4.7.0/css/font-awesome.min.css"><link rel="stylesheet" href="/css/boxy.css"></head><body><nav id="menu" class="nav nav-pills flex-column flex-sm-row"><a href="/" class="flex-sm-fill text-sm-center nav-link"><i aria-hidden="true" class="fa inline-icon fa-home"></i>travisgeis.com</a><a href="/contact" class="flex-sm-fill text-sm-center nav-link"><i aria-hidden="true" class="fa inline-icon fa-comments"></i>Contact</a><a href="/archives" class="flex-sm-fill text-sm-center nav-link"><i aria-hidden="true" class="fa inline-icon fa-archive"></i>Archives</a></nav><div id="page" class="container"><div id="titles-container"><div id="titles"><h1>A Modded Mantis: The BeeCNC</h1><h3 class="date">9 June, 2011</h3></div></div><div id="content"><article id="post"><a href="/uploads/2011/06/beecnc.png"><img src="/uploads/2011/06/body-beecnc.png" alt="The CNC side art" title="BeeCNC Stencil"></a>
 <p>I took a look at the
-<a href="http://makeyourbot.org/mantis9-1" title="David Carr" target="_blank" rel="external">great work David Carr has done</a>
+<a href="http://makeyourbot.org/mantis9-1" title="David Carr" target="_blank" rel="noopener">great work David Carr has done</a>
 with his Mantis CNC mill for PCB fabrication. I love the simplicity of his
 design. I decided to build my own CNC mill, in the spirit of the Mantis but with
 a few modifications. My mill had some extra requirements:</p>
@@ -18,24 +18,24 @@ the Mantis to accommodate the Dremel.</p>
 <p>I don’t have the oft-used Arduino Mega for the brains of the machine, so I did
 some searching for suitable GCode-parsing firmware that would fit on a
 Duemilanove (with ATmega328P, 32K of program flash). I hope to use
-<a href="http://replicat.org/" title="ReplicatorG Home" target="_blank" rel="external">ReplicatorG</a> with <a href="http://wiki.bitsfrombytes.com/index.php?title=Skeinforge" title="Skeinforge Page" target="_blank" rel="external">Skeinforge</a>
+<a href="http://replicat.org/" title="ReplicatorG Home" target="_blank" rel="noopener">ReplicatorG</a> with <a href="http://wiki.bitsfrombytes.com/index.php?title=Skeinforge" title="Skeinforge Page" target="_blank" rel="noopener">Skeinforge</a>
 as the go-between for machine and design.</p>
 <p>I found a great project called
-<a href="http://reprap.org/wiki/Teacup_Firmware" title="The Teacup Project" target="_blank" rel="external">Teacup</a>,
+<a href="http://reprap.org/wiki/Teacup_Firmware" title="The Teacup Project" target="_blank" rel="noopener">Teacup</a>,
 an optimized rewrite of the FiveD firmware used with RepRaps. The firmware fits
 on the mega328, interprets GCode in real time, and has all the settings I need.
 I believe it’s made for 3D printers, but it should work fine for milling, a
 simpler operation.</p>
 <p>I ordered three
-<a href="http://www.sparkfun.com/products/10267" title="Sparkfun" target="_blank" rel="external">Sparkfun EasyDriver</a>
+<a href="http://www.sparkfun.com/products/10267" title="Sparkfun" target="_blank" rel="noopener">Sparkfun EasyDriver</a>
 chips for controlling the stepper motors. The motors in question are NEMA 17
 steppers, EM-257, from Epson, 1.8 degrees per step (200 step per rev). They seem
 to be manufactured by Astrosyn, and I found
-<a href="http://www.motors.wrobots.com/EM-257_17PM-K212-PIT.php" title="The EM257 Motors" target="_blank" rel="external">a datasheet</a>.
+<a href="http://www.motors.wrobots.com/EM-257_17PM-K212-PIT.php" title="The EM257 Motors" target="_blank" rel="noopener">a datasheet</a>.
 They’re fairly powerful little motors, but are a little bit difficult to mount.</p>
 <p>For the power supply I’m repurposing an old HP server power supply brick. The
 whole machine should make quite a buzzing racket, and for that reason I decided
 I would call the machine the BeeCNC (in the spirit of insects like the Mantis,
 but a bit noisier). I’ll post some pictures soon.</p>
-<img src="/uploads/2011/06/body-IMG_2002-e1307679550649.jpg" alt="BeeCNC side wall">
+<a href="/uploads/2011/06/IMG_2002-e1307679550649.jpg"><img src="/uploads/2011/06/body-IMG_2002-e1307679550649.jpg" alt="BeeCNC side wall" title="BeeCNC Plate"></a>
 </article><nav id="pagination"><ul class="pagination justify-content-center"><li class="page-item"><a href="../../10/a-note-on-drm-in-the-ebook-world/" class="page-link">&larr; Prev</a></li><l class="page-item"><a href="../../../05/26/propov-build-screenshots/" class="page-link">Next &rarr;</a></l></ul></nav></div></div><script src="/js/boxy.js"></script></body></html>

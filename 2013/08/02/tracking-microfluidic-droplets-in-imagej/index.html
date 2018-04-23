@@ -3,7 +3,7 @@ a flow-focusing region in a micro-channel, which causes little drops to shear
 off and flow through the chip. We observe the drops with an inverted microscope
 and the high-speed Andor Zyla camera.</p>
 <p>I am developing
-<a href="https://github.com/ottobonn/DropletTracker" title="DropletTracker on GitHub" target="_blank" rel="external">a plugin for ImageJ</a>
+<a href="https://github.com/ottobonn/DropletTracker" title="DropletTracker on GitHub" target="_blank" rel="noopener">a plugin for ImageJ</a>
 to track the droplets. We want to see their shape, velocity, orientation, area,
 and other geometric properties, but it takes a long time to track them by hand
 (and it’s silly, when we have computers).</p>
@@ -28,18 +28,18 @@ image (a photo of a droplet in a channel), I can guess where the droplet is. I
 expect something oval-shaped, somewhere in the center of attention. But if I
 look at the image without any bias, I really don’t know whether that droplet is
 part of the background or not.</p>
-<img src="/uploads/2013/08/body-BackgroundOrForeground.png" alt="Background Or Foreground?">
+<a href="/uploads/2013/08/BackgroundOrForeground.png"><img src="/uploads/2013/08/body-BackgroundOrForeground.png" alt="Background Or Foreground?" title="Background Or Foreground?"></a>
 <p>I am biased, in that I look for simple geometry. It’s what my vision is trained
 to do well. However, as soon as I see the next frame in the stack, it’s obvious
 what I can ignore as the background.</p>
-<img src="/uploads/2013/08/body-TwoShots.png" alt="Two Shots">
+<a href="/uploads/2013/08/TwoShots.png"><img src="/uploads/2013/08/body-TwoShots.png" alt="Two Shots" title="Two Shots"></a>
 <p>The droplet in the center moved down a bit, but everything else stayed still. I
 can easily isolate it from the background with my eye, especially when it’s
 moving. So maybe I can get the tracker to do the same.</p>
 <p>Using a subtraction, I can find the literal difference between the later and
 earlier frames shown above. This yields a “heat map” of everything that moves in
 the images.</p>
-<img src="/uploads/2013/08/body-Subtraction.png" alt="Subtraction">
+<a href="/uploads/2013/08/Subtraction.png"><img src="/uploads/2013/08/body-Subtraction.png" alt="Subtraction" title="Subtraction"></a>
 <p>The blue area represents the moving front edge of the drop. Unfortunately, it
 isn’t round, and it doesn’t look like a drop, because the subtraction removed
 everything except the change.</p>
@@ -47,7 +47,7 @@ everything except the change.</p>
 still. Only the front and rear edges will change. So this subtraction can’t be
 the full solution, but maybe I can use it as a place to look for drops.</p>
 <p>Interestingly, I can do the same on the binary version of the image.</p>
-<img src="/uploads/2013/08/body-BinaryXOR.png" alt="Binary XOR">
+<a href="/uploads/2013/08/BinaryXOR.png"><img src="/uploads/2013/08/body-BinaryXOR.png" alt="Binary XOR" title="Binary XOR"></a>
 <p>The two left images above are the messy, thresholded representation of two of
 the original images (not exactly the ones above, by similar). I can make out the
 droplet in the center, but so much mess surrounds it that the tracker gets

@@ -89,7 +89,7 @@ commands:</p>
 synclient AreaTopEdge=150
 </code></pre><p>There are lots of other <code>synclient</code> options to play with, but these two changes
 make typing way better. Now I don’t get any trackpad interference while I type!</p>
-<p>I noticed that <a href="https://samtinkers.wordpress.com/2016/06/13/3-finger-gestures-in-ubuntu-16-04/" target="_blank" rel="external">there may be a way</a> to get more gesture support on the
+<p>I noticed that <a href="https://samtinkers.wordpress.com/2016/06/13/3-finger-gestures-in-ubuntu-16-04/" target="_blank" rel="noopener">there may be a way</a> to get more gesture support on the
 trackpad, but I haven’t tried it yet.</p>
 <h2 id="4-Disable-Bluetooth-LE-to-pair-with-Bose-QC-35"><a href="#4-Disable-Bluetooth-LE-to-pair-with-Bose-QC-35" class="headerlink" title="4. Disable Bluetooth LE to pair with Bose QC 35"></a>4. Disable Bluetooth LE to pair with Bose QC 35</h2><p>I was to use my new laptop with Bose QuietComfort 35 headphones, which use
 Bluetooth LE (low energy) to pair with the host. Unfortunately, it looks like
@@ -100,11 +100,11 @@ the QC 35s, I had to disable the BLE mode for my laptop’s Bluetooth adapter.</
 </code></pre><p>to</p>
 <pre><code>ControllerMode = bredr
 </code></pre><p>Then I restarted bluetooth with <code>sudo service bluetooth restart</code>.</p>
-<p>Thanks to Victor over <a href="https://askubuntu.com/questions/833322/pair-bose-quietcomfort-35-with-ubuntu-16-04-over-bluetooth" target="_blank" rel="external">on AskUbuntu</a>
+<p>Thanks to Victor over <a href="https://askubuntu.com/questions/833322/pair-bose-quietcomfort-35-with-ubuntu-16-04-over-bluetooth" target="_blank" rel="noopener">on AskUbuntu</a>
 for these steps.</p>
 <h2 id="5-Fix-the-tearing"><a href="#5-Fix-the-tearing" class="headerlink" title="5. Fix the tearing"></a>5. Fix the tearing</h2><p>It took me some time to get around to working on the tearing issue. I usually
 use the Intel graphics card, and Firefox was tearing badly on scroll and when
-playing video. I discovered an <a href="https://github.com/linuxmint/Cinnamon/issues/3423" target="_blank" rel="external">issue on GitHub</a>
+playing video. I discovered an <a href="https://github.com/linuxmint/Cinnamon/issues/3423" target="_blank" rel="noopener">issue on GitHub</a>
 relevant to my setup and tried what they recommend, which is to remove the
 <code>xserver-xorg-video-intel</code> package. Now the tearing is gone. There’s another
 possible fix specific to Firefox, but as far as I’m concerned removing a
@@ -185,8 +185,8 @@ Dell support and they were incredibly responsive. The technician came to my
 house the next day and replaced the SSD and motherboard on my laptop. So far,
 so good. Ideally, there would be no problem to begin with, but the service has
 been a great experience.</p>
-<img src="/uploads/2017/01/05/body-5510-repair.jpg" alt="Dell Precision 5510 repair">
-<img src="/uploads/2017/01/05/body-5510-internals.jpg" alt="Dell Precision 5510 internals">
+<a href="/uploads/2017/01/05/5510-repair.jpg"><img src="/uploads/2017/01/05/body-5510-repair.jpg" alt="Dell Precision 5510 repair"></a>
+<a href="/uploads/2017/01/05/5510-internals.jpg"><img src="/uploads/2017/01/05/body-5510-internals.jpg" alt="Dell Precision 5510 internals"></a>
 <p>The new SSD is a made by Lite-on instead of Toshiba. The motherboard is
 indistinguishable from the old one, and it comes with a new CPU and GPU.</p>
 </article><nav id="pagination"><ul class="pagination justify-content-center"><li class="page-item"><a href="../../06/flounder/" class="page-link">&larr; Prev</a></li><l class="page-item"><a href="../../../../2016/08/29/new-site/" class="page-link">Next &rarr;</a></l></ul></nav></div></div><script src="/js/boxy.js"></script></body></html>
