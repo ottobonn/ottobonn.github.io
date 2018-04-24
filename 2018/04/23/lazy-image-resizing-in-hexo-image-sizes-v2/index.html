@@ -1,0 +1,108 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Lazy image resizing in hexo-image-sizes v2 - travisgeis.com</title><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"><link href="https://fonts.googleapis.com/css?family=Lato|Permanent+Marker" rel="stylesheet"><link rel="stylesheet" href="/vendor/font-awesome-4.7.0/css/font-awesome.min.css"><link rel="stylesheet" href="/css/boxy.css"></head><body><nav id="menu" class="nav nav-pills flex-column flex-sm-row"><a href="/" class="flex-sm-fill text-sm-center nav-link"><i aria-hidden="true" class="fa inline-icon fa-home"></i>travisgeis.com</a><a href="/contact" class="flex-sm-fill text-sm-center nav-link"><i aria-hidden="true" class="fa inline-icon fa-comments"></i>Contact</a><a href="/archives" class="flex-sm-fill text-sm-center nav-link"><i aria-hidden="true" class="fa inline-icon fa-archive"></i>Archives</a></nav><div id="page" class="container"><div id="titles-container"><div id="titles"><h1>Lazy image resizing in hexo-image-sizes v2</h1><h3 class="date">23 April, 2018</h3></div></div><div id="content"><article id="post"><p>I just released <a href="https://github.com/ottobonn/hexo-image-sizes" target="_blank" rel="noopener">version 2 of
+<code>hexo-image-sizes</code></a>, which
+represents a complete rewrite of the plugin. It finally supports lazy image
+resizing. In this post, I will cover the high-level design ideas behind the new
+version and some of the challenges in making it.</p>
+<p>Check out my <a href="/2017/03/03/optimizing-image-sizes-in-hexo/">first post on it</a> for
+more background on the functionality.</p>
+<h2 id="Lazy-image-resizing-with-imsize-tags"><a href="#Lazy-image-resizing-with-imsize-tags" class="headerlink" title="Lazy image resizing with imsize tags"></a>Lazy image resizing with imsize tags</h2><p><code>hexo-image-sizes</code> uses a special tag format for adding images to posts in Hexo.
+Users add an <code>imsize</code> tag to their post when they want to use an image with the
+plugin, and in the tag they can specify various details of the image including
+its size profile, its alt text, its link target, and more.</p>
+<p>Here’s an example use of <code>imsize</code> within a markdown post:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;% imsize %&#125;</span><br><span class="line">src: /uploads/2010/06/ArduinoDuemilanove.jpeg</span><br><span class="line">alt: Arduino Duemilanove</span><br><span class="line">profile: body</span><br><span class="line">&#123;% endimsize %&#125;</span><br></pre></td></tr></table></figure>
+<p>When Hexo renders a post containing an <code>imsize</code> tag, it invokes the tag’s
+registered function. The tag function has access to the user’s arguments and
+some context information including the current page on which it appears, which
+will be important for resolving filenames.</p>
+<p>The <code>imsize</code> tag affords the plugin a special ability. Because users must invoke
+the tag when they want to embed a resized image in their post,
+<code>hexo-image-sizes</code> can monitor exactly which images the user has actually made
+visible in his or her posts. The new version of the plugin exploits this fact to
+avoid resizing images that the user never makes visible on the site.</p>
+<p>The plugin’s operation now comprises two distinct phases during static site
+generation:</p>
+<!-- TODO could this have a diagram? -->
+<ol>
+<li>First, while Hexo renders each post on the site, the plugin monitors all the
+<code>imsize</code> tags the user includes in posts. Each time the user includes an
+<code>imsize</code> tag, the plugin records which image the user included and the desired
+new size in a cache in memory.</li>
+<li>After Hexo has processed all of the posts in the site, the plugin knows
+which images the user wants to make visible. It generates resized versions of
+each visible image.</li>
+</ol>
+<h2 id="Using-Hexo’s-router-to-avoid-filesystem-manipulation"><a href="#Using-Hexo’s-router-to-avoid-filesystem-manipulation" class="headerlink" title="Using Hexo’s router to avoid filesystem manipulation"></a>Using Hexo’s router to avoid filesystem manipulation</h2><p>Hexo has a router module responsible for tracking which files are in use on the
+site and what their contents should be. The router is a map from the path of
+the file (relative to the Hexo site’s public output directory) to a stream
+of the contents of the file.</p>
+<p>The documentation for the router is missing some important details. First, it’s
+very important to know that each route corresponds to a a file in the public
+directory and not in the source directory. Therefore, if you add a route, you
+will add a file to the public site but not alter the source directory. When I
+first began work on this plugin, I assumed that the routes referenced files in
+the source directory. I learned about using the router from a similar plugin,
+<a href="https://github.com/hexojs/hexo-filter-responsive-images" target="_blank" rel="noopener">hexo-filter-responsive-images</a>.</p>
+<p>Using the router to add new resized images to the public output of the site
+generator has several advantages. By getting each file’s contents from the route
+stream managed by the router, my plugin can start to cooperate with other
+asset-management plugins, like image filters and minifiers. Using the router
+also allows me to remove the hacky filesystem code I was using before, where
+I had to guess the output location of each file and create the directory
+structure there.</p>
+<p>Using the router also has a downside. I’m using
+<a href="https://github.com/lovell/sharp" target="_blank" rel="noopener">sharp</a> to resize the images, and it takes as
+input either a file or a Buffer of image data, while the router provides a
+stream for each file. To run the image through <code>sharp</code>, I have to read the full
+file stream into memory (in a Buffer), which adds a lot to the memory use of the
+plugin. In its original form, the plugin would invoke sharp with file pointers
+instead of file contents, which meant that only <code>sharp</code> would need to see the
+full contents of the image, outside of the JavaScript VM. For my site, the
+increased memory use has not been an issue.</p>
+<h2 id="Keeping-Hexo-running-until-all-images-are-resized"><a href="#Keeping-Hexo-running-until-all-images-are-resized" class="headerlink" title="Keeping Hexo running until all images are resized"></a>Keeping Hexo running until all images are resized</h2><p>I discovered that running Hexo in server mode with <code>hexo server</code> can behave
+differently than running it to generate files and quit with <code>hexo generate</code>. My
+site would generate without issue when running the server, but <code>hexo generate</code>
+would only produce a few of the necessary images.</p>
+<p>The problem was with my <code>after_generate</code> filter function. Hexo uses the return
+value of filters to determine when they are finished running, and my filter
+wasn’t returning anything. When Hexo was running in server mode, it would keep
+running indefinitely, long enough to allow my plugin to finish resizing
+everything. In generate mode, it would exit as my plugin was just starting,
+because my filter function seemed to run synchronously.</p>
+<p>To fix the issue, I simply return a Promise from the filter function. The
+Promise resolves when every image has been resized.</p>
+<h2 id="Normalizing-file-paths-throughout-the-application"><a href="#Normalizing-file-paths-throughout-the-application" class="headerlink" title="Normalizing file paths throughout the application"></a>Normalizing file paths throughout the application</h2><p>Hexo uses several different types of file path, and mixing them was hindering
+my development of the plugin for a while. The following paths are involved in
+resizing an image:</p>
+<ul>
+<li>The path the user put in the <code>imsize</code> tag, which could be:<ul>
+<li>Absolute (with a leading slash), meaning it references the Hexo source
+directory</li>
+<li>Relative (no leading slash), meaning it is relative to the current post:<ul>
+<li>If the current post is a blog post and has an asset directory
+(<code>post_asset_folder</code>) is true  in Hexo config, then the path starts in the
+asset directory</li>
+<li>If the current post is not a blog post or <code>post_asset_folder</code> is false,
+then the path starts in the directory of the post file.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>The plugin also has access to:</p>
+<ul>
+<li>The absolute path to Hexo’s source directory</li>
+<li>The absolute path to the current post’s source file</li>
+<li>The absolute path to the current post’s asset directory, if there is one</li>
+</ul>
+<p>The plugin computes:</p>
+<ul>
+<li>A relative path from Hexo’s source directory to the image the user wants to
+resize. For example, a cat picture might have path <code>/posts/2018-cats/cat1.jpg</code></li>
+<li>A copy of that relative path with the image renamed to have its profile name
+as a prefix. For example, a thumbnail-sized version of the above cat picture
+might have path <code>/posts/2018-cats/thumbnail-cat1.jpg</code></li>
+</ul>
+<p>Once we know the Hexo-relative path to the input image and the output image,
+we have all the information necessary to resize the image.</p>
+</article><nav id="pagination"><ul class="pagination justify-content-center"><l class="page-item"><a href="../../../../2017/11/19/debugging-a-ticking-refrigerator/" class="page-link">Next &rarr;</a></l></ul></nav></div></div><script src="/js/boxy.js"></script></body></html>
