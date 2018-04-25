@@ -8,12 +8,52 @@ temperature. That acronym may mean “Temp-CPU 0 Die”, but I don’t know for 
 <a href="/uploads/2012/03/Screenshot-at-2012-03-13-130526.png"><img src="/uploads/2012/03/body-Screenshot-at-2012-03-13-130526.png" alt="Psensors Screenshot" title="Psensors Screenshot"></a>
 <p>Once I knew the sensor name, I ran “sensors” in a terminal and found that my
 computer uses a chip called “applesmc-isa-300”:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">travis@travis-ubuntu:~/Projects/Gauges$ sensors</span><br><span class="line">applesmc-isa-0300</span><br><span class="line">Adapter: ISA adapter</span><br><span class="line">Exhaust  :   3074 RPM  (min = 1800 RPM)</span><br><span class="line">TB0T:         +32.5°C</span><br><span class="line">TC0D:         +57.2°C</span><br><span class="line">TC0P:         +55.0°C</span><br><span class="line">TM0P:         +58.0°C</span><br><span class="line">TN0P:         +54.0°C</span><br><span class="line">TTF0:         +55.0°C</span><br><span class="line">TW0P:         +74.0°C</span><br><span class="line">Th0H:         +54.8°C</span><br><span class="line">Th0S:         +54.5°C</span><br><span class="line">Th1H:         +54.2°C</span><br></pre></td></tr></table></figure>
+<pre><code class="bash">travis@travis-ubuntu:~/Projects/Gauges$ sensors
+applesmc-isa-0300
+Adapter: ISA adapter
+Exhaust  :   3074 RPM  (min = 1800 RPM)
+TB0T:         +32.5°C
+TC0D:         +57.2°C
+TC0P:         +55.0°C
+TM0P:         +58.0°C
+TN0P:         +54.0°C
+TTF0:         +55.0°C
+TW0P:         +74.0°C
+Th0H:         +54.8°C
+Th0S:         +54.5°C
+Th1H:         +54.2°C
+</code></pre>
 <p>Every Linux sensor has a corresponding pseudo-file for reading programmatically.
 I dug through online references of various sorts until I found the directory of
 my chipset, called ‘/sys/bus/platform/devices/applesmc.768/‘. Once I had the
 directory, I ran sensors again with the -u flag set for “debugging” output:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">travis@travis-ubuntu:~/Projects/Gauges$ sensors -u</span><br><span class="line">applesmc-isa-0300</span><br><span class="line">Adapter: ISA adapter</span><br><span class="line">Exhaust  :</span><br><span class="line">  fan1_input: 2309.000</span><br><span class="line">  fan1_min: 1800.000</span><br><span class="line">TB0T:</span><br><span class="line">  temp1_input: 32.500</span><br><span class="line">TC0D:</span><br><span class="line">  temp2_input: 58.250</span><br><span class="line">TC0P:</span><br><span class="line">  temp3_input: 56.000</span><br><span class="line">TM0P:</span><br><span class="line">  temp4_input: 57.750</span><br><span class="line">TN0P:</span><br><span class="line">  temp5_input: 54.500</span><br><span class="line">TTF0:</span><br><span class="line">  temp6_input: 56.250</span><br><span class="line">TW0P:</span><br><span class="line">  temp7_input: 74.000</span><br><span class="line">Th0H:</span><br><span class="line">  temp8_input: 56.000</span><br><span class="line">Th0S:</span><br><span class="line">  temp9_input: 55.750</span><br><span class="line">Th1H:</span><br><span class="line">  temp10_input: 55.500</span><br></pre></td></tr></table></figure>
+<pre><code class="bash">travis@travis-ubuntu:~/Projects/Gauges$ sensors -u
+applesmc-isa-0300
+Adapter: ISA adapter
+Exhaust  :
+  fan1_input: 2309.000
+  fan1_min: 1800.000
+TB0T:
+  temp1_input: 32.500
+TC0D:
+  temp2_input: 58.250
+TC0P:
+  temp3_input: 56.000
+TM0P:
+  temp4_input: 57.750
+TN0P:
+  temp5_input: 54.500
+TTF0:
+  temp6_input: 56.250
+TW0P:
+  temp7_input: 74.000
+Th0H:
+  temp8_input: 56.000
+Th0S:
+  temp9_input: 55.750
+Th1H:
+  temp10_input: 55.500
+</code></pre>
 <p>The verbose output told me that the sensor I want, TC0D, is also called
 “temp2_input”. Looking in the <code>/sys/bus/platform/devices/applesmc.768/</code>
 directory, I found a pseudo-file called “temp2_input”. Perfect!</p>

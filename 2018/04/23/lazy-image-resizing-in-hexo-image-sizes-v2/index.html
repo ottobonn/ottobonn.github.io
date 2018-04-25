@@ -10,8 +10,12 @@ Users add an <code>imsize</code> tag to their post when they want to use an imag
 plugin, and in the tag they can specify various details of the image including
 its size profile, its alt text, its link target, and more.</p>
 <p>Here’s an example use of <code>imsize</code> within a markdown post:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;% imsize %&#125;</span><br><span class="line">src: /uploads/2010/06/ArduinoDuemilanove.jpeg</span><br><span class="line">alt: Arduino Duemilanove</span><br><span class="line">profile: body</span><br><span class="line">&#123;% endimsize %&#125;</span><br></pre></td></tr></table></figure>
-<p>When Hexo renders a post containing an <code>imsize</code> tag, it invokes the tag’s
+<pre><code>{% imsize %}
+src: /uploads/2010/06/ArduinoDuemilanove.jpeg
+alt: Arduino Duemilanove
+profile: body
+{% endimsize %}
+</code></pre><p>When Hexo renders a post containing an <code>imsize</code> tag, it invokes the tag’s
 registered function. The tag function has access to the user’s arguments and
 some context information including the current page on which it appears, which
 will be important for resolving filenames.</p>
@@ -105,4 +109,4 @@ might have path <code>/posts/2018-cats/thumbnail-cat1.jpg</code></li>
 </ul>
 <p>Once we know the Hexo-relative path to the input image and the output image,
 we have all the information necessary to resize the image.</p>
-</article><nav id="pagination"><ul class="pagination justify-content-center"><l class="page-item"><a href="../../../../2017/11/19/debugging-a-ticking-refrigerator/" class="page-link">Next &rarr;</a></l></ul></nav></div></div><script src="/js/boxy.js"></script></body></html>
+</article><nav id="pagination"><ul class="pagination justify-content-center"><li class="page-item"><a href="../../24/drawing-fractals-in-the-browser-with-l-systems-and-es6/" class="page-link">&larr; Prev</a></li><l class="page-item"><a href="../../../../2017/11/19/debugging-a-ticking-refrigerator/" class="page-link">Next &rarr;</a></l></ul></nav></div></div><script src="/js/boxy.js"></script></body></html>

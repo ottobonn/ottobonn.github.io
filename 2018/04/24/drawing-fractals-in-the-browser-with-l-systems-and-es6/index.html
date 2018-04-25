@@ -1,0 +1,227 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Drawing fractals in the browser with L-systems and ES6 - travisgeis.com</title><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"><link href="https://fonts.googleapis.com/css?family=Lato|Permanent+Marker" rel="stylesheet"><link rel="stylesheet" href="/vendor/font-awesome-4.7.0/css/font-awesome.min.css"><link rel="stylesheet" href="/css/boxy.css"></head><body><nav id="menu" class="nav nav-pills flex-column flex-sm-row"><a href="/" class="flex-sm-fill text-sm-center nav-link"><i aria-hidden="true" class="fa inline-icon fa-home"></i>travisgeis.com</a><a href="/contact" class="flex-sm-fill text-sm-center nav-link"><i aria-hidden="true" class="fa inline-icon fa-comments"></i>Contact</a><a href="/archives" class="flex-sm-fill text-sm-center nav-link"><i aria-hidden="true" class="fa inline-icon fa-archive"></i>Archives</a></nav><div id="page" class="container"><div id="titles-container"><div id="titles"><h1>Drawing fractals in the browser with L-systems and ES6</h1><h3 class="date">24 April, 2018</h3></div></div><div id="content"><article id="post"><p>This article is from a recent engineering talk I gave at <a href="https://www.qualia.com" target="_blank" rel="noopener">Qualia</a>.</p>
+<div style="position:relative;padding-bottom:54%"><iframe src="https://gfycat.com/ifr/GrotesqueEasygoingDog" frameborder="0" scrolling="no" width="100%" height="100%" style="position:absolute;top:0;left:0" allowfullscreen></iframe></div>
+
+<p>Here’s what we’ll make! L-systems are great for modeling plants…</p>
+<p>Fractals are a beautiful cross between math, visualization, and art. Unfortunately, making computer programs draw pictures can be pretty complicated. Luckily, modern web browsers have powerful graphics features built in, and nearly everyone has a web browser. The browser is actually a pretty good place to start playing around with fractal graphics!</p>
+<p>In this post, we will look at one simple approach for modeling fractals, and how to draw them in the web browser. I’ll also cover a cool new feature of JavaScript, called generators, and show how they might come in handy for drawing fractals
+.</p>
+<h2 id="Some-theory-modeling-fractals-with-L-systems"><a href="#Some-theory-modeling-fractals-with-L-systems" class="headerlink" title="Some theory: modeling fractals with L-systems"></a>Some theory: modeling fractals with L-systems</h2><p>To start things off, let’s think about how we might represent a fractal in a computer program. There are many ways to think about fractals, but in this post, I want to focus on one approach, called L-systems, because they are easy to understand and quick to implement.</p>
+<p>Aristid Lindenmeyer invented <a href="https://en.wikipedia.org/wiki/L-system" target="_blank" rel="noopener">L-systems</a>, or Lindenmeyer systems, as a way to model the growth of bacteria and fungi, and people later used them to model plants and other biological systems. The basic idea of an L-system is to use strings of characters to model the evolution of a living system. Each character symbolizes some part of the creature, like a cell, leaf, or branch. The system starts with an initial string, and by following some rules for manipulating the initial string, we end up modeling the change in the living creature over time by generating progressively more complex strings.</p>
+<h3 id="Defining-the-L-system"><a href="#Defining-the-L-system" class="headerlink" title="Defining the L-system"></a>Defining the L-system</h3><p>An L-system is a formal grammar, which means it is a set of rules for producing strings in a formal language. Mathematically, it’s defined as a tuple,</p>
+<p>G = (V, ω, P)</p>
+<p>where:</p>
+<ul>
+<li>V is the alphabet of characters, or symbols</li>
+<li>ω is the starting string, also called the axiom, containing symbols from V</li>
+<li>P is a set of production rules, also called “productions,” for evolving the system from one string to the next.</li>
+</ul>
+<p>Each production specifies how to convert one input character from the current state of the system into one or more output characters for the next state.</p>
+<p>Starting with the axiom, we apply the appropriate production to each character to get the string representing the first generation. To get the second generation, we apply our productions to all of the symbols in the first generation, and so on. We can model generations indefinitely by applying the productions again and again.</p>
+<p>Despite the complex-sounding theory, L-systems are really just find-and-replace rules, like you would use in a basic text editor.</p>
+<h3 id="Modeling-a-plant"><a href="#Modeling-a-plant" class="headerlink" title="Modeling a plant"></a>Modeling a plant</h3><p>Let’s look at how to model this tree-like plant:</p>
+<a href="/uploads/2018/04/24/three-trees.png"><img src="/uploads/2018/04/24/body-three-trees.png" alt="Three fractal trees"></a>
+<p>Three fractal trees</p>
+<p>First, we define the three elements of our L-system:</p>
+<ul>
+<li>V (the vocabulary) will contain the characters <code>X</code> and <code>F</code>, and the additional symbols <code>[]+-</code></li>
+<li>ω (the starting string) will just be <code>X</code></li>
+</ul>
+<p>P will contain these two productions:</p>
+<ul>
+<li><code>X</code>→<code>F[−X][X]F[−X]+FX</code></li>
+<li><code>F</code>→<code>FF</code></li>
+</ul>
+<p>In each generation, we will use one string to symbolize the current state of our model, which in this case is the shape of our plant. We begin by setting the state string equal to the axiom. To grow the plant by one generation, we replace the <code>X</code> with <code>F[−X][X]F[−X]+FX</code>. To grow it by another generation, we replace every <code>X</code> with <code>F[−X][X]F[−X]+FX</code>, and every <code>F</code> with <code>FF</code>.</p>
+<p>We only have productions corresponding to <code>X</code> and <code>F</code>, so when we encounter any other character in the system state, like <code>[</code>, we just copy it over to the new state string. Symbols like <code>[</code>, for which there are no productions, are called constants.</p>
+<p>The strings look complicated, but the process we follow is always the same: we replace each character in the current state string with the right-hand-side of its corresponding production rule.</p>
+<h3 id="Evolving-the-model"><a href="#Evolving-the-model" class="headerlink" title="Evolving the model"></a>Evolving the model</h3><p>We’ve defined all we need for our L-system. Let’s evolve it for a few generations and see what happens!</p>
+<p>To watch our model of a plant grow, we start with the axiom and run each rule on it:</p>
+<pre><code>X
+
+F[−X][X]F[−X]+FX
+
+FF[-F[-X][X]F[-X]+FX][F[-X][X]F[-X]+FX]FF[-F[-X][X]F[-X]+FX]+FFF[-X][X]F[-X]+FX
+
+FFFF[-FF[-F[-X][X]F[-X]+FX][F[-X][X]F[-X]+FX]FF[-F[-X][X]F[-X]+FX]+FFF[-X][X]F[-X]+FX][FF[-F[-X][X]F[-X]+FX][F[-X][X]F[-X]+FX]FF[-F[-X][X]F[-X]+FX]+FFF[-X][X]F[-X]+FX]FFFF[-FF[-F[-X][X]F[-X]+FX][F[-X][X]F[-X]+FX]FF[-F[-X][X]F[-X]+FX]+FFF[-X][X]F[-X]+FX]+FFFFFF[-F[-X][X]F[-X]+FX][F[-X][X]F[-X]+FX]FF[-F[-X][X]F[-X]+FX]+FFF[-X][X]F[-X]+FX
+</code></pre><p>After only four generations, this system already looks pretty complex! We can see a sequence of F characters collecting at the beginning of the state string. Those characters represent the initial trunk or stem of our plant. In each generation, the trunk gets twice as long because of our production <code>F</code>→<code>FF</code>.</p>
+<p>We can also see that the output of the production rule <code>X</code>→<code>F[−X][X]F[−X]+FX</code> is going to produce complex strings inside each set of square brackets. Each time we see <code>[X]</code> or <code>[-X]</code> in subsequent generations, we will end up substituting the output of the rule again between the square brackets. These parenthetical asides will represent the branches coming off the trunk of our tree, and each will grow fractally more complex in subsequent generations. We’ll soon see how to translate them into pictures, but first, let’s write some code to run the production rules automatically.</p>
+<h2 id="Writing-the-L-system-in-code"><a href="#Writing-the-L-system-in-code" class="headerlink" title="Writing the L-system in code"></a>Writing the L-system in code</h2><p>It’s perfectly possible to run the production rules of the L-system with pen and paper, but computers are really good at storing and manipulating strings, so we should have no trouble expressing L-systems in code!</p>
+<p>Let’s set up a simple JavaScript file to model our tree fractal. We will start by declaring the axiom and production rules:</p>
+<pre><code class="js">const tree = {
+  axiom: &#39;X&#39;,
+  rules: {
+    X: &#39;F[-X][X]F[-X]+FX&#39;,
+    F: &#39;FF&#39;,
+  },
+}
+</code></pre>
+<p>Here we represent the production rules with a simple JavaScript object, where each key is the input symbol for the production, and each value is the output string for that production. We don’t need to list the vocabulary explicitly, so we have fully defined our system.</p>
+<p>Now, we need a way to run the production rules. Here’s a function to apply a single rule:</p>
+<pre><code class="js">function applyRule(rules, char) {
+  return rules[char] || char;
+}
+</code></pre>
+<p>Given the rules and a character in the current system state, <code>applyRule</code> returns the output of the rule if there is one, or the original character if there is no rule for it. Now, to get from one generation to the next, we just apply rules for every character in the current state, called <code>previousGeneration</code> below:</p>
+<pre><code class="js">function renderAGeneration(system, previousGeneration) {
+  let nextGeneration = &#39;&#39;;
+  for (const character of previousGeneration) {
+    nextGeneration += applyRule(system.rules, character);
+  }
+  return nextGeneration;
+}
+</code></pre>
+<h3 id="Try-it-out"><a href="#Try-it-out" class="headerlink" title="Try it out!"></a>Try it out!</h3><p>Putting it all together, we have a way to simulate the L-system. Check out the “Result” tab in this JSFiddle to see the L-system evolve through several generations. If you “Edit in JSFiddle”, you can tweak <code>numIters</code> to change how many generations the script simulates.</p>
+<iframe width="100%" height="500" src="//jsfiddle.net/p35tpehv/17/embedded/" allowpaymentrequest="" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<h2 id="Drawing-the-fractal"><a href="#Drawing-the-fractal" class="headerlink" title="Drawing the fractal"></a>Drawing the fractal</h2><p>Now we have an L-system to model our plant, but the raw strings don’t look much like a tree. To draw a fractal from the strings, we need to map each symbol to a drawing rule.</p>
+<h3 id="Defining-the-drawing-rules"><a href="#Defining-the-drawing-rules" class="headerlink" title="Defining the drawing rules"></a>Defining the drawing rules</h3><p>We’ll use an HTML canvas with <code>p5.js</code> to handle the drawing. It’s possible to draw on a canvas without using a library, but p5 will make this a lot easier.</p>
+<p>We’ll need to get a little bit of setup out of the way, to create a canvas and configure p5:</p>
+<pre><code class="js">function setup() {
+  createCanvas(CANVAS_BOUNDS.x, CANVAS_BOUNDS.y);
+  angleMode(DEGREES);
+  noLoop();
+}
+</code></pre>
+<p>Now we need to map the symbols in the vocabulary of our L-system to functions that draw on the canvas. Let’s add a new property, <code>commands</code>, to our system, to hold drawing functions:</p>
+<pre><code class="js">const tree = {
+  params: {
+    angle: 25,
+    length: 2,
+  },
+  axiom: &#39;X&#39;,
+  rules: {
+    X: &#39;F[-X][X]F[-X]+FX&#39;,
+    F: &#39;FF&#39;,
+  },
+  commands: {
+    &#39;F&#39;: drawForward,
+    &#39;-&#39;(drawingState, params) {
+      drawingState.state.direction -= params.angle;
+    },
+    &#39;+&#39;(drawingState, params) {
+      drawingState.state.direction += params.angle;
+    },
+    &#39;[&#39;(drawingState, params) {
+      drawingState.push();
+    },
+    &#39;]&#39;(drawingState, params) {
+      drawingState.pop();
+    },
+  }
+}
+</code></pre>
+<p>Each command is a function. Its name corresponds to a symbol in the system state string. When we encounter the symbol, we run the function. For example, for every <code>F</code> we see in the L-system’s state, we will call <code>drawForward</code> (not yet defined) to draw a line straight forward. We’ve also added a few other concepts:</p>
+<ul>
+<li>We have some drawing parameters for our system in <code>params</code>. We can add arbitrary configuration values here and then use them in our drawing functions. In this case, we configure the angle of the tree’s branches, and the length of each straight segment corresponding to an <code>F</code>.</li>
+<li>We give each drawing function access to the drawing <code>params</code>, and to a <code>drawingState</code>, which tracks the current drawing position and direction, and maintains a stack. We can push the position and direction of the drawing context to the stack, then later pop them to restore them as the current drawing state.</li>
+</ul>
+<p>If you’ve used Logo’s turtle graphics, this drawing style should feel familiar. We will imagine a pen that drags across the canvas, and when we pop a position off the stack of the <code>drawingState</code>, we jump to the new location without drawing as though we lifted the pen.</p>
+<p>Now we just need to call our drawing functions within <code>renderAGeneration</code>:</p>
+<pre><code class="js">function renderAGeneration (system, previousGeneration, drawingState, draw=true) {
+  let nextGeneration = &#39;&#39;;
+  for (const character of previousGeneration) {
+    const nextCharacters = applyRule(system.rules, character);
+    nextGeneration += nextCharacters;
+    if (draw) {
+      for (const character of nextCharacters) {
+        if (system.commands[character]) {
+         system.commands[character](drawingState, system.params);
+       }
+      }
+    }
+  }
+  return nextGeneration;
+}
+</code></pre>
+<p>Each time we apply a rule to one character in the <code>previousGeneration</code>, we get a string of one or more characters in <code>nextCharacters</code>, which we append to the string we’re building to represent the next generation of the L-system. For each of those characters, we look for a drawing function and call it if it exists. We also have a new boolean argument, <code>draw</code>, which signals whether we should in fact draw something to the canvas. We’ll use it below.</p>
+<p>We’re going to render the fractals when the user clicks the mouse. p5 comes out of the box with a mouse-click listener, so we just need to wrap our previous loop in a <code>mouseClicked</code> function:</p>
+<pre><code class="js">numIters = 4;
+system = tree;
+
+function mouseClicked() {
+  const origin = new Point(mouseX, mouseY);
+  let systemState = system.axiom;
+  console.log(systemState);
+
+  for (let i = 1; i &lt; numIters; i++) {
+    const drawingState = new DrawingState(origin, -90);
+    const shouldDraw = i === numIters - 1;
+    systemState = renderAGeneration(system, systemState, drawingState, shouldDraw);
+    console.log(systemState);
+  }
+}
+</code></pre>
+<p>When the user clicks the canvas, we store the location of their click as the origin of the new drawing. We initialize system state to the axiom (<code>X</code>), and then iterate through <code>numIters</code> generations of the L-system. After each iteration, <code>systemState</code> contains the new, more complex description of the fractal.</p>
+<p>We wait to draw the fractal until it’s fully formed. The boolean <code>shouldDraw</code> becomes true on the final iteration of the loop, signaling that <code>renderAGeneration</code> should draw to the canvas.</p>
+<h3 id="Try-it-out-1"><a href="#Try-it-out-1" class="headerlink" title="Try it out!"></a>Try it out!</h3><p>You can play with the result in the “Result” tab below. Try clicking on the blank canvas!</p>
+<iframe width="100%" height="500" src="//jsfiddle.net/msmoLw7t/24/embedded/" allowpaymentrequest="" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<p>Now we’re drawing the fractal to the canvas, but we’re drawing the whole thing at once instead of gradually enhancing the drawing as we compute the new state of the L-system:</p>
+<div style="position:relative;padding-bottom:77%"><iframe src="https://gfycat.com/ifr/AssuredKnobbyDonkey" frameborder="0" scrolling="no" width="100%" height="100%" style="position:absolute;top:0;left:0;" allowfullscreen></iframe></div>
+
+<p>The fractals look right, but they need more animation!</p>
+<p>Let’s animate the drawing to make it more fun to watch. We’ll use ES6 generators to do it.</p>
+<h2 id="Animating-the-fractals"><a href="#Animating-the-fractals" class="headerlink" title="Animating the fractals"></a>Animating the fractals</h2><p>So far, we have used synchronous code to generate our fractal descriptions and render them to the canvas. From the time the user clicks the mouse, triggering the <code>mouseClicked</code> function, until the <code>mouseClicked</code> function finishes running all of the functions it calls and returns, our code never yields the main thread of the browser’s JavaScript engine. Meanwhile, there is no way for the browser to update the drawing we see on the canvas!</p>
+<p>To get the intermediate steps of the drawing to show up on the canvas, we need to design our code to yield the JavaScript thread to other code the browser is trying to run.</p>
+<p>We will do two things to restructure our code:</p>
+<ol>
+<li>First, we will create a generator to yield intermediate fragments of the fractal as we create them</li>
+<li>Second, we will use <code>requestAnimationFrame</code> to draw each fragment</li>
+</ol>
+<h3 id="Using-a-generator-to-yield-intermediate-fragments"><a href="#Using-a-generator-to-yield-intermediate-fragments" class="headerlink" title="Using a generator to yield intermediate fragments"></a>Using a generator to yield intermediate fragments</h3><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function*" target="_blank" rel="noopener">Generators</a> are a new feature in JavaScript as of ES6. If you’ve used coroutines in other languages, they should feel familiar to you. MDN describes generators like this:</p>
+<blockquote>
+<p>Generators are functions which can be exited and later re-entered. Their context (variable bindings) will be saved across re-entrances. […]</p>
+<p>Calling a generator function does not execute its body immediately; an <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols#iterator" target="_blank" rel="noopener">iterator</a> object for the function is returned instead. When the iterator’s next() method is called, the generator function’s body is executed until the first <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/yield" target="_blank" rel="noopener"><code>yield</code></a> expression, which specifies the value to be returned from the iterator […] (from <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function*" target="_blank" rel="noopener">MDN</a>)</p>
+</blockquote>
+<p>To create a generator, we declare a generator function, which returns an iterator. We can call <code>next()</code> on the iterator repeatedly to get its values.</p>
+<p>Let’s create a generator function that takes an L-system and its current state and produces an iterator for the L-system’s next state string:</p>
+<pre><code class="js">function *fragmentGenerator(system, string) {
+  for (const char of string) {
+    yield applyRule(system.rules, char);
+  }
+}
+</code></pre>
+<p>We iterate through the characters of the string like before, but this time, instead of calling the corresponding drawing functions inside the loop, we <code>yield</code> the fragment of characters that results from applying the rule.</p>
+<p>To consume the generated fragments of the system state, first we invoke the generator function to get an iterator. Then, we call <code>next()</code> on the iterator repeatedly, checking whether it is <code>done</code> after each call:</p>
+<pre><code class="js">// Create an iterator from our generator function
+const fragmentIterator = fragmentGenerator(system, systemState);
+
+let iter;
+while (iter = fragmentIterator.next(), !iter.done) {
+  const fragment = iter.value;
+  for (const character of fragment) {
+    // draw characters like before
+  }
+}
+</code></pre>
+<p>Using a generator for the fragments allows us to observe the progress of applying each rule from the outside, in this case from our while loop. We’re on to something powerful, but so far, the effect is not different from what we had before.</p>
+<p>We’re still looping through all of the fragments synchronously; we’ve just moved the synchronous iteration to a <code>while</code> loop. For the final step, we will stop iterating in a loop at all and use <code>requestAnimationFrame</code> instead.</p>
+<h3 id="Rendering-with-requestAnimationFrame"><a href="#Rendering-with-requestAnimationFrame" class="headerlink" title="Rendering with requestAnimationFrame"></a>Rendering with requestAnimationFrame</h3><p>Instead of rendering the fractal within a loop, we need a way to render a frame, then yield the thread, then render another frame, yield the thread, and so on, giving the browser a chance to update the canvas each time our code stops running.</p>
+<p>Our strategy will be to write a new function, <code>drawFrame</code>, responsible for drawing just one frame of the animation. <code>drawFrame</code> will make its changes to the canvas quickly, then return, allowing the browser to update the image of the canvas.</p>
+<p>We won’t invoke <code>drawFrame</code> directly; instead, we will pass it as a callback to <code>requestAnimationFrame</code>, a function provided by the browser. The browser will call <code>drawFrame</code> when it’s time to update the canvas (usually about 60 times per second). After we draw each frame, we will request another call to <code>drawFrame</code> by calling <code>requestAnimationFrame</code> again.</p>
+<p>Here’s the code to set it all up:</p>
+<pre><code class="js">function drawSystem(system, fragmentIterator, drawingState) {
+  const drawFrame = () =&gt; {
+    const iter = fragmentIterator.next();
+    if (iter.done) {
+      return;
+    }
+    const fragment = iter.value;
+    for (const character of fragment) {
+      const drawingFunction = system.commands[character];
+      if (drawingFunction) {
+        drawingFunction(drawingState, system.params);
+      }
+    }
+    requestAnimationFrame(drawFrame);
+  };
+  requestAnimationFrame(drawFrame);
+}
+</code></pre>
+<p>We define <code>drawFrame</code> as a closure within <code>drawSystem</code> so it will have access to the variables describing our L-system.</p>
+<p>The core of <code>drawFrame</code> is identical to the drawing code we’ve already seen. The big difference is that now, we iterate through the fragments of the L-system without using a loop! Between each run of <code>drawFrame</code>, none of our JavaScript functions is running, and the browser has a chance to update the canvas.</p>
+<h3 id="Try-it-out-2"><a href="#Try-it-out-2" class="headerlink" title="Try it out!"></a>Try it out!</h3><p>Here’s the final code, showing everything we’ve covered working together to animate the fractals. Click on the canvas in the “Result” tab to kick off the animations, and try playing around with the parameters in JSFiddle! Have fun!</p>
+<iframe width="100%" height="500" src="//jsfiddle.net/1x354b0o/26/embedded/" allowpaymentrequest="" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<p>Thanks for reading! If you enjoyed this post, you might also enjoy <a href="https://www.qualia.com/careers/#/engineering" target="_blank" rel="noopener">working at Qualia</a>! See you next time 👋</p>
+</article><nav id="pagination"><ul class="pagination justify-content-center"><l class="page-item"><a href="../../23/lazy-image-resizing-in-hexo-image-sizes-v2/" class="page-link">Next &rarr;</a></l></ul></nav></div></div><script src="/js/boxy.js"></script></body></html>
