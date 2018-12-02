@@ -49,9 +49,11 @@ body {
 }
 #posts .card {
   border: none;
+  margin-bottom: 2em;
 }
-#posts .card .title {
-  margin-top: 0;
+#posts .card .title,
+#posts .card .date {
+  font-family: "Rubik";
 }
 #posts .card .title a {
   color: inherit;
@@ -60,6 +62,11 @@ body {
 }
 #posts .card .title a:hover {
   color: #6a39ff;
+}
+#posts .card .date {
+  font-size: 75%;
+  opacity: 0.7;
+  margin-bottom: 1em;
 }
 code {
   font-family: "Anonymous Pro";
@@ -100,22 +107,22 @@ figure.highlight pre .function .params {
   margin-left: 0.3em;
   margin-right: 0.3em;
 }
-#content a {
+#content article a {
   color: #6a39ff;
   text-decoration: underline;
 }
-#content p {
+#content article p {
   margin-bottom: 1.3em;
 }
-#content img {
+#content article img {
   padding: 1rem;
   max-width: 100%;
 }
-#content h2,
-#content h3,
-#content h4,
-#content h5,
-#content h6 {
+#content article h2,
+#content article h3,
+#content article h4,
+#content article h5,
+#content article h6 {
   margin-top: 1.3em;
   margin-bottom: 0.65em;
   font-family: "Rubik";
