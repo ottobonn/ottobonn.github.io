@@ -1,133 +1,279 @@
-a {
+/*******************************
+         Site Settings
+*******************************/
+/*-------------------
+       Fonts
+--------------------*/
+/*-------------------
+      Base Sizes
+--------------------*/
+/* This is the single variable that controls them all */
+/* The size of page text  */
+/*-------------------
+    Border Radius
+--------------------*/
+/* See Power-user section below
+   for explanation of @px variables
+*/
+/*-------------------
+    Brand Colors
+--------------------*/
+/*--------------
+  Page Heading
+---------------*/
+/*--------------
+   Form Input
+---------------*/
+/* This adjusts the default form input across all elements */
+/* Input Text Color */
+/* Line Height Default For Inputs in Browser (Descenders are 17px at 14px base em) */
+/*-------------------
+    Focused Input
+--------------------*/
+/* Used on inputs, textarea etc */
+/* Used on dropdowns, other larger blocks */
+/*-------------------
+        Sizes
+--------------------*/
+/*
+  Sizes are all expressed in terms of 14px/em (default em)
+  This ensures these "ratios" remain constant despite changes in EM
+*/
+/*-------------------
+        Page
+--------------------*/
+/*-------------------
+      Paragraph
+--------------------*/
+/*-------------------
+       Links
+--------------------*/
+/*-------------------
+    Scroll Bars
+--------------------*/
+/* Inverted */
+/*-------------------
+  Highlighted Text
+--------------------*/
+/*-------------------
+       Loader
+--------------------*/
+/*-------------------
+        Grid
+--------------------*/
+/*-------------------
+     Transitions
+--------------------*/
+/*-------------------
+     Breakpoints
+--------------------*/
+/*-------------------
+      Site Colors
+--------------------*/
+/*---  Colors  ---*/
+/*---  Light Colors  ---*/
+/*---   Neutrals  ---*/
+/*--- Colored Backgrounds ---*/
+/*--- Colored Headers ---*/
+/*--- Colored Text ---*/
+/*--- Colored Border ---*/
+/*-------------------
+     Alpha Colors
+--------------------*/
+/*-------------------
+       Accents
+--------------------*/
+/* Differentiating Neutrals */
+/* Differentiating Layers */
+/*******************************
+           Power-User
+*******************************/
+/*-------------------
+    Emotive Colors
+--------------------*/
+/* Positive */
+/* Negative */
+/* Info */
+/* Warning */
+/*-------------------
+        Paths
+--------------------*/
+/* For source only. Modified in gulp for dist */
+/*-------------------
+       Em Sizes
+--------------------*/
+/*
+  This rounds @size values to the closest pixel then expresses that value in (r)em.
+  This ensures all size values round to exact pixels
+*/
+/* em */
+/* rem */
+/*-------------------
+       Icons
+--------------------*/
+/* Maximum Glyph Width of Icon */
+/*-------------------
+     Neutral Text
+--------------------*/
+/*-------------------
+     Brand Colors
+--------------------*/
+/*-------------------
+      Borders
+--------------------*/
+/*-------------------
+    Derived Values
+--------------------*/
+/* Loaders Position Offset */
+/* Rendered Scrollbar Width */
+/* Maximum Single Character Glyph Width, aka Capital "W" */
+/* Used to match floats with text */
+/* Header Spacing */
+/* Minimum Mobile Width */
+/* Positive / Negative Dupes */
+/* Responsive */
+/*-------------------
+  Exact Pixel Values
+--------------------*/
+/*
+  These are used to specify exact pixel values in em
+  for things like borders that remain constantly
+  sized as emSize adjusts
+
+  Since there are many more sizes than names for sizes,
+  these are named by their original pixel values.
+
+*/
+/* Columns */
+/*******************************
+             States
+*******************************/
+/*-------------------
+      Disabled
+--------------------*/
+/*-------------------
+        Hover
+--------------------*/
+/*---  Shadows  ---*/
+/*---  Colors  ---*/
+/*---  Emotive  ---*/
+/*---  Brand   ---*/
+/*---  Dark Tones  ---*/
+/*---  Light Tones  ---*/
+/*-------------------
+        Focus
+--------------------*/
+/*---  Colors  ---*/
+/*---  Emotive  ---*/
+/*---  Brand   ---*/
+/*---  Dark Tones  ---*/
+/*---  Light Tones  ---*/
+/*-------------------
+    Down (:active)
+--------------------*/
+/*---  Colors  ---*/
+/*---  Emotive  ---*/
+/*---  Brand   ---*/
+/*---  Dark Tones  ---*/
+/*---  Light Tones  ---*/
+/*-------------------
+        Active
+--------------------*/
+/*---  Colors  ---*/
+/*---  Emotive  ---*/
+/*---  Brand   ---*/
+/*---  Dark Tones  ---*/
+/*---  Light Tones  ---*/
+/*******************************
+     User Global Variables
+*******************************/
+/* Make the page container narrower on large screens */
+/* I import these in the layout file */
+#page {
+  padding-bottom: 3em;
+}
+.ui.variable.item.menu .item {
+  flex: 1;
+}
+#mainMenu {
+  font-size: 1em;
+}
+a.neutral {
   color: inherit;
+  text-decoration: none;
 }
-a:hover {
-  color: #6a39ff;
-}
-nav {
-  justify-content: center;
-}
-nav a {
-  font-family: "Rubik";
-}
-body {
-  font: 24px "Spectral", sans-serif;
-  line-height: 1.3;
-}
-.container {
-  max-width: 850px;
+a.neutral:hover {
+  color: #6A39FF;
+  text-decoration: underline;
 }
 #titles-container {
-  background-color: #6a39ff;
+  background-color: #6A39FF;
   margin-left: 0.5rem;
   margin-top: 0.5rem;
   margin-bottom: 2rem;
 }
 #titles {
-  font-size: 3rem;
-  background-color: #fff;
+  background-color: white;
   padding: 1rem;
   position: relative;
   top: -0.5rem;
   left: -0.5rem;
-  border: 2px solid #000;
+  border: 2px solid black;
 }
-#titles h1 {
-  font-family: "Rubik";
-  font-weight: bold;
-  font-size: 3rem;
-}
-#titles h2 {
-  font-size: 1.5rem;
-}
-#titles h3.date {
-  font-size: 1.2rem;
-}
-#posts {
-  list-style: none;
-  padding: 0;
-}
-#posts .card {
-  border: none;
+#content article {
   margin-bottom: 2em;
 }
-#posts .card .title,
-#posts .card .date {
-  font-family: "Rubik";
+#content article img {
+  padding: 1rem;
+  max-width: 100%;
 }
-#posts .card .title a {
+#content #post-list .item {
+  margin: 2em 0 2em 0;
+}
+#content #post-list .item .title a {
   color: inherit;
-  font-weight: bold;
-  text-decoration: none;
 }
-#posts .card .title a:hover {
-  color: #6a39ff;
+#content #post-list .item .meta {
+  font-family: 'Rubik', sans-serif;
+  font-size: 0.7em;
 }
-#posts .card .date {
-  font-size: 75%;
-  opacity: 0.7;
-  margin-bottom: 1em;
-}
-code {
+#content code {
   font-family: "Anonymous Pro";
+  background-color: #f9f9f9;
+  padding: 5px;
+  border: 1px solid #eee;
 }
-figure.highlight {
+#content figure.highlight {
   overflow-x: auto;
+  margin-left: 0;
+  margin-right: 0;
 }
-figure.highlight table {
+#content figure.highlight table {
   width: 100%;
 }
-figure.highlight table tr {
+#content figure.highlight table tr {
   min-width: 100%;
   display: flex;
 }
-figure.highlight table .code {
+#content figure.highlight table .code {
   flex: 1;
 }
-figure.highlight pre {
+#content figure.highlight pre {
   margin: 0;
   font-size: 1rem;
   padding: 1rem;
   background-color: #f9f9f9;
   line-height: 1.5;
 }
-figure.highlight pre .string {
-  color: #f00;
+#content figure.highlight pre .string {
+  color: red;
 }
-figure.highlight pre .keyword {
+#content figure.highlight pre .keyword {
   font-weight: bold;
 }
-figure.highlight pre .function .title {
-  color: #6a39ff;
+#content figure.highlight pre .function .title {
+  color: #6A39FF;
 }
-figure.highlight pre .function .params {
+#content figure.highlight pre .function .params {
   font-weight: bold;
-}
-.inline-icon {
-  margin-left: 0.3em;
-  margin-right: 0.3em;
-}
-#content article a {
-  color: #6a39ff;
-  text-decoration: underline;
-}
-#content article p {
-  margin-bottom: 1.3em;
-}
-#content article img {
-  padding: 1rem;
-  max-width: 100%;
-}
-#content article h2,
-#content article h3,
-#content article h4,
-#content article h5,
-#content article h6 {
-  margin-top: 1.3em;
-  margin-bottom: 0.65em;
-  font-family: "Rubik";
-  font-weight: bold;
-}
-#pagination a {
-  text-decoration: none;
 }
