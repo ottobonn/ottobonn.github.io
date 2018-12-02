@@ -53,27 +53,20 @@ write the output.</p>
 <p>Unfortunately (or maybe fortunately, depending on your bent), Markdown doesn’t have an official means of extension, so I can’t build support for captions and image profiles directly. Hexo allows Nunjucks tags in posts through its <a href="https://hexo.io/api/tag.html">Tag API</a>, which is the next best option. The upside is that we get a lot more options for controlling the output now, but the tradeoff is that we’re no longer writing standard Markdown, and our posts depend on this plugin now. I considered this trade for a few days, and decided this was the best course, but it was a tough call.</p>
 <h3 id="The-imsize-tag"><a href="#The-imsize-tag" class="headerlink" title="The imsize tag"></a>The <code>imsize</code> tag</h3><p>I wanted a tag that is as self-documenting as possible, so if this plugin dies or the posts need to migrate to a different platform, it will be as easy as possible to support these image tags.</p>
 <p>There are two choices for passing data to Nunjucks tags: “args” and “content.” A tag looks like this:</p>
-<pre><code>{% blockquote David Levithan, Wide Awake %}
-    Do not just seek happiness for yourself. Seek happiness for all.
-    Through kindness. Through mercy.
-    {% endblockquote %}
-</code></pre><ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;% blockquote David Levithan, Wide Awake %&#125;</span><br><span class="line">Do not just seek happiness for yourself. Seek happiness for all.</span><br><span class="line">Through kindness. Through mercy.</span><br><span class="line">&#123;% endblockquote %&#125;</span><br></pre></td></tr></table></figure>
+<ul>
 <li><code>args</code> is an array formed from the string passed in the tag line. Here, it is [“David”, “Levithan,”, “Wide”, “Awake”]. Hexo parses the arg line <a href="https://github.com/hexojs/hexo/blob/5234c4a85dc6cd418e9a1c169e43de169cf98e95/lib/extend/tag.js#L86-L113">here</a>.</li>
 <li><code>content</code> is the string between the opening and closing tags.</li>
 </ul>
 <p>Given that I want self-documenting tags, I’m not too worried about brevity.
 Copy-and-paste is pretty easy, and authors can set up editor shortcuts to insert these tags if needed.</p>
 <p>Passing arguments through the arg line becomes unreadable for more than even a few arguments. The spec for that blockquote tag is:</p>
-<pre><code>{% blockquote [author[, source]] [link] [source_link_title] %}
-</code></pre><p>These are all positional arguments, and any of them can be elided! Handing that is not easy, and it doesn’t scale nor is it self-explanatory later.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% blockquote [author[, source]] [link] [source_link_title] %&#125;</span><br></pre></td></tr></table></figure>
+<p>These are all positional arguments, and any of them can be elided! Handing that is not easy, and it doesn’t scale nor is it self-explanatory later.</p>
 <p>Instead, I decided to embed a <a href="http://yaml.org/start.html">YAML</a> document in the tag’s content. YAML is very easy to read, and I don’t have to write a parser for it. By using a YAML document in the tag content, I can add more arguments in the future without breaking existing documents.</p>
 <p>Tags look like this:</p>
-<pre><code>{% imsize %}
-    src: /uploads/2017/01/05/5510-repair.jpg
-    alt: Dell Precision 5510 repair
-    profile: thumbnail
-    {% endimsize %}
-</code></pre><p>We can specify the <code>src</code> and <code>profile</code>, and alt text. In the future, we could add a caption, and potentially even an output format (.webp, for example). I’d like to add those possibilities soon.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;% imsize %&#125;</span><br><span class="line">src: /uploads/2017/01/05/5510-repair.jpg</span><br><span class="line">alt: Dell Precision 5510 repair</span><br><span class="line">profile: thumbnail</span><br><span class="line">&#123;% endimsize %&#125;</span><br></pre></td></tr></table></figure>
+<p>We can specify the <code>src</code> and <code>profile</code>, and alt text. In the future, we could add a caption, and potentially even an output format (.webp, for example). I’d like to add those possibilities soon.</p>
 <p>Since this is normal YAML, other people can write parsers for this tag for their blogging platforms if needed. It’s a little wordy, but I think it’s very clear.</p>
 <p>There’s more to come on this project, hopefully soon! I’m already using this plugin to generate the images on this site. Head over to the <a href="https://github.com/ottobonn/hexo-image-sizes">Github repo</a> to try it out!</p>
 </article><nav id="pagination"><ul class="pagination justify-content-center"><li class="page-item"><a href="../../../05/17/sketchy-drawing-with-a-humanoid-robot/" class="page-link">&larr; Prev</a></li><l class="page-item"><a href="../../../01/06/flounder/" class="page-link">Next &rarr;</a></l></ul></nav></div></div><script src="/js/boxy.js"></script></body></html>
