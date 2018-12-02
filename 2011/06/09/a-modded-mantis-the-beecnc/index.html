@@ -1,6 +1,26 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>A Modded Mantis: The BeeCNC - travisgeis.com</title><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"><link href="https://fonts.googleapis.com/css?family=Spectral|Rubik|Anonymous+Pro" rel="stylesheet"><link rel="stylesheet" href="/vendor/font-awesome-4.7.0/css/font-awesome.min.css"><link rel="stylesheet" href="/css/boxy.css"></head><body><nav id="menu" class="nav nav-pills flex-column flex-sm-row"><a href="/" class="flex-sm-fill text-sm-center nav-link"><i aria-hidden="true" class="fa inline-icon fa-home"></i>travisgeis.com</a><a href="/contact" class="flex-sm-fill text-sm-center nav-link"><i aria-hidden="true" class="fa inline-icon fa-comments"></i>Contact</a><a href="/archives" class="flex-sm-fill text-sm-center nav-link"><i aria-hidden="true" class="fa inline-icon fa-archive"></i>Archives</a></nav><div id="page" class="container"><div id="titles-container"><div id="titles"><h1>A Modded Mantis: The BeeCNC</h1><h3 class="date">9 June, 2011</h3></div></div><div id="content"><article id="post"><a href="/uploads/2011/06/beecnc.png"><img src="/uploads/2011/06/body-beecnc.png" alt="The CNC side art" title="BeeCNC Stencil"></a>
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>A Modded Mantis: The BeeCNC - travisgeis.com</title><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"><link href="https://fonts.googleapis.com/css?family=Spectral|Rubik|Anonymous+Pro" rel="stylesheet"><!-- favicon set from favicomatic.com -->
+<meta name="application-name" content="travisgeis.com"/>
+<link rel="apple-touch-icon-precomposed" sizes="57x57" href="favicons/apple-touch-icon-57x57.png" />
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="favicons/apple-touch-icon-114x114.png" />
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="favicons/apple-touch-icon-72x72.png" />
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="favicons/apple-touch-icon-144x144.png" />
+<link rel="apple-touch-icon-precomposed" sizes="60x60" href="favicons/apple-touch-icon-60x60.png" />
+<link rel="apple-touch-icon-precomposed" sizes="120x120" href="favicons/apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon-precomposed" sizes="76x76" href="favicons/apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon-precomposed" sizes="152x152" href="favicons/apple-touch-icon-152x152.png" />
+<link rel="icon" type="image/png" href="favicons/favicon-196x196.png" sizes="196x196" />
+<link rel="icon" type="image/png" href="favicons/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/png" href="favicons/favicon-32x32.png" sizes="32x32" />
+<link rel="icon" type="image/png" href="favicons/favicon-16x16.png" sizes="16x16" />
+<link rel="icon" type="image/png" href="favicons/favicon-128.png" sizes="128x128" />
+<meta name="msapplication-TileColor" content="#FFFFFF" />
+<meta name="msapplication-TileImage" content="favicons/mstile-144x144.png" />
+<meta name="msapplication-square70x70logo" content="favicons/mstile-70x70.png" />
+<meta name="msapplication-square150x150logo" content="favicons/mstile-150x150.png" />
+<meta name="msapplication-wide310x150logo" content="favicons/mstile-310x150.png" />
+<meta name="msapplication-square310x310logo" content="favicons/mstile-310x310.png" /><link rel="stylesheet" href="/vendor/font-awesome-4.7.0/css/font-awesome.min.css"><link rel="stylesheet" href="/css/boxy.css"></head><body><nav id="menu" class="nav nav-pills flex-column flex-sm-row"><a href="/" class="flex-sm-fill text-sm-center nav-link"><i aria-hidden="true" class="fa inline-icon fa-home"></i>travisgeis.com</a><a href="/contact" class="flex-sm-fill text-sm-center nav-link"><i aria-hidden="true" class="fa inline-icon fa-comments"></i>Contact</a><a href="/archives" class="flex-sm-fill text-sm-center nav-link"><i aria-hidden="true" class="fa inline-icon fa-archive"></i>Archives</a></nav><div id="page" class="container"><div id="titles-container"><div id="titles"><h1>A Modded Mantis: The BeeCNC</h1><h3 class="date">9 June, 2011</h3></div></div><div id="content"><article id="post"><a href="/uploads/2011/06/beecnc.png"><img src="/uploads/2011/06/body-beecnc.png" alt="The CNC side art" title="BeeCNC Stencil"></a>
 <p>I took a look at the
-<a href="http://makeyourbot.org/mantis9-1" title="David Carr" target="_blank" rel="noopener">great work David Carr has done</a>
+<a href="http://makeyourbot.org/mantis9-1" title="David Carr">great work David Carr has done</a>
 with his Mantis CNC mill for PCB fabrication. I love the simplicity of his
 design. I decided to build my own CNC mill, in the spirit of the Mantis but with
 a few modifications. My mill had some extra requirements:</p>
@@ -18,20 +38,20 @@ the Mantis to accommodate the Dremel.</p>
 <p>I don’t have the oft-used Arduino Mega for the brains of the machine, so I did
 some searching for suitable GCode-parsing firmware that would fit on a
 Duemilanove (with ATmega328P, 32K of program flash). I hope to use
-<a href="http://replicat.org/" title="ReplicatorG Home" target="_blank" rel="noopener">ReplicatorG</a> with <a href="http://wiki.bitsfrombytes.com/index.php?title=Skeinforge" title="Skeinforge Page" target="_blank" rel="noopener">Skeinforge</a>
+<a href="http://replicat.org/" title="ReplicatorG Home">ReplicatorG</a> with <a href="http://wiki.bitsfrombytes.com/index.php?title=Skeinforge" title="Skeinforge Page">Skeinforge</a>
 as the go-between for machine and design.</p>
 <p>I found a great project called
-<a href="http://reprap.org/wiki/Teacup_Firmware" title="The Teacup Project" target="_blank" rel="noopener">Teacup</a>,
+<a href="http://reprap.org/wiki/Teacup_Firmware" title="The Teacup Project">Teacup</a>,
 an optimized rewrite of the FiveD firmware used with RepRaps. The firmware fits
 on the mega328, interprets GCode in real time, and has all the settings I need.
 I believe it’s made for 3D printers, but it should work fine for milling, a
 simpler operation.</p>
 <p>I ordered three
-<a href="http://www.sparkfun.com/products/10267" title="Sparkfun" target="_blank" rel="noopener">Sparkfun EasyDriver</a>
+<a href="http://www.sparkfun.com/products/10267" title="Sparkfun">Sparkfun EasyDriver</a>
 chips for controlling the stepper motors. The motors in question are NEMA 17
 steppers, EM-257, from Epson, 1.8 degrees per step (200 step per rev). They seem
 to be manufactured by Astrosyn, and I found
-<a href="http://www.motors.wrobots.com/EM-257_17PM-K212-PIT.php" title="The EM257 Motors" target="_blank" rel="noopener">a datasheet</a>.
+<a href="http://www.motors.wrobots.com/EM-257_17PM-K212-PIT.php" title="The EM257 Motors">a datasheet</a>.
 They’re fairly powerful little motors, but are a little bit difficult to mount.</p>
 <p>For the power supply I’m repurposing an old HP server power supply brick. The
 whole machine should make quite a buzzing racket, and for that reason I decided

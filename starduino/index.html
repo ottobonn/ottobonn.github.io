@@ -1,4 +1,24 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Starduino - travisgeis.com</title><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"><link href="https://fonts.googleapis.com/css?family=Spectral|Rubik|Anonymous+Pro" rel="stylesheet"><link rel="stylesheet" href="/vendor/font-awesome-4.7.0/css/font-awesome.min.css"><link rel="stylesheet" href="/css/boxy.css"></head><body><nav id="menu" class="nav nav-pills flex-column flex-sm-row"><a href="/" class="flex-sm-fill text-sm-center nav-link"><i aria-hidden="true" class="fa inline-icon fa-home"></i>travisgeis.com</a><a href="/contact" class="flex-sm-fill text-sm-center nav-link"><i aria-hidden="true" class="fa inline-icon fa-comments"></i>Contact</a><a href="/archives" class="flex-sm-fill text-sm-center nav-link"><i aria-hidden="true" class="fa inline-icon fa-archive"></i>Archives</a></nav><div id="page" class="container"><div id="titles-container"><div id="titles"><h1>Starduino</h1></div></div><div id="content"><article id="page"><p><em>Please Note: I’m still writing this page. You may find it useful as-is, but
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Starduino - travisgeis.com</title><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"><link href="https://fonts.googleapis.com/css?family=Spectral|Rubik|Anonymous+Pro" rel="stylesheet"><!-- favicon set from favicomatic.com -->
+<meta name="application-name" content="travisgeis.com"/>
+<link rel="apple-touch-icon-precomposed" sizes="57x57" href="favicons/apple-touch-icon-57x57.png" />
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="favicons/apple-touch-icon-114x114.png" />
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="favicons/apple-touch-icon-72x72.png" />
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="favicons/apple-touch-icon-144x144.png" />
+<link rel="apple-touch-icon-precomposed" sizes="60x60" href="favicons/apple-touch-icon-60x60.png" />
+<link rel="apple-touch-icon-precomposed" sizes="120x120" href="favicons/apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon-precomposed" sizes="76x76" href="favicons/apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon-precomposed" sizes="152x152" href="favicons/apple-touch-icon-152x152.png" />
+<link rel="icon" type="image/png" href="favicons/favicon-196x196.png" sizes="196x196" />
+<link rel="icon" type="image/png" href="favicons/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/png" href="favicons/favicon-32x32.png" sizes="32x32" />
+<link rel="icon" type="image/png" href="favicons/favicon-16x16.png" sizes="16x16" />
+<link rel="icon" type="image/png" href="favicons/favicon-128.png" sizes="128x128" />
+<meta name="msapplication-TileColor" content="#FFFFFF" />
+<meta name="msapplication-TileImage" content="favicons/mstile-144x144.png" />
+<meta name="msapplication-square70x70logo" content="favicons/mstile-70x70.png" />
+<meta name="msapplication-square150x150logo" content="favicons/mstile-150x150.png" />
+<meta name="msapplication-wide310x150logo" content="favicons/mstile-310x150.png" />
+<meta name="msapplication-square310x310logo" content="favicons/mstile-310x310.png" /><link rel="stylesheet" href="/vendor/font-awesome-4.7.0/css/font-awesome.min.css"><link rel="stylesheet" href="/css/boxy.css"></head><body><nav id="menu" class="nav nav-pills flex-column flex-sm-row"><a href="/" class="flex-sm-fill text-sm-center nav-link"><i aria-hidden="true" class="fa inline-icon fa-home"></i>travisgeis.com</a><a href="/contact" class="flex-sm-fill text-sm-center nav-link"><i aria-hidden="true" class="fa inline-icon fa-comments"></i>Contact</a><a href="/archives" class="flex-sm-fill text-sm-center nav-link"><i aria-hidden="true" class="fa inline-icon fa-archive"></i>Archives</a></nav><div id="page" class="container"><div id="titles-container"><div id="titles"><h1>Starduino</h1></div></div><div id="content"><article id="page"><p><em>Please Note: I’m still writing this page. You may find it useful as-is, but
 much more in the way of pictures and the final steps is coming.</em></p>
 <p>The Starduino is my first big Arduino project. It’s an LED lamp based on an
 Indian paper star lantern. I personally think it came out very nicely, and I
@@ -6,84 +26,84 @@ hope to allow others to enjoy it as much as I did by sharing a how-to on this
 site.</p>
 <h2 id="The-Materials"><a href="#The-Materials" class="headerlink" title="The Materials"></a>The Materials</h2><p>This project doesn’t require too much. The main thing, of course, is an Arduino
 for the heart of the thing. To keep the cost down and avoid being wasteful, I
-decided to use an Arduino clone called the RBBB (Really Bare Bones Board) from <a href="http://www.moderndevice.com/products/rbbb-kit" title="The RBBB at moderndevice" target="_blank" rel="noopener">moderndevice</a>.
+decided to use an Arduino clone called the RBBB (Really Bare Bones Board) from <a href="http://www.moderndevice.com/products/rbbb-kit" title="The RBBB at moderndevice">moderndevice</a>.
 This board is eventually embedded in the star lantern, so I had to be okay with
 saying goodbye to the lucky Arduino that gets to power it. In addition, the
 project calls for:</p>
 <ul>
 <li><p>LEDs</p>
 <ul>
-<li>Soft White (or your color of choice) LED x50 (2 of <a href="http://www.amazon.com/5mm-Clear-White-13000-Pack/dp/B003GDT2DE/ref=sr_1_1?ie=UTF8&amp;s=electronics&amp;qid=1275620575&amp;sr=8-1" title="25 Pack Soft White LED" target="_blank" rel="noopener">these at Amazon</a>)</li>
+<li>Soft White (or your color of choice) LED x50 (2 of <a href="http://www.amazon.com/5mm-Clear-White-13000-Pack/dp/B003GDT2DE/ref=sr_1_1?ie=UTF8&amp;s=electronics&amp;qid=1275620575&amp;sr=8-1" title="25 Pack Soft White LED">these at Amazon</a>)</li>
 </ul>
 </li>
 <li><p>Wires</p>
 <ul>
-<li>Hookup Wire AWG 30 (<a href="http://www.radioshack.com/product/index.jsp?productId=2062641" title="Buy White Hookup Wire 30 AWG" target="_blank" rel="noopener">Radioshack</a>)</li>
-<li>Hookup Wire AWG 22 (<a href="http://www.radioshack.com/product/index.jsp?productId=2049745" title="Buy Hookup Wire 22 AWG" target="_blank" rel="noopener">Radioshack</a>)</li>
-<li>Alarm Wire 30 ft. (9 m) - Four-conductor, AWG 22 per strand or bigger (like: <a href="http://www.lowes.com/pd_31690-295-64170422_4294821899_4294937087?productId=3128631&amp;pl=1&amp;currentURL=/pl_Low%2BVoltage%2BWire_4294821899_4294937087_" title="Shop for Wire at Lowe" target="_blank" rel="noopener">Lowe’s</a>)</li>
+<li>Hookup Wire AWG 30 (<a href="http://www.radioshack.com/product/index.jsp?productId=2062641" title="Buy White Hookup Wire 30 AWG">Radioshack</a>)</li>
+<li>Hookup Wire AWG 22 (<a href="http://www.radioshack.com/product/index.jsp?productId=2049745" title="Buy Hookup Wire 22 AWG">Radioshack</a>)</li>
+<li>Alarm Wire 30 ft. (9 m) - Four-conductor, AWG 22 per strand or bigger (like: <a href="http://www.lowes.com/pd_31690-295-64170422_4294821899_4294937087?productId=3128631&amp;pl=1&amp;currentURL=/pl_Low%2BVoltage%2BWire_4294821899_4294937087_" title="Shop for Wire at Lowe">Lowe’s</a>)</li>
 </ul>
 </li>
 <li><p>Integrated Circuits (ICs)</p>
 <ul>
-<li>Adjustable Voltage Regulator (LM317 or compatible with heatsink) x1 (<a href="http://www.radioshack.com/product/index.jsp?productId=2062601" title="LM317 at Radioshack" target="_blank" rel="noopener">Radioshack</a>)</li>
+<li>Adjustable Voltage Regulator (LM317 or compatible with heatsink) x1 (<a href="http://www.radioshack.com/product/index.jsp?productId=2062601" title="LM317 at Radioshack">Radioshack</a>)</li>
 </ul>
 </li>
 <li><p>Resistors</p>
 <ul>
-<li>0.25 Watt: 220Ω x1 (<a href="http://www.radioshack.com/product/index.jsp?productId=2062304" title="Assorted resistors from Radioshack" target="_blank" rel="noopener">Radioshack</a>)</li>
+<li>0.25 Watt: 220Ω x1 (<a href="http://www.radioshack.com/product/index.jsp?productId=2062304" title="Assorted resistors from Radioshack">Radioshack</a>)</li>
 </ul>
 </li>
 <li><p>Capacitors</p>
 <ul>
-<li>1-10 µF (your choice) x1 (<a href="http://www.radioshack.com/product/index.jsp?productId=2102509&amp;filterName=Type&amp;filterValue=Electrolytic+capacitors" title="Capacitor from Radioshack" target="_blank" rel="noopener">Radioshack</a>)</li>
-<li>0.1 µF x1 (<a href="http://www.radioshack.com/product/index.jsp?productId=2102589" title="Capacitor from Radioshack" target="_blank" rel="noopener">Radioshack</a>)</li>
+<li>1-10 µF (your choice) x1 (<a href="http://www.radioshack.com/product/index.jsp?productId=2102509&amp;filterName=Type&amp;filterValue=Electrolytic+capacitors" title="Capacitor from Radioshack">Radioshack</a>)</li>
+<li>0.1 µF x1 (<a href="http://www.radioshack.com/product/index.jsp?productId=2102589" title="Capacitor from Radioshack">Radioshack</a>)</li>
 </ul>
 </li>
 <li><p>Potentiometers</p>
 <ul>
-<li>Trimmer Potentiometer 5+ kΩ x1 (<a href="http://www.radioshack.com/product/index.jsp?productId=2062308" title="Trimmer at Radioshack" target="_blank" rel="noopener">Radioshack</a>)</li>
-<li>Rotary Potentiometer 10 kΩ x1 (<a href="http://www.radioshack.com/product/index.jsp?productId=2062357" title="10K Rotary Potentiometer at Radioshack" target="_blank" rel="noopener">Radioshack</a>)</li>
+<li>Trimmer Potentiometer 5+ kΩ x1 (<a href="http://www.radioshack.com/product/index.jsp?productId=2062308" title="Trimmer at Radioshack">Radioshack</a>)</li>
+<li>Rotary Potentiometer 10 kΩ x1 (<a href="http://www.radioshack.com/product/index.jsp?productId=2062357" title="10K Rotary Potentiometer at Radioshack">Radioshack</a>)</li>
 </ul>
 </li>
 <li><p>Switches</p>
 <ul>
-<li>Switch 1.0A or greater x1 (<a href="http://www.radioshack.com/product/index.jsp?productId=2062523&amp;filterName=Type&amp;filterValue=SPST" title="Switch from Radioshack" target="_blank" rel="noopener">Radioshack</a>)</li>
+<li>Switch 1.0A or greater x1 (<a href="http://www.radioshack.com/product/index.jsp?productId=2062523&amp;filterName=Type&amp;filterValue=SPST" title="Switch from Radioshack">Radioshack</a>)</li>
 </ul>
 </li>
 <li><p>Power Supplies</p>
 <ul>
-<li>AC-DC Wall Adapter 7.5V or greater, 1A or greater (<a href="http://www.radioshack.com/product/index.jsp?productId=3875403&amp;filterValue=$15.00+-+$19.99&amp;filterName=Price" title="AC-DC adapter at Radioshack" target="_blank" rel="noopener">Radioshack</a>)</li>
+<li>AC-DC Wall Adapter 7.5V or greater, 1A or greater (<a href="http://www.radioshack.com/product/index.jsp?productId=3875403&amp;filterValue=$15.00+-+$19.99&amp;filterName=Price" title="AC-DC adapter at Radioshack">Radioshack</a>)</li>
 </ul>
 </li>
 <li><p>Transistors</p>
 <ul>
-<li>NPN Transistor 0.6W or greater (3V × 0.2A) x5 (<a href="http://www.radioshack.com/product/index.jsp?productId=2062586" title="NPN Assorted Transistors at Radioshack" target="_blank" rel="noopener">Radioshack</a>)</li>
+<li>NPN Transistor 0.6W or greater (3V × 0.2A) x5 (<a href="http://www.radioshack.com/product/index.jsp?productId=2062586" title="NPN Assorted Transistors at Radioshack">Radioshack</a>)</li>
 </ul>
 </li>
 <li><p>Microcontrollers</p>
 <ul>
-<li><a href="http://www.arduino.cc/" title="Arduino Home" target="_blank" rel="noopener">Arduino</a> or compatible clone (I used the <a href="http://www.moderndevice.com/products/rbbb-kit" title="The RBBB from moderndevice" target="_blank" rel="noopener">RBBB</a>) x1</li>
+<li><a href="http://www.arduino.cc/" title="Arduino Home">Arduino</a> or compatible clone (I used the <a href="http://www.moderndevice.com/products/rbbb-kit" title="The RBBB from moderndevice">RBBB</a>) x1</li>
 </ul>
 </li>
 <li><p>Circuit Boards</p>
 <ul>
-<li>Breadboard/Perfboard/PCB x1 (Custom Starduino PCB in the works!) (<a href="http://www.radioshack.com/product/index.jsp?productId=2734155&amp;filterName=Type&amp;filterValue=Breadboards" title="Solderless Breadboard at Radioshack" target="_blank" rel="noopener">Solderless</a> or <a href="http://www.radioshack.com/product/index.jsp?productId=2102845&amp;filterValue=under+$3.99&amp;filterName=Price" title="Solderable Perfboard at Radioshack" target="_blank" rel="noopener">Perf</a>)</li>
+<li>Breadboard/Perfboard/PCB x1 (Custom Starduino PCB in the works!) (<a href="http://www.radioshack.com/product/index.jsp?productId=2734155&amp;filterName=Type&amp;filterValue=Breadboards" title="Solderless Breadboard at Radioshack">Solderless</a> or <a href="http://www.radioshack.com/product/index.jsp?productId=2102845&amp;filterValue=under+$3.99&amp;filterName=Price" title="Solderable Perfboard at Radioshack">Perf</a>)</li>
 </ul>
 </li>
 <li><p>Tools &amp; Craft Items</p>
 <ul>
 <li>Standard clear drinking straw x10 (Your local café or restaurant)</li>
-<li>Hot glue gun &amp; glue (<a href="http://www.amazon.com/Darice-10759-6-Inch-Temp-Glue/dp/B002JPKV08/ref=pd_sbs_t_1" title="A hot glue gun at Amazon" target="_blank" rel="noopener">Amazon</a>)</li>
-<li>Plastic project box or similar to house the AC adapter &amp; Switch/Pot (<a href="http://www.radioshack.com/product/index.jsp?productId=2062281" title="Project Box at Radioshack" target="_blank" rel="noopener">Radioshack</a>)</li>
-<li>Paper Star (I used white) x1 (<a href="http://www.indiasilver.com/wholesale-star-lanterns-lamps.aspx" title="Shop for a paper star lantern" target="_blank" rel="noopener">Whirled Planet Wholesale</a>)</li>
+<li>Hot glue gun &amp; glue (<a href="http://www.amazon.com/Darice-10759-6-Inch-Temp-Glue/dp/B002JPKV08/ref=pd_sbs_t_1" title="A hot glue gun at Amazon">Amazon</a>)</li>
+<li>Plastic project box or similar to house the AC adapter &amp; Switch/Pot (<a href="http://www.radioshack.com/product/index.jsp?productId=2062281" title="Project Box at Radioshack">Radioshack</a>)</li>
+<li>Paper Star (I used white) x1 (<a href="http://www.indiasilver.com/wholesale-star-lanterns-lamps.aspx" title="Shop for a paper star lantern">Whirled Planet Wholesale</a>)</li>
 </ul>
 </li>
 </ul>
 <p>And some <em>optional</em> pieces:</p>
 <ul>
-<li>5-pin Male header (<a href="http://www.sparkfun.com/commerce/product_info.php?products_id=116" title="Male Headers from Sparkfun" target="_blank" rel="noopener">Sparkfun</a>)</li>
-<li>5-pin Female header (<a href="http://www.sparkfun.com/commerce/product_info.php?products_id=115" title="Female Headers from Sparkfun" target="_blank" rel="noopener">Sparkfun</a>)</li>
-<li>FTDI USB-to-Serial Converter (If your Arduino of choice has no USB port like the RBBB) (<a href="http://www.sparkfun.com/commerce/product_info.php?products_id=9115" title="FTDI Basic Breakout Board from Sparkfun" target="_blank" rel="noopener">Sparkfun</a>)</li>
+<li>5-pin Male header (<a href="http://www.sparkfun.com/commerce/product_info.php?products_id=116" title="Male Headers from Sparkfun">Sparkfun</a>)</li>
+<li>5-pin Female header (<a href="http://www.sparkfun.com/commerce/product_info.php?products_id=115" title="Female Headers from Sparkfun">Sparkfun</a>)</li>
+<li>FTDI USB-to-Serial Converter (If your Arduino of choice has no USB port like the RBBB) (<a href="http://www.sparkfun.com/commerce/product_info.php?products_id=9115" title="FTDI Basic Breakout Board from Sparkfun">Sparkfun</a>)</li>
 </ul>
 <h3 id="Some-Key-Notes-on-Materials"><a href="#Some-Key-Notes-on-Materials" class="headerlink" title="Some Key Notes on Materials"></a>Some Key Notes on Materials</h3><p>You can expect to pay the most on LEDs, the paper star, and the Arduino. These
 three things also happen to be the most central to your Starduino’s success.
@@ -113,14 +133,14 @@ overview of he whole process:</p>
 it, you can control your Starduino’s brightness, the order it lights concentric
 rings of light, and the speed of the undulations. So, it is fitting to start
 construction here. If you ordered an RBBB Kit like I did, you can find excellent
-documentation <a href="http://www.moderndevice.com/products/rbbb-kit" title="The RBBB Kit Page" target="_blank" rel="noopener">on its page</a>.
+documentation <a href="http://www.moderndevice.com/products/rbbb-kit" title="The RBBB Kit Page">on its page</a>.
 Alternatively, the same page offers a fully-assembled, tested RBBB for a bit
 more money.</p>
 <p>When you’ve completed the construction (or finished that <em>challenging</em>
 unwrapping of your pre-built product :)), test your Arduino! Plug it in, make
 sure the LEDs blink, and try uploading a simple sketch. If you’ve never seen an
 Arduino before, or need a refresher, check out the
-<a href="http://arduino.cc/en/Guide/HomePage" title="Getting Started with Arduino" target="_blank" rel="noopener">official documentation</a>
+<a href="http://arduino.cc/en/Guide/HomePage" title="Getting Started with Arduino">official documentation</a>
 for help.</p>
 <h3 id="2-The-Tubes"><a href="#2-The-Tubes" class="headerlink" title="2: The Tubes"></a>2: The Tubes</h3><p>The “tubes” will serve as the basic building block within the Starduino. Each
 one houses five (5) LEDs, with each of their inputs and one common ground wire.
@@ -233,7 +253,7 @@ the board is a matter of ironing the toner onto the copper PCB and putting the
 whole thing in a copper etchant. See details below:</p>
 <ol>
 <li>Print the pattern</li>
-<li><a href="http://zenlogic.org/wp-content/uploads/2010/06/starduino-etch.png" title="Starduino PCB" target="_blank" rel="noopener">The PCB traces for Starduino</a></li>
+<li><a href="http://zenlogic.org/wp-content/uploads/2010/06/starduino-etch.png" title="Starduino PCB">The PCB traces for Starduino</a></li>
 </ol>
 <h3 id="5-The-Switch-Box"><a href="#5-The-Switch-Box" class="headerlink" title="5: The Switch Box"></a>5: The Switch Box</h3><p>Now, to create a tidy switch box, you’ll need to cut your project box. Because
 power bricks, potentiometers, and switches can all vary in size, you should
@@ -271,7 +291,7 @@ your wiring and solder joints. If all went well, you’re the proud new parent o
 your very own Starduino!</p>
 <h2 id="The-Code"><a href="#The-Code" class="headerlink" title="The Code"></a>The Code</h2><p>Still need that source code? The first version is available
 <a href="/starduino/code1/">here</a>. It’s governed by a
-<a href="http://creativecommons.org/licenses/by-sa/2.5/" title="The License at Creative Commons" target="_blank" rel="noopener">CC Attribution Share-Alike license</a>,
+<a href="http://creativecommons.org/licenses/by-sa/2.5/" title="The License at Creative Commons">CC Attribution Share-Alike license</a>,
 so feel free to use and modify it however you see fit (so long as you attribute
 the original to my name, and share your creation freely as well).</p>
 </article><nav id="pagination"></nav></div></div><script src="/js/boxy.js"></script></body></html>

@@ -64,18 +64,44 @@ body {
 code {
   font-family: "Anonymous Pro";
 }
-pre {
+figure.highlight {
+  overflow-x: auto;
+}
+figure.highlight table {
+  width: 100%;
+}
+figure.highlight table tr {
+  min-width: 100%;
+  display: flex;
+}
+figure.highlight table .code {
+  flex: 1;
+}
+figure.highlight pre {
+  margin: 0;
   font-size: 1rem;
   padding: 1rem;
   background-color: #f9f9f9;
   line-height: 1.5;
+}
+figure.highlight pre .string {
+  color: #f00;
+}
+figure.highlight pre .keyword {
+  font-weight: bold;
+}
+figure.highlight pre .function .title {
+  color: #6a39ff;
+}
+figure.highlight pre .function .params {
+  font-weight: bold;
 }
 .inline-icon {
   margin-left: 0.3em;
   margin-right: 0.3em;
 }
 #content a {
-  color: #d1820c;
+  color: #6a39ff;
   text-decoration: underline;
 }
 #content p {

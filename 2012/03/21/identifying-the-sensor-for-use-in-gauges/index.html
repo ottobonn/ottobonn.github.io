@@ -1,4 +1,24 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Identifying the sensor for use in Gauges - travisgeis.com</title><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"><link href="https://fonts.googleapis.com/css?family=Spectral|Rubik|Anonymous+Pro" rel="stylesheet"><link rel="stylesheet" href="/vendor/font-awesome-4.7.0/css/font-awesome.min.css"><link rel="stylesheet" href="/css/boxy.css"></head><body><nav id="menu" class="nav nav-pills flex-column flex-sm-row"><a href="/" class="flex-sm-fill text-sm-center nav-link"><i aria-hidden="true" class="fa inline-icon fa-home"></i>travisgeis.com</a><a href="/contact" class="flex-sm-fill text-sm-center nav-link"><i aria-hidden="true" class="fa inline-icon fa-comments"></i>Contact</a><a href="/archives" class="flex-sm-fill text-sm-center nav-link"><i aria-hidden="true" class="fa inline-icon fa-archive"></i>Archives</a></nav><div id="page" class="container"><div id="titles-container"><div id="titles"><h1>Identifying the sensor for use in Gauges</h1><h3 class="date">21 March, 2012</h3></div></div><div id="content"><article id="post"><p>I am prototyping the software for Gauges from the Ubuntu partition on my white
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Identifying the sensor for use in Gauges - travisgeis.com</title><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"><link href="https://fonts.googleapis.com/css?family=Spectral|Rubik|Anonymous+Pro" rel="stylesheet"><!-- favicon set from favicomatic.com -->
+<meta name="application-name" content="travisgeis.com"/>
+<link rel="apple-touch-icon-precomposed" sizes="57x57" href="favicons/apple-touch-icon-57x57.png" />
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="favicons/apple-touch-icon-114x114.png" />
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="favicons/apple-touch-icon-72x72.png" />
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="favicons/apple-touch-icon-144x144.png" />
+<link rel="apple-touch-icon-precomposed" sizes="60x60" href="favicons/apple-touch-icon-60x60.png" />
+<link rel="apple-touch-icon-precomposed" sizes="120x120" href="favicons/apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon-precomposed" sizes="76x76" href="favicons/apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon-precomposed" sizes="152x152" href="favicons/apple-touch-icon-152x152.png" />
+<link rel="icon" type="image/png" href="favicons/favicon-196x196.png" sizes="196x196" />
+<link rel="icon" type="image/png" href="favicons/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/png" href="favicons/favicon-32x32.png" sizes="32x32" />
+<link rel="icon" type="image/png" href="favicons/favicon-16x16.png" sizes="16x16" />
+<link rel="icon" type="image/png" href="favicons/favicon-128.png" sizes="128x128" />
+<meta name="msapplication-TileColor" content="#FFFFFF" />
+<meta name="msapplication-TileImage" content="favicons/mstile-144x144.png" />
+<meta name="msapplication-square70x70logo" content="favicons/mstile-70x70.png" />
+<meta name="msapplication-square150x150logo" content="favicons/mstile-150x150.png" />
+<meta name="msapplication-wide310x150logo" content="favicons/mstile-310x150.png" />
+<meta name="msapplication-square310x310logo" content="favicons/mstile-310x310.png" /><link rel="stylesheet" href="/vendor/font-awesome-4.7.0/css/font-awesome.min.css"><link rel="stylesheet" href="/css/boxy.css"></head><body><nav id="menu" class="nav nav-pills flex-column flex-sm-row"><a href="/" class="flex-sm-fill text-sm-center nav-link"><i aria-hidden="true" class="fa inline-icon fa-home"></i>travisgeis.com</a><a href="/contact" class="flex-sm-fill text-sm-center nav-link"><i aria-hidden="true" class="fa inline-icon fa-comments"></i>Contact</a><a href="/archives" class="flex-sm-fill text-sm-center nav-link"><i aria-hidden="true" class="fa inline-icon fa-archive"></i>Archives</a></nav><div id="page" class="container"><div id="titles-container"><div id="titles"><h1>Identifying the sensor for use in Gauges</h1><h3 class="date">21 March, 2012</h3></div></div><div id="content"><article id="post"><p>I am prototyping the software for Gauges from the Ubuntu partition on my white
 MacBook from 2007. One of the early tasks was finding the name of the
 temperature sensor corresponding to the main CPU. I installed a cool utility
 called Psensor that charts sensor outputs over time. Then I opened every
@@ -8,52 +28,12 @@ temperature. That acronym may mean “Temp-CPU 0 Die”, but I don’t know for 
 <a href="/uploads/2012/03/Screenshot-at-2012-03-13-130526.png"><img src="/uploads/2012/03/body-Screenshot-at-2012-03-13-130526.png" alt="Psensors Screenshot" title="Psensors Screenshot"></a>
 <p>Once I knew the sensor name, I ran “sensors” in a terminal and found that my
 computer uses a chip called “applesmc-isa-300”:</p>
-<pre><code class="bash">travis@travis-ubuntu:~/Projects/Gauges$ sensors
-applesmc-isa-0300
-Adapter: ISA adapter
-Exhaust  :   3074 RPM  (min = 1800 RPM)
-TB0T:         +32.5°C
-TC0D:         +57.2°C
-TC0P:         +55.0°C
-TM0P:         +58.0°C
-TN0P:         +54.0°C
-TTF0:         +55.0°C
-TW0P:         +74.0°C
-Th0H:         +54.8°C
-Th0S:         +54.5°C
-Th1H:         +54.2°C
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">travis@travis-ubuntu:~/Projects/Gauges$ sensors</span><br><span class="line">applesmc-isa-0300</span><br><span class="line">Adapter: ISA adapter</span><br><span class="line">Exhaust  :   3074 RPM  (min = 1800 RPM)</span><br><span class="line">TB0T:         +32.5°C</span><br><span class="line">TC0D:         +57.2°C</span><br><span class="line">TC0P:         +55.0°C</span><br><span class="line">TM0P:         +58.0°C</span><br><span class="line">TN0P:         +54.0°C</span><br><span class="line">TTF0:         +55.0°C</span><br><span class="line">TW0P:         +74.0°C</span><br><span class="line">Th0H:         +54.8°C</span><br><span class="line">Th0S:         +54.5°C</span><br><span class="line">Th1H:         +54.2°C</span><br></pre></td></tr></table></figure>
 <p>Every Linux sensor has a corresponding pseudo-file for reading programmatically.
 I dug through online references of various sorts until I found the directory of
 my chipset, called ‘/sys/bus/platform/devices/applesmc.768/‘. Once I had the
 directory, I ran sensors again with the -u flag set for “debugging” output:</p>
-<pre><code class="bash">travis@travis-ubuntu:~/Projects/Gauges$ sensors -u
-applesmc-isa-0300
-Adapter: ISA adapter
-Exhaust  :
-  fan1_input: 2309.000
-  fan1_min: 1800.000
-TB0T:
-  temp1_input: 32.500
-TC0D:
-  temp2_input: 58.250
-TC0P:
-  temp3_input: 56.000
-TM0P:
-  temp4_input: 57.750
-TN0P:
-  temp5_input: 54.500
-TTF0:
-  temp6_input: 56.250
-TW0P:
-  temp7_input: 74.000
-Th0H:
-  temp8_input: 56.000
-Th0S:
-  temp9_input: 55.750
-Th1H:
-  temp10_input: 55.500
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">travis@travis-ubuntu:~/Projects/Gauges$ sensors -u</span><br><span class="line">applesmc-isa-0300</span><br><span class="line">Adapter: ISA adapter</span><br><span class="line">Exhaust  :</span><br><span class="line">  fan1_input: 2309.000</span><br><span class="line">  fan1_min: 1800.000</span><br><span class="line">TB0T:</span><br><span class="line">  temp1_input: 32.500</span><br><span class="line">TC0D:</span><br><span class="line">  temp2_input: 58.250</span><br><span class="line">TC0P:</span><br><span class="line">  temp3_input: 56.000</span><br><span class="line">TM0P:</span><br><span class="line">  temp4_input: 57.750</span><br><span class="line">TN0P:</span><br><span class="line">  temp5_input: 54.500</span><br><span class="line">TTF0:</span><br><span class="line">  temp6_input: 56.250</span><br><span class="line">TW0P:</span><br><span class="line">  temp7_input: 74.000</span><br><span class="line">Th0H:</span><br><span class="line">  temp8_input: 56.000</span><br><span class="line">Th0S:</span><br><span class="line">  temp9_input: 55.750</span><br><span class="line">Th1H:</span><br><span class="line">  temp10_input: 55.500</span><br></pre></td></tr></table></figure>
 <p>The verbose output told me that the sensor I want, TC0D, is also called
 “temp2_input”. Looking in the <code>/sys/bus/platform/devices/applesmc.768/</code>
 directory, I found a pseudo-file called “temp2_input”. Perfect!</p>

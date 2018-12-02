@@ -1,4 +1,24 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Lazy image resizing in hexo-image-sizes v2 - travisgeis.com</title><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"><link href="https://fonts.googleapis.com/css?family=Spectral|Rubik|Anonymous+Pro" rel="stylesheet"><link rel="stylesheet" href="/vendor/font-awesome-4.7.0/css/font-awesome.min.css"><link rel="stylesheet" href="/css/boxy.css"></head><body><nav id="menu" class="nav nav-pills flex-column flex-sm-row"><a href="/" class="flex-sm-fill text-sm-center nav-link"><i aria-hidden="true" class="fa inline-icon fa-home"></i>travisgeis.com</a><a href="/contact" class="flex-sm-fill text-sm-center nav-link"><i aria-hidden="true" class="fa inline-icon fa-comments"></i>Contact</a><a href="/archives" class="flex-sm-fill text-sm-center nav-link"><i aria-hidden="true" class="fa inline-icon fa-archive"></i>Archives</a></nav><div id="page" class="container"><div id="titles-container"><div id="titles"><h1>Lazy image resizing in hexo-image-sizes v2</h1><h3 class="date">23 April, 2018</h3></div></div><div id="content"><article id="post"><p>I just released <a href="https://github.com/ottobonn/hexo-image-sizes" target="_blank" rel="noopener">version 2 of
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Lazy image resizing in hexo-image-sizes v2 - travisgeis.com</title><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"><link href="https://fonts.googleapis.com/css?family=Spectral|Rubik|Anonymous+Pro" rel="stylesheet"><!-- favicon set from favicomatic.com -->
+<meta name="application-name" content="travisgeis.com"/>
+<link rel="apple-touch-icon-precomposed" sizes="57x57" href="favicons/apple-touch-icon-57x57.png" />
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="favicons/apple-touch-icon-114x114.png" />
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="favicons/apple-touch-icon-72x72.png" />
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="favicons/apple-touch-icon-144x144.png" />
+<link rel="apple-touch-icon-precomposed" sizes="60x60" href="favicons/apple-touch-icon-60x60.png" />
+<link rel="apple-touch-icon-precomposed" sizes="120x120" href="favicons/apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon-precomposed" sizes="76x76" href="favicons/apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon-precomposed" sizes="152x152" href="favicons/apple-touch-icon-152x152.png" />
+<link rel="icon" type="image/png" href="favicons/favicon-196x196.png" sizes="196x196" />
+<link rel="icon" type="image/png" href="favicons/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/png" href="favicons/favicon-32x32.png" sizes="32x32" />
+<link rel="icon" type="image/png" href="favicons/favicon-16x16.png" sizes="16x16" />
+<link rel="icon" type="image/png" href="favicons/favicon-128.png" sizes="128x128" />
+<meta name="msapplication-TileColor" content="#FFFFFF" />
+<meta name="msapplication-TileImage" content="favicons/mstile-144x144.png" />
+<meta name="msapplication-square70x70logo" content="favicons/mstile-70x70.png" />
+<meta name="msapplication-square150x150logo" content="favicons/mstile-150x150.png" />
+<meta name="msapplication-wide310x150logo" content="favicons/mstile-310x150.png" />
+<meta name="msapplication-square310x310logo" content="favicons/mstile-310x310.png" /><link rel="stylesheet" href="/vendor/font-awesome-4.7.0/css/font-awesome.min.css"><link rel="stylesheet" href="/css/boxy.css"></head><body><nav id="menu" class="nav nav-pills flex-column flex-sm-row"><a href="/" class="flex-sm-fill text-sm-center nav-link"><i aria-hidden="true" class="fa inline-icon fa-home"></i>travisgeis.com</a><a href="/contact" class="flex-sm-fill text-sm-center nav-link"><i aria-hidden="true" class="fa inline-icon fa-comments"></i>Contact</a><a href="/archives" class="flex-sm-fill text-sm-center nav-link"><i aria-hidden="true" class="fa inline-icon fa-archive"></i>Archives</a></nav><div id="page" class="container"><div id="titles-container"><div id="titles"><h1>Lazy image resizing in hexo-image-sizes v2</h1><h3 class="date">23 April, 2018</h3></div></div><div id="content"><article id="post"><p>I just released <a href="https://github.com/ottobonn/hexo-image-sizes">version 2 of
 <code>hexo-image-sizes</code></a>, which
 represents a complete rewrite of the plugin. It finally supports lazy image
 resizing. In this post, I will cover the high-level design ideas behind the new
@@ -10,12 +30,8 @@ Users add an <code>imsize</code> tag to their post when they want to use an imag
 plugin, and in the tag they can specify various details of the image including
 its size profile, its alt text, its link target, and more.</p>
 <p>Here’s an example use of <code>imsize</code> within a markdown post:</p>
-<pre><code>{% imsize %}
-src: /uploads/2010/06/ArduinoDuemilanove.jpeg
-alt: Arduino Duemilanove
-profile: body
-{% endimsize %}
-</code></pre><p>When Hexo renders a post containing an <code>imsize</code> tag, it invokes the tag’s
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;% imsize %&#125;</span><br><span class="line">src: /uploads/2010/06/ArduinoDuemilanove.jpeg</span><br><span class="line">alt: Arduino Duemilanove</span><br><span class="line">profile: body</span><br><span class="line">&#123;% endimsize %&#125;</span><br></pre></td></tr></table></figure>
+<p>When Hexo renders a post containing an <code>imsize</code> tag, it invokes the tag’s
 registered function. The tag function has access to the user’s arguments and
 some context information including the current page on which it appears, which
 will be important for resolving filenames.</p>
@@ -46,7 +62,7 @@ directory and not in the source directory. Therefore, if you add a route, you
 will add a file to the public site but not alter the source directory. When I
 first began work on this plugin, I assumed that the routes referenced files in
 the source directory. I learned about using the router from a similar plugin,
-<a href="https://github.com/hexojs/hexo-filter-responsive-images" target="_blank" rel="noopener">hexo-filter-responsive-images</a>.</p>
+<a href="https://github.com/hexojs/hexo-filter-responsive-images">hexo-filter-responsive-images</a>.</p>
 <p>Using the router to add new resized images to the public output of the site
 generator has several advantages. By getting each file’s contents from the route
 stream managed by the router, my plugin can start to cooperate with other
@@ -55,7 +71,7 @@ also allows me to remove the hacky filesystem code I was using before, where
 I had to guess the output location of each file and create the directory
 structure there.</p>
 <p>Using the router also has a downside. I’m using
-<a href="https://github.com/lovell/sharp" target="_blank" rel="noopener">sharp</a> to resize the images, and it takes as
+<a href="https://github.com/lovell/sharp">sharp</a> to resize the images, and it takes as
 input either a file or a Buffer of image data, while the router provides a
 stream for each file. To run the image through <code>sharp</code>, I have to read the full
 file stream into memory (in a Buffer), which adds a lot to the memory use of the
