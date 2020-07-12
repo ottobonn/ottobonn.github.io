@@ -206,26 +206,28 @@ a.neutral:hover {
   color: #6A39FF;
   text-decoration: underline;
 }
-#titles-container {
-  background-color: #6A39FF;
-  margin-left: 0.5rem;
-  margin-top: 0.5rem;
-  margin-bottom: 2rem;
+.boxy {
+  border: 2px solid black;
+  background-color: white;
+  box-shadow: 0.5rem 0.5rem 0 #6A39FF;
 }
 #titles {
-  background-color: white;
-  padding: 1rem;
-  position: relative;
-  top: -0.5rem;
-  left: -0.5rem;
   border: 2px solid black;
+  background-color: white;
+  box-shadow: 0.5rem 0.5rem 0 #6A39FF;
+  padding: 1rem;
+  margin-bottom: 2rem;
 }
 #content article {
   margin-bottom: 2em;
 }
 #content article img {
   padding: 1rem;
+  margin-bottom: 1rem;
   max-width: 100%;
+  border: 2px solid black;
+  background-color: white;
+  box-shadow: 0.5rem 0.5rem 0 #6A39FF;
 }
 #content #post-list .item {
   margin: 2em 0 2em 0;
@@ -244,6 +246,9 @@ a.neutral:hover {
   border: 1px solid #eee;
 }
 #content figure.highlight {
+  border: 2px solid black;
+  background-color: white;
+  box-shadow: 0.5rem 0.5rem 0 #6A39FF;
   overflow-x: auto;
   margin-left: 0;
   margin-right: 0;
