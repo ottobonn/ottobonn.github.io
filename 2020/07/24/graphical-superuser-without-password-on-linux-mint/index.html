@@ -1,0 +1,29 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Graphical superuser without password on Linux Mint - travisgeis.com</title><link rel="stylesheet" type="text/css" href="/semantic/dist/semantic.min.css">
+<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<script src="/semantic/dist/semantic.min.js"></script><link href="https://fonts.googleapis.com/css?family=Spectral|Rubik|Anonymous+Pro" rel="stylesheet"><!-- favicon set from favicomatic.com -->
+<meta name="application-name" content="travisgeis.com"/>
+<link rel="apple-touch-icon-precomposed" sizes="57x57" href="/favicons/apple-touch-icon-57x57.png" />
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/favicons/apple-touch-icon-114x114.png" />
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/favicons/apple-touch-icon-72x72.png" />
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/favicons/apple-touch-icon-144x144.png" />
+<link rel="apple-touch-icon-precomposed" sizes="60x60" href="/favicons/apple-touch-icon-60x60.png" />
+<link rel="apple-touch-icon-precomposed" sizes="120x120" href="/favicons/apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon-precomposed" sizes="76x76" href="/favicons/apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon-precomposed" sizes="152x152" href="/favicons/apple-touch-icon-152x152.png" />
+<link rel="icon" type="image/png" href="/favicons/favicon-196x196.png" sizes="196x196" />
+<link rel="icon" type="image/png" href="/favicons/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32" />
+<link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16" />
+<link rel="icon" type="image/png" href="/favicons/favicon-128.png" sizes="128x128" />
+<meta name="msapplication-TileColor" content="#FFFFFF" />
+<meta name="msapplication-TileImage" content="/favicons/mstile-144x144.png" />
+<meta name="msapplication-square70x70logo" content="/favicons/mstile-70x70.png" />
+<meta name="msapplication-square150x150logo" content="/favicons/mstile-150x150.png" />
+<meta name="msapplication-wide310x150logo" content="/favicons/mstile-310x150.png" />
+<meta name="msapplication-square310x310logo" content="/favicons/mstile-310x310.png" /><link rel="stylesheet" href="/css/boxy.css"></head><body><div id="page" class="ui container"><div id="mainMenu" class="ui stackable secondary variable item menu"><a href="/" class="item"><i class="icon home"></i>travisgeis.com</a><a href="/contact" class="item"><i class="icon comments"></i>Contact</a><a href="/archives" class="item"><i class="icon archive"></i>Archives</a></div><div id="titles"><h1 class="ui huge header">Graphical superuser without password on Linux Mint</h1><h3 class="ui header">24 July, 2020</h3></div><div id="content"><article id="post"><p>Today I got tired of typing my password into a dialog in Linux Mint every time I want to take an action that requires elevated privileges. Windows seems to make passwordless privilege escalation possible with an OS-level dialog, and I don’t see why the same would not apply to Linux.</p>
+<p>For now, since I am the only user on my laptop, I have disabled the prompts for passwords by editing the policy kit config. I created a new file:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/polkit-1/localauthority/50-local.d/99-sudonopassword.pkla</span><br></pre></td></tr></table></figure>
+<p>I added the following to the new file:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[No password prompt]</span><br><span class="line">Identity=unix-group:sudo</span><br><span class="line">Action=*</span><br><span class="line">ResultActive=yes</span><br><span class="line">ResultInactive=yes</span><br><span class="line">ResultAny=yes</span><br></pre></td></tr></table></figure>
+<p>The title in square brackets is arbitrary. This config grants passwordless superuser access to anyone in the <code>sudo</code> user group, which seems pretty safe to me. I’d be grateful to hear any arguments for why this is a bad idea, but I haven’t found a convincing one yet.</p>
+<script src="https://utteranc.es/client.js" repo="ottobonn/travisgeis.com" issue-term="Graphical superuser without password on Linux Mint" label="comment" theme="github-light" crossorigin="anonymous" async></script></article><nav id="pagination"><div class="ui fluid variable item pagination menu"><div class="disabled item"><i class="arrow circle left icon"></i>Previous</div><a href="../../23/replacing-the-battery-in-my-dell-precision-5510-laptop/" class="item"><i class="arrow circle right icon"></i>Next</a></div></nav></div></div></body></html>
