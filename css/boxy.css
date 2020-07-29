@@ -195,8 +195,9 @@
 .ui.variable.item.menu .item {
   flex: 1;
 }
-#mainMenu {
+#menu .menu {
   font-size: 1em;
+  margin-bottom: -1rem;
 }
 a.neutral {
   color: inherit;
@@ -216,7 +217,11 @@ a.neutral:hover {
   background-color: white;
   box-shadow: 0.5rem 0.5rem 0 #6A39FF;
   padding: 1rem;
+  margin-top: 1rem;
   margin-bottom: 2rem;
+}
+#titles a:hover {
+  text-decoration: none;
 }
 .video-container {
   position: relative;
