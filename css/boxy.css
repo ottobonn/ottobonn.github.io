@@ -305,3 +305,6 @@ a.neutral:hover {
 #content figure.highlight pre .function .params {
   font-weight: bold;
 }
+#footer {
+  padding: 1em;
+}
