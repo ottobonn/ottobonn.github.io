@@ -9,8 +9,31 @@
     <atom:link href="/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description></description>
-    <pubDate>Fri, 31 Jul 2020 05:22:21 GMT</pubDate>
+    <pubDate>Wed, 26 Aug 2020 03:21:03 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>Making a Handwriting Font with Calligraphr and FontForge</title>
+      <link>travisgeis.com/2020/08/25/handwriting-font/</link>
+      <guid>travisgeis.com/2020/08/25/handwriting-font/</guid>
+      <pubDate>Wed, 26 Aug 2020 02:53:53 GMT</pubDate>
+      <description>
+      
+        
+        
+          &lt;style&gt;
+  @font-face {
+    font-family: &#39;Travis Print One&#39;;
+    src: url(&#39;/uploads/2020/08/25/TravisPrintOne-Regular.woff2&#39;) format(&#39;woff2&#39;)
+        
+      
+      </description>
+      
+      
+      <content:encoded><![CDATA[<style>  @font-face {    font-family: 'Travis Print One';    src: url('/uploads/2020/08/25/TravisPrintOne-Regular.woff2') format('woff2');  }  .handwritten, #titles h1 {    font-family: 'Travis Print One' !important;    line-height: 1.5;  }</style><div class="handwritten">  I have been reading about font design and evolving font technologies for a while, and I finally succumbed to the lure of making a font. I decided for this first foray to try to replicate my handwriting. This is the result!  <div class="video-container">    <iframe src="https://www.youtube-nocookie.com/embed/8a5-U7edcjU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>  </div><p>  In this video I walk through the process, from using <a href="https://calligraphr.com">Calligraphr</a> to capture the glyphs to using <a href="https://fontforge.org">FontForge</a> to fine-tune the spacing.</p><p>  I took the time to write out the common characters multiple times, so there are plenty of variations of each one (called “contextual alternatives” in font lingo). I also added some extra punctuation, math symbols, and common European language characters.</p><p>  <br></p><p>  Here are some fancy character examples:</p><p>  “This is a quoted phrase.”</p><p>  <b>Here’s some code:</b></p>  <pre class="handwritten">let x = 0;if (x < 10) {  // do something}  </pre><p>  And how about some nonsensical math:</p><p>  δχ/δt = 10;  ∀a∈A, ∃x s.t. …</p><p></div></p>]]></content:encoded>
+      
+      <comments>travisgeis.com/2020/08/25/handwriting-font/#disqus_thread</comments>
+    </item>
     
     <item>
       <title>The Magic of Meteor&#39;s Reactivity</title>
@@ -403,27 +426,6 @@ driver to nvidia-346, and my backlight control broke (again!
       <content:encoded><![CDATA[<p>I’m running Linux Mint 17.1 with Linux 3.13.0. I recently upgraded my nvidiadriver to nvidia-346, and my backlight control broke (again!). We’ve been on thebacklight merry-go-round for far too long.</p><p>Anyway, here’s a fix that might help. There’s a new kernel flag you can add toyour grub file called <code>video.use_native_backlight</code>.</p><p>Let’s get started: open your grub config file at</p><p><code>/etc/default/grub</code></p><p>And append the video.use_native_backlight parameter to your boot options:</p><p><code>GRUB_CMDLINE_LINUX_DEFAULT=&quot;quiet splash video.use_native_backlight=1&quot;</code></p><p>Now update your grub installation by running <code>update-grub</code> as superuser.</p><p>My boot parameters used to include the classic <code>acpi_backlight=vendor</code>, but itlooks like the nvidia-346 driver doesn’t handle that option as the older driversdid. Hopefully this will help you! (For reference, I’m on a ThinkPad T420)</p><p>Thanks to<a href="https://jamielinux.com/blog/cannot-adjust-screen-brightness-on-fedora/">https://jamielinux.com/blog/cannot-adjust-screen-brightness-on-fedora/</a>for the tip. I’m mainly reposting this so it will include the words “Linux Mint”and “T420” for wayward backlight-deprived souls.</p>]]></content:encoded>
       
       <comments>travisgeis.com/2015/09/22/fixing-nvidia-backlight-in-2015-on-linux-3-13/#disqus_thread</comments>
-    </item>
-    
-    <item>
-      <title>A Response to &quot;The Final Upgrade&quot; (PopSci October 2013)</title>
-      <link>travisgeis.com/2013/09/07/a-response-to-the-final-upgrade-popsci-october-2013/</link>
-      <guid>travisgeis.com/2013/09/07/a-response-to-the-final-upgrade-popsci-october-2013/</guid>
-      <pubDate>Sun, 08 Sep 2013 02:22:03 GMT</pubDate>
-      <description>
-      
-        
-        
-          &lt;p&gt;I just read the short column in this month’s Popular Science about “The Final
-Upgrade,” supposedly our way out of phone and PC upgrades b
-        
-      
-      </description>
-      
-      
-      <content:encoded><![CDATA[<p>I just read the short column in this month’s Popular Science about “The FinalUpgrade,” supposedly our way out of phone and PC upgrades by way of smartersoftware. What I thought was going to be an insightful look into newload-minimizing techniques or ultra-efficient consumer software instead quicklydegenerated into the trite “the cloud will save us all” argument.</p><p>Ioizzio argues that the end of hardware upgrades is upon us, because obviouslywe are offloading more and more processing demands onto the cloud. She made thecomparison to 80s mainframes for me: modern hardware will be “thin clientterminals” for use to log into some corporate mainframe. We will stream videogames (remember the hype for OnLive?), use cloud document editors, etc. Butfurther, we will log in via some VNC-style remote desktop to a completecomputer-that-doesn’t-belong-to-us. If that’s the future, count me out.</p><p>First, the technical problems are not fixed. Americans severely lack thebandwidth necessary to stream videos satisfactorily, let alone send video gameinputs up and bring graphics back down with sufficiently low latency to make agame feel good. It just isn’t the same as having a local powerhouse to servethose graphics over a single meter of copper. But let’s assume, for the sake ofargument, that we’re talking about some awesome fiber-to-the-home future, whichseems imminent. We have tons of bandwidth, and we can stream and upload withouthassle.</p><p>The main problem I have with Iozzio’s argument is that it is precisely a<a href="http://www.gnu.org/philosophy/who-does-that-server-really-serve.html">service as a software substitute</a>(SaaSS).And, as the GNU foundation so thoroughly lays out, SaaSS erodes userfreedom. The cloud-VNC future of non-hardware that Iozzio describes is one stepbeyond the current use of cloud storage and documents. It is a whole operatingsystem on someone else’s computer! As legal teams around the world have alreadylearned, users have no reasonable expectation of privacy when they use someoneelse’s computer. This astonishingly overlooked point means that, in the futurethe author envisions, users will never have an expectation of privacy. Ever.Period.</p><p>With our clearer knowledge of the espionage activities of the government, andeven with our old-fashioned common sense, this vision of the future isunreasonable. It is unacceptable and irresponsible to make a technologicalprediction without considering legal and social implications.</p><p>So instead of this cloud-VNC nightmare, we should be hosting our own clouds, orkeeping our data locally on our devices, and using better software that works onolder hardware. Users must own the means of computation, or we’ll be right backwhere we started, with corporate-mandated policies on what is acceptable forpeople to do on their computers. Further, we’ll be begging the NSA to to take aclose look at our whole computing stack, taking whatever they please. Let’s notgo backward after so much progress towards user empowerment.</p>]]></content:encoded>
-      
-      <comments>travisgeis.com/2013/09/07/a-response-to-the-final-upgrade-popsci-october-2013/#disqus_thread</comments>
     </item>
     
   </channel>
