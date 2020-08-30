@@ -9,8 +9,29 @@
     <atom:link href="/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description></description>
-    <pubDate>Wed, 26 Aug 2020 03:21:03 GMT</pubDate>
+    <pubDate>Sun, 30 Aug 2020 19:12:37 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>TS100 Soldering Iron with Battery Pack</title>
+      <link>travisgeis.com/2020/08/30/ts100-battery/</link>
+      <guid>travisgeis.com/2020/08/30/ts100-battery/</guid>
+      <pubDate>Sun, 30 Aug 2020 18:53:27 GMT</pubDate>
+      <description>
+      
+        
+        
+          &lt;div class=&quot;video-container&quot;&gt;
+  &lt;iframe src=&quot;https://www.youtube-nocookie.com/embed/UvxxDd-UDUQ&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autop
+        
+      
+      </description>
+      
+      
+      <content:encoded><![CDATA[<div class="video-container">  <iframe src="https://www.youtube-nocookie.com/embed/UvxxDd-UDUQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div><p>I’m really late to the party, but a few months ago I discovered the <a href="http://www.miniware.com.cn/product/ts100-soldering-iron-package-electric-soldering-kit/">TS100 soldering iron</a> from Miniware. It’s a tiny digital iron with temperature control and a way-overpowered microcontroller to drive it all. It’s cheap and light and I got it in the hopes of something a bit more convenient than my big Weller WES51, which takes up a lot of desk space.</p><p>Unfortunately the TS100 doesn’t come with a power supply or cable. It accepts DC input from 12V up to 24V, and I realized that my 18V Makita drill batteries would make for a convenient and portable soldering setup. I ordered an off-brand batery adapter to provide a barrel jack connecting to the battery, and soldered up a cable to connect to the iron.</p><p>I was hoping for silicone cable so that a stray touch of the iron wouldn’t melt the insulation. It turns out that finding silicone cable is difficult. I saw a tip online that I should look at tattoo machine cables, which often come in silicone, and ordered one from Amazon. It turns out that it isn’t really silicone, so if you know of where to find the real stuff please leave a comment!</p><p>In this video I walk through the finished project with the battery adapter and cable. Below, you will also find the prequel to the project, in which I modify the battery adapter to bypass its 12V output to get the full 18V of the battery. I am working on making more concise videos, but this isn’t one of them. If you plan to watch this one, grab a refreshing beverage and get comfy, because it’s long!</p><div class="video-container">  <iframe src="https://www.youtube-nocookie.com/embed/bm4L8A2kOdc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>]]></content:encoded>
+      
+      <comments>travisgeis.com/2020/08/30/ts100-battery/#disqus_thread</comments>
+    </item>
     
     <item>
       <title>Making a Handwriting Font with Calligraphr and FontForge</title>
@@ -405,27 +426,6 @@ upgraded my T420 to Linux Mint 18, and the backlight again
       <content:encoded><![CDATA[<p>It seems we have reached a new epoch in the Linux backlight stuggle: today, Iupgraded my T420 to Linux Mint 18, and the backlight again stopped working (asexpected). I did the usual, which is to add <code>&quot;video.use_native_backlight=1&quot;</code> to myGRUB boot options.</p><p>To my dismay, the backlight controls still didn’t work. After trying variousdrivers, all of the possible ACPI kernel command-line options, and variouscommands to set the backlight brightness directly from the terminal, it occurredto me that nvidia has been working on Linux support for Optimus, and their newdrivers include that support.</p><p>As a last resort, I re-enabled Optimus in my T420 BIOS settings, and removed allof my modifications to the stock Linux Mint 18 grub file. To my great surpriseand immense relief, the system Just Works. I’m happy to say that it goes tosleep, wakes up, and adjusts backlight brightness with no issues.</p><p>At last, after a solid five years of workarounds, my T420 shines as brightly asI want it to shine. Thanks to nvidia for all the vast improvements to theirLinux driver, and to all the members of the Linux community who researched andshared their ideas for fixing backlight problems.</p>]]></content:encoded>
       
       <comments>travisgeis.com/2016/08/15/fixing-nvidia-backlight-in-2016-linux-4-4-with-nvidia-361/#disqus_thread</comments>
-    </item>
-    
-    <item>
-      <title>Fixing nvidia backlight in 2015: on Linux 3.13</title>
-      <link>travisgeis.com/2015/09/22/fixing-nvidia-backlight-in-2015-on-linux-3-13/</link>
-      <guid>travisgeis.com/2015/09/22/fixing-nvidia-backlight-in-2015-on-linux-3-13/</guid>
-      <pubDate>Wed, 23 Sep 2015 06:57:58 GMT</pubDate>
-      <description>
-      
-        
-        
-          &lt;p&gt;I’m running Linux Mint 17.1 with Linux 3.13.0. I recently upgraded my nvidia
-driver to nvidia-346, and my backlight control broke (again!
-        
-      
-      </description>
-      
-      
-      <content:encoded><![CDATA[<p>I’m running Linux Mint 17.1 with Linux 3.13.0. I recently upgraded my nvidiadriver to nvidia-346, and my backlight control broke (again!). We’ve been on thebacklight merry-go-round for far too long.</p><p>Anyway, here’s a fix that might help. There’s a new kernel flag you can add toyour grub file called <code>video.use_native_backlight</code>.</p><p>Let’s get started: open your grub config file at</p><p><code>/etc/default/grub</code></p><p>And append the video.use_native_backlight parameter to your boot options:</p><p><code>GRUB_CMDLINE_LINUX_DEFAULT=&quot;quiet splash video.use_native_backlight=1&quot;</code></p><p>Now update your grub installation by running <code>update-grub</code> as superuser.</p><p>My boot parameters used to include the classic <code>acpi_backlight=vendor</code>, but itlooks like the nvidia-346 driver doesn’t handle that option as the older driversdid. Hopefully this will help you! (For reference, I’m on a ThinkPad T420)</p><p>Thanks to<a href="https://jamielinux.com/blog/cannot-adjust-screen-brightness-on-fedora/">https://jamielinux.com/blog/cannot-adjust-screen-brightness-on-fedora/</a>for the tip. I’m mainly reposting this so it will include the words “Linux Mint”and “T420” for wayward backlight-deprived souls.</p>]]></content:encoded>
-      
-      <comments>travisgeis.com/2015/09/22/fixing-nvidia-backlight-in-2015-on-linux-3-13/#disqus_thread</comments>
     </item>
     
   </channel>
