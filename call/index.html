@@ -1,0 +1,30 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+  </head>
+  <body>
+    <script src="js-dos.js"></script>
+    <style>
+      .dosbox-container {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      .dosbox-container canvas {
+        width: 100%;
+        height: 100%;
+        image-rendering: pixelated;
+        object-fit: contain;
+        margin-bottom: 2em;
+      }
+    </style>
+    <canvas id="jsdos"></canvas>
+    <script>
+      Dos(document.getElementById("jsdos"), { cycles: 'auto' }).ready((fs, main) => {
+        fs.extract("GERMAN.COM.zip").then(() => {
+          main(["-c", "GERMAN.COM"])
+        });
+      });
+    </script>
+  </body>
+</html>
