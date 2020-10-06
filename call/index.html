@@ -22,8 +22,12 @@
     <script>
       Dos(document.getElementById("jsdos"), { cycles: 'auto' }).ready((fs, main) => {
         fs.extract("GERMAN.COM.zip").then(() => {
-          main(["-c", "GERMAN.COM"])
+          main(["-c", "GERMAN.COM"]).then((ci) => {
+            // DosController.Qwerty(ci.getParentDiv(), ci.getKeyEventConsumer());
+            // DosController.Move(ci.getParentDiv(), ci.getKeyEventConsumer());
+          });
         });
+
       });
     </script>
   </body>
