@@ -1,26 +1,26 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Homeassistant in Docker on Synology NAS - travisgeis.com</title><link rel="stylesheet" type="text/css" href="/semantic/dist/semantic.min.css">
+<!DOCTYPE html><html lang="en"><head><meta name="generator" content="Hexo 3.9.0"><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Homeassistant in Docker on Synology NAS - travisgeis.com</title><link rel="stylesheet" type="text/css" href="/semantic/dist/semantic.min.css">
 <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
 <script src="/semantic/dist/semantic.min.js"></script><link href="https://fonts.googleapis.com/css?family=Spectral|Rubik|Anonymous+Pro" rel="stylesheet"><!-- favicon set from favicomatic.com -->
-<meta name="application-name" content="travisgeis.com"/>
-<link rel="apple-touch-icon-precomposed" sizes="57x57" href="/favicons/apple-touch-icon-57x57.png" />
-<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/favicons/apple-touch-icon-114x114.png" />
-<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/favicons/apple-touch-icon-72x72.png" />
-<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/favicons/apple-touch-icon-144x144.png" />
-<link rel="apple-touch-icon-precomposed" sizes="60x60" href="/favicons/apple-touch-icon-60x60.png" />
-<link rel="apple-touch-icon-precomposed" sizes="120x120" href="/favicons/apple-touch-icon-120x120.png" />
-<link rel="apple-touch-icon-precomposed" sizes="76x76" href="/favicons/apple-touch-icon-76x76.png" />
-<link rel="apple-touch-icon-precomposed" sizes="152x152" href="/favicons/apple-touch-icon-152x152.png" />
-<link rel="icon" type="image/png" href="/favicons/favicon-196x196.png" sizes="196x196" />
-<link rel="icon" type="image/png" href="/favicons/favicon-96x96.png" sizes="96x96" />
-<link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32" />
-<link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16" />
-<link rel="icon" type="image/png" href="/favicons/favicon-128.png" sizes="128x128" />
-<meta name="msapplication-TileColor" content="#FFFFFF" />
-<meta name="msapplication-TileImage" content="/favicons/mstile-144x144.png" />
-<meta name="msapplication-square70x70logo" content="/favicons/mstile-70x70.png" />
-<meta name="msapplication-square150x150logo" content="/favicons/mstile-150x150.png" />
-<meta name="msapplication-wide310x150logo" content="/favicons/mstile-310x150.png" />
-<meta name="msapplication-square310x310logo" content="/favicons/mstile-310x310.png" />
+<meta name="application-name" content="travisgeis.com">
+<link rel="apple-touch-icon-precomposed" sizes="57x57" href="/favicons/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/favicons/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/favicons/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/favicons/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon-precomposed" sizes="60x60" href="/favicons/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon-precomposed" sizes="120x120" href="/favicons/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon-precomposed" sizes="76x76" href="/favicons/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon-precomposed" sizes="152x152" href="/favicons/apple-touch-icon-152x152.png">
+<link rel="icon" type="image/png" href="/favicons/favicon-196x196.png" sizes="196x196">
+<link rel="icon" type="image/png" href="/favicons/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/favicons/favicon-128.png" sizes="128x128">
+<meta name="msapplication-TileColor" content="#FFFFFF">
+<meta name="msapplication-TileImage" content="/favicons/mstile-144x144.png">
+<meta name="msapplication-square70x70logo" content="/favicons/mstile-70x70.png">
+<meta name="msapplication-square150x150logo" content="/favicons/mstile-150x150.png">
+<meta name="msapplication-wide310x150logo" content="/favicons/mstile-310x150.png">
+<meta name="msapplication-square310x310logo" content="/favicons/mstile-310x310.png">
 <script data-goatcounter="https://ottobonn.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script><link rel="stylesheet" href="/css/boxy.css"><link rel="alternate" href="atom.xml" title="travisgeis.com" type="application/atom+xml">
 <link rel="alternate" href="rss2.xml" title="travisgeis.com" type="application/rss+xml">
 </head><body><div id="page" class="ui container"><div id="menu"><div class="ui stackable secondary variable item menu"><a href="/" class="item"><i class="icon home"></i>travisgeis.com</a><a href="/contact" class="item"><i class="icon comments"></i>Contact</a></div></div><div id="titles"><h1 class="ui huge header">Homeassistant in Docker on Synology NAS</h1><h3 class="ui header">5 July, 2020</h3></div><div id="content"><article id="post"><p>I use <a href="https://www.home-assistant.io/">homeassistant</a> to control my apartment’s lighting and some other fun things like the tea kettle. I definitely recommend it; it’s open-source and very easy to set up, and it supports many devices right away with minimal fuss. I’ll go into more detail on my home automation devices in another post. This one is about the software, and the surprising complexity of home networks.</p>
@@ -41,7 +41,7 @@
 <p>My NAS is on the local network at <code>nas.ivy.travisgeis.com</code>, so I could see the homeassistant web interface at <code>nas.ivy.travisgeis.com:8123</code>. The NAS doesn’t use port 8123 for anything else, so it was available for homeassistant to use. Setting up this way was very quick, but I’m picky and I don’t like typing port 8123 every time I visit the homeassistant UI! I want to be able instead to use a different URL, like <code>homeassistant.example.com</code> to access the UI without specifying a port, which means the application needs to be available on the default port 80.</p>
 <h2 id="nginx-as-reverse-proxy"><a href="#nginx-as-reverse-proxy" class="headerlink" title="nginx as reverse proxy"></a>nginx as reverse proxy</h2><p>With homeassistant running and the goal of making it available on its own URL, the next step is to add a reverse proxy to route traffic at this new URL to the actual port 8123. A reverse proxy intercepts traffic on the host machine and can route it to different applications based on properties of the traffic like the URL, the port, or the protocol.</p>
 <p>I am familiar with <a href="http://nginx.org/">nginx</a>, a popular web server, so I decided to use it as a reverse proxy, but there are other options with the same features. Here is a diagram of nginx running as a reverse proxy on the NAS, directing traffic to our homeassistant URL to the homeassistant port, 8123:</p>
-<p><img src="nginx-reverse-proxy.svg" alt=""></p>
+<p><img src="nginx-reverse-proxy.svg" alt></p>
 <p>This diagram shows how other services could use additional ports on the host, but I only configured homeassistant to run this way.</p>
 <p><a href="/nginx-configuration-for-reverse-proxy-to-different-ports">Here is the nginx config</a> I used to set it up.</p>
 <p>This nginx configuration declares one server listening on port 80, passing all traffic to <code>http://localhost:$target_port</code>. The target port comes from the mapping declared above, based on the name of the service. For the case of homeassistant, <code>homeassistant.nas.ivy.travisgeis.com</code> will provide a <code>$name</code> of “homeassistant,” which will map to port 8123.</p>
@@ -66,7 +66,7 @@
 <li>Attach the containers to the new macvlan network.</li>
 </ul>
 <p>Here’s a diagram of the macvlan network topology:</p>
-<p><img src="nginx-macvlan.svg" alt=""></p>
+<p><img src="nginx-macvlan.svg" alt></p>
 <p>Each container gets its own MAC address and IP address, and each containerized application thinks it’s on its own host computer. We know the container IP addresses won’t collide with the DHCP-assigned network addresses because we’ve allocated different ranges for them. Below, I will detail each step for this setup.</p>
 <h3 id="Choose-Docker-IP-addresses"><a href="#Choose-Docker-IP-addresses" class="headerlink" title="Choose Docker IP addresses"></a>Choose Docker IP addresses</h3><p>First, decide on a subset of IP addresses to reserve for Docker. My DHCP server allocates 192.168.0.100-192.169.0.199, so I reserved 192.168.0.200-192.168.0.207 (192.168.0.200/29 in CIDR notation) for Docker containers. Each container will specify its own port in this range, so I can route to each through the nginx reverse proxy.</p>
 <h3 id="Create-the-macvlan-network-in-Docker"><a href="#Create-the-macvlan-network-in-Docker" class="headerlink" title="Create the macvlan network in Docker"></a>Create the macvlan network in Docker</h3><p>I manage all the Docker containers with Docker compose, but they need to share a single macvlan network so they can communicate with each other. There is no easy way to create a shared network in Docker Compose, so I create one with the Docker CLI:</p>
@@ -76,6 +76,6 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo ip link add macvlan link eth0 <span class="built_in">type</span> macvlan mode bridge</span><br><span class="line">sudo ip addr add 192.168.0.101/24 dev macvlan</span><br><span class="line">sudo ip link <span class="built_in">set</span> macvlan up</span><br><span class="line">sudo ip route add 192.168.0.200/29 dev macvlan</span><br></pre></td></tr></table></figure>
 <p>These commands add a link network called “macvlan” to the NAS network configuration. This part was really hard to get right, because it’s right at the edge of my understanding of Linux networking. The second line attaches the new link to a range of IP addresses starting at 192.168.0.101, the third line starts it up, and the fourth line routes packets addresses to IP addresses 192.168.0.200-192.168.0.207 to the new link, which means they will end up available to the Docker containers.</p>
 <h3 id="Attach-the-containers-to-the-network-in-docker-compose-files"><a href="#Attach-the-containers-to-the-network-in-docker-compose-files" class="headerlink" title="Attach the containers to the network in docker-compose files"></a>Attach the containers to the network in docker-compose files</h3><p>Finally, now that we have the “vlan” network, we need to specify that each container should attach to it. Add this “networks” config to <code>docker-compose.yml</code>:</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">networks:</span></span><br><span class="line"><span class="attr">  default:</span></span><br><span class="line"><span class="attr">    external:</span></span><br><span class="line"><span class="attr">      name:</span> <span class="string">vlan</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">networks:</span></span><br><span class="line">  <span class="attr">default:</span></span><br><span class="line">    <span class="attr">external:</span></span><br><span class="line">      <span class="attr">name:</span> <span class="string">vlan</span></span><br></pre></td></tr></table></figure>
 <h2 id="GitHub-repo"><a href="#GitHub-repo" class="headerlink" title="GitHub repo"></a>GitHub repo</h2><p>Check out <a href="https://github.com/ottobonn/dsm-containers">the project on GitHub</a> for the full configuration.</p>
 <script src="https://utteranc.es/client.js" repo="ottobonn/travisgeis.com" issue-term="Homeassistant in Docker on Synology NAS" label="comment" theme="github-light" crossorigin="anonymous" async></script></article><nav id="pagination"><div class="ui fluid variable item pagination menu"><a href="../../11/inside-the-apollo-kinetics-pulse/" class="item"><i class="arrow circle left icon"></i>Previous</a><a href="../../../../2019/01/13/1547425872426/" class="item"><i class="arrow circle right icon"></i>Next</a></div></nav></div></div><div id="footer"><div class="ui stackable secondary menu"><a href="/rss2.xml" class="item"><i class="rss icon"></i>RSS</a><a href="/atom.xml" class="item"><i class="rss icon"></i>Atom</a></div></div></body></html>
