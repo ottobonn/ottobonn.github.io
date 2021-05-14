@@ -1,0 +1,70 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Wall-E: The Linux-Based Robot Pet - travisgeis.com</title><link rel="stylesheet" type="text/css" href="/semantic/dist/semantic.min.css">
+<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<script src="/semantic/dist/semantic.min.js"></script><link href="https://fonts.googleapis.com/css?family=Spectral|Rubik|Anonymous+Pro" rel="stylesheet"><!-- favicon set from favicomatic.com -->
+<meta name="application-name" content="travisgeis.com"/>
+<link rel="apple-touch-icon-precomposed" sizes="57x57" href="/favicons/apple-touch-icon-57x57.png" />
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/favicons/apple-touch-icon-114x114.png" />
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/favicons/apple-touch-icon-72x72.png" />
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/favicons/apple-touch-icon-144x144.png" />
+<link rel="apple-touch-icon-precomposed" sizes="60x60" href="/favicons/apple-touch-icon-60x60.png" />
+<link rel="apple-touch-icon-precomposed" sizes="120x120" href="/favicons/apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon-precomposed" sizes="76x76" href="/favicons/apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon-precomposed" sizes="152x152" href="/favicons/apple-touch-icon-152x152.png" />
+<link rel="icon" type="image/png" href="/favicons/favicon-196x196.png" sizes="196x196" />
+<link rel="icon" type="image/png" href="/favicons/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32" />
+<link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16" />
+<link rel="icon" type="image/png" href="/favicons/favicon-128.png" sizes="128x128" />
+<meta name="msapplication-TileColor" content="#FFFFFF" />
+<meta name="msapplication-TileImage" content="/favicons/mstile-144x144.png" />
+<meta name="msapplication-square70x70logo" content="/favicons/mstile-70x70.png" />
+<meta name="msapplication-square150x150logo" content="/favicons/mstile-150x150.png" />
+<meta name="msapplication-wide310x150logo" content="/favicons/mstile-310x150.png" />
+<meta name="msapplication-square310x310logo" content="/favicons/mstile-310x310.png" />
+<script data-goatcounter="https://ottobonn.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script><link rel="stylesheet" href="/css/boxy.css"><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="atom.xml" title="travisgeis.com" type="application/atom+xml">
+<link rel="alternate" href="rss2.xml" title="travisgeis.com" type="application/rss+xml">
+</head><body><div id="page" class="ui container"><div id="menu"><div class="ui stackable secondary variable item menu"><a href="/" class="item"><i class="icon home"></i>travisgeis.com</a><a href="/contact" class="item"><i class="icon comments"></i>Contact</a></div></div><div id="titles"><h1 class="ui huge header">Wall-E: The Linux-Based Robot Pet</h1><h3 class="ui header">10 June, 2012</h3></div><div id="content"><article id="post"><p>I decided recently to embark on a new robotics project. I bought a BeagleBone, a
+small Linux computer running the Angstrom distro, because I want to make a
+Wall-E robot with computer vision capabilities.</p>
+<p>Initially, I thought about powering the mechanisms with an AVR, and offloading
+the processing to my laptop. I could use  a networked camera and connect the AVR
+over Bluetooth or WiFi to relay commands. But I rally want Wall-E to be able to
+make his own decisions, even when my laptop is busy with other things.</p>
+<p>The BeagleBone should have more than enough power for what I’m doing. It has a
+USB host, so I can hook up a WiFi dongle, a webcam, and potentially a USB-based
+AVR motor controller. USB cameras are extraordinarily cheap compared to similar
+models that expose TTL signals for microcontrollers (ah, the wonders of
+mass-production).</p>
+<h2 id="The-Plan"><a href="#The-Plan" class="headerlink" title="The Plan"></a>The Plan</h2><p>First I scoured the internets and failed to find new Wall-E toys for use in my
+project. Unfortunately, it seems Pixar has discontinued the adorable line of
+toys. Who wouldn’t want a Wall-E to play with? I ended up on eBay in bidding
+wars with other Wall-E fans and the formidable collectors. I bought a Wall-E
+“InterActive” toy, which basically makes noise when you push it around and may
+or may not have motors in it. The cubic torso is about 5” on a side, so
+hopefully I can fit my electronics in there.</p>
+<p>I will rip open the plastic enclosure and remove the battery holder, the noise
+circuits, etc., and supplant them with my BeagleBone and a better battery pack.
+I may put servos in the binoculars, for emotion, and perhaps one at the base of
+each arm. I will put DC gearmotors on the track wheels, assuming the ones in the
+toy are lousy. I plan to make an I2C motor controller based on the AVR to
+simplify programming the kinematics.</p>
+<h2 id="The-Parts"><a href="#The-Parts" class="headerlink" title="The Parts"></a>The Parts</h2><p>I bought
+<a href="http://www.amazon.com/gp/product/B004BDOR8I/" title="Syba Webcam on Amazon">a cheap webcam</a>
+from Syba via Amazon, and took out its innards. It turned out to be a well-built
+PCB for $8, and it works out of the box with Linux. I plan to mount it in one of
+Wall-E’s eyes. I haven’t seen the toy yet, so I hope the camera will fit in an
+eye.</p>
+<p>I already mentioned the BeagleBone, an ARMv7-based board devloped with help from
+TI by the folks behind BeagleBoard. I already have the Bone running WiFi via the
+adapter from Adafruit, and I have confirmed that the Syba camera works with the
+Angstrom flavor of Linux with ffmpeg. I am trying to set up video streaming for
+remote monitoring.</p>
+<p>I still need to work on the battery, which will likely be a rechargeable hobby
+unit. I want to put together a buck regulator for a clean 5V, an potentially
+include some kind of power management system to monitor the battery status.
+Wall-E shouldn’t run out of juice without knowing about it!</p>
+<p>For the servos I picked up an Adafruit I2C servo driver, which has 16 channels
+of PWM from dedicated hardware. The extra cost is justified considering how
+complicated PWM from Linux can get. The less time I spend debugging code the
+better.</p>
+<h3>Comments</h3><div id="cusdis_thread" data-host="https://cusdis-o3zfswldh-ottobonn.vercel.app" data-app-id="bfc86e4c-f4e1-4135-8790-cf52804a5850" data-page-id="2012/06/10/wall-e-the-linux-based-robot-pet/" data-page-url="https://travisgeis.com/2012/06/10/wall-e-the-linux-based-robot-pet/" data-page-title="Wall-E: The Linux-Based Robot Pet"></div><script async src="https://cusdis-o3zfswldh-ottobonn.vercel.app/js/cusdis.es.js"></script></article><nav id="pagination"><div class="ui fluid variable item pagination menu"><a href="../../24/rethinking-the-alarm-clock/" class="item"><i class="arrow circle left icon"></i>Previous</a><a href="../../../04/17/anodizing-aluminium-at-home/" class="item"><i class="arrow circle right icon"></i>Next</a></div></nav></div></div><div id="footer"><div class="ui stackable secondary menu"><a href="/rss2.xml" class="item"><i class="rss icon"></i>RSS</a><a href="/atom.xml" class="item"><i class="rss icon"></i>Atom</a></div></div></body></html>

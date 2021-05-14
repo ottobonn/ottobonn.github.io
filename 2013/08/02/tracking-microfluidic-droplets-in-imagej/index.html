@@ -1,0 +1,85 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Tracking Microfluidic Droplets in ImageJ - travisgeis.com</title><link rel="stylesheet" type="text/css" href="/semantic/dist/semantic.min.css">
+<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<script src="/semantic/dist/semantic.min.js"></script><link href="https://fonts.googleapis.com/css?family=Spectral|Rubik|Anonymous+Pro" rel="stylesheet"><!-- favicon set from favicomatic.com -->
+<meta name="application-name" content="travisgeis.com"/>
+<link rel="apple-touch-icon-precomposed" sizes="57x57" href="/favicons/apple-touch-icon-57x57.png" />
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/favicons/apple-touch-icon-114x114.png" />
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/favicons/apple-touch-icon-72x72.png" />
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/favicons/apple-touch-icon-144x144.png" />
+<link rel="apple-touch-icon-precomposed" sizes="60x60" href="/favicons/apple-touch-icon-60x60.png" />
+<link rel="apple-touch-icon-precomposed" sizes="120x120" href="/favicons/apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon-precomposed" sizes="76x76" href="/favicons/apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon-precomposed" sizes="152x152" href="/favicons/apple-touch-icon-152x152.png" />
+<link rel="icon" type="image/png" href="/favicons/favicon-196x196.png" sizes="196x196" />
+<link rel="icon" type="image/png" href="/favicons/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32" />
+<link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16" />
+<link rel="icon" type="image/png" href="/favicons/favicon-128.png" sizes="128x128" />
+<meta name="msapplication-TileColor" content="#FFFFFF" />
+<meta name="msapplication-TileImage" content="/favicons/mstile-144x144.png" />
+<meta name="msapplication-square70x70logo" content="/favicons/mstile-70x70.png" />
+<meta name="msapplication-square150x150logo" content="/favicons/mstile-150x150.png" />
+<meta name="msapplication-wide310x150logo" content="/favicons/mstile-310x150.png" />
+<meta name="msapplication-square310x310logo" content="/favicons/mstile-310x310.png" />
+<script data-goatcounter="https://ottobonn.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script><link rel="stylesheet" href="/css/boxy.css"><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="atom.xml" title="travisgeis.com" type="application/atom+xml">
+<link rel="alternate" href="rss2.xml" title="travisgeis.com" type="application/rss+xml">
+</head><body><div id="page" class="ui container"><div id="menu"><div class="ui stackable secondary variable item menu"><a href="/" class="item"><i class="icon home"></i>travisgeis.com</a><a href="/contact" class="item"><i class="icon comments"></i>Contact</a></div></div><div id="titles"><h1 class="ui huge header">Tracking Microfluidic Droplets in ImageJ</h1><h3 class="ui header">2 August, 2013</h3></div><div id="content"><article id="post"><p>I am researching microfluidic droplets this summer. We run aqueous fluid through
+a flow-focusing region in a micro-channel, which causes little drops to shear
+off and flow through the chip. We observe the drops with an inverted microscope
+and the high-speed Andor Zyla camera.</p>
+<p>I am developing
+<a href="https://github.com/ottobonn/DropletTracker" title="DropletTracker on GitHub">a plugin for ImageJ</a>
+to track the droplets. We want to see their shape, velocity, orientation, area,
+and other geometric properties, but it takes a long time to track them by hand
+(and it’s silly, when we have computers).</p>
+<p>The problem is that these droplets are hard to track. They have a similar
+brightness to the background, their borders aren’t always well-defined, and they
+move quickly relative to the speed of the camera. So I am brainstorming new ways
+to isolate the droplets from the background.</p>
+<p>Right now, the tracker relies on various steps of removing noise, subtracting
+static background pixels, and binarizing the image to convert the droplets to
+black binary blobs on a white binary background. The tracker itself just
+observes these binary blobs, so the important work happens before the tracker is
+even involved. The way in which we convert these noisy, grainy images of
+real-world droplets into representative binary form directly affects the quality
+of the tracking results.</p>
+<p>I have some thoughts on how to do better. Right now, I am treating each still
+frame in the stack as independent from the others. The filters are stateless, in
+that they work the same on each frame regardless of what frames came before or
+after in the stack (in time).</p>
+<p>But the droplets are moving, so I should be able to use that crucial bit of
+detail to massively improve the tracker. When I, a human, see the following
+image (a photo of a droplet in a channel), I can guess where the droplet is. I
+expect something oval-shaped, somewhere in the center of attention. But if I
+look at the image without any bias, I really don’t know whether that droplet is
+part of the background or not.</p>
+<a href="/uploads/2013/08/BackgroundOrForeground.png"><img src="/uploads/2013/08/body-BackgroundOrForeground.png" alt="Background Or Foreground?" title="Background Or Foreground?"></a>
+<p>I am biased, in that I look for simple geometry. It’s what my vision is trained
+to do well. However, as soon as I see the next frame in the stack, it’s obvious
+what I can ignore as the background.</p>
+<a href="/uploads/2013/08/TwoShots.png"><img src="/uploads/2013/08/body-TwoShots.png" alt="Two Shots" title="Two Shots"></a>
+<p>The droplet in the center moved down a bit, but everything else stayed still. I
+can easily isolate it from the background with my eye, especially when it’s
+moving. So maybe I can get the tracker to do the same.</p>
+<p>Using a subtraction, I can find the literal difference between the later and
+earlier frames shown above. This yields a “heat map” of everything that moves in
+the images.</p>
+<a href="/uploads/2013/08/Subtraction.png"><img src="/uploads/2013/08/body-Subtraction.png" alt="Subtraction" title="Subtraction"></a>
+<p>The blue area represents the moving front edge of the drop. Unfortunately, it
+isn’t round, and it doesn’t look like a drop, because the subtraction removed
+everything except the change.</p>
+<p>When a droplet moved between frames, most of it (by area) will seem to stay
+still. Only the front and rear edges will change. So this subtraction can’t be
+the full solution, but maybe I can use it as a place to look for drops.</p>
+<p>Interestingly, I can do the same on the binary version of the image.</p>
+<a href="/uploads/2013/08/BinaryXOR.png"><img src="/uploads/2013/08/body-BinaryXOR.png" alt="Binary XOR" title="Binary XOR"></a>
+<p>The two left images above are the messy, thresholded representation of two of
+the original images (not exactly the ones above, by similar). I can make out the
+droplet in the center, but so much mess surrounds it that the tracker gets
+confused.</p>
+<p>The image on the right is the result of XORing the two left images. Where one
+has a dark pixel, and the other doesn’t, the XOR is illuminated. This yields a
+robust hot spot where the drop is moving, and it also creates some noise from
+the blinking background pixels (an artifact of the thresholding).</p>
+<p>It isn’t directly trackable, but I hope I can work it in to my system soon.</p>
+<h3>Comments</h3><div id="cusdis_thread" data-host="https://cusdis-o3zfswldh-ottobonn.vercel.app" data-app-id="bfc86e4c-f4e1-4135-8790-cf52804a5850" data-page-id="2013/08/02/tracking-microfluidic-droplets-in-imagej/" data-page-url="https://travisgeis.com/2013/08/02/tracking-microfluidic-droplets-in-imagej/" data-page-title="Tracking Microfluidic Droplets in ImageJ"></div><script async src="https://cusdis-o3zfswldh-ottobonn.vercel.app/js/cusdis.es.js"></script></article><nav id="pagination"><div class="ui fluid variable item pagination menu"><a href="../../05/a-new-prusa-mendel-is-on-the-way/" class="item"><i class="arrow circle left icon"></i>Previous</a><a href="../../../06/08/the-hive-mind-of-instant-answers/" class="item"><i class="arrow circle right icon"></i>Next</a></div></nav></div></div><div id="footer"><div class="ui stackable secondary menu"><a href="/rss2.xml" class="item"><i class="rss icon"></i>RSS</a><a href="/atom.xml" class="item"><i class="rss icon"></i>Atom</a></div></div></body></html>

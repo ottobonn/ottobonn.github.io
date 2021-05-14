@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+  <title>Central Limit Theorem Demo</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="bootstrap-slider/bootstrap-slider.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <script src="d3/d3.min.js"></script>
+  <script src="jquery/jquery-2.1.1.min.js"></script>
+  <script src="livehistogram.js"></script>
+  <script src="livesample.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+  <script src="bootstrap-slider/bootstrap-slider.js"></script>
+
+  <article id="page">
+    <h1>Central Limit Theroem Demo <small>Incremental Sample Plot</small></h1>
+
+    <h2>1. View Population</h2>
+    <p>This skew population comes from a log-normal distribution, with E[logX] = 0 and variance 1, and N = 500.</p>
+    <p><span class="label label-info">Note</span> Eventually, this could be an arbitrary skew population. For now, log-normal is easy to generate.</p>
+    <p><span class="label label-info">Note</span> Refreshing the page will generate a new population.</p>
+    <div id="population"></div>
+
+    <hr>
+
+    <h2>2. Watch Random Means</h2>
+
+    <p>Press "Begin Sampling" to take random samples from the population above, and average them.</p>
+
+    <div class="btn-group" role="group" aria-label="Means Chart Controls">
+      <button type="button" class="btn btn-primary" id="means-play-button" data-pause-text="Pause">
+        Run
+      </button>
+      <button type="button" class="btn btn-default" id="means-reset-button">
+        Reset
+      </button>
+    </div>
+
+    <h3>Means:
+      <span id="meansCounter">0</span> of
+      <span id="means-slider-value" class="slider-value">100</span>
+      <input id="means-slider" data-slider-min="10" data-slider-max="1000" data-slider-step="10" data-slider-value="100"/>
+    </h3>
+
+    <br>
+
+    <h4>
+        Samples Per Mean: <span id="samples-per-mean-slider-value" class="slider-value">30</span>
+        <input id="samples-per-mean-slider" data-slider-min="1" data-slider-max="50" data-slider-step="1" data-slider-value="30"/>
+    </h4>
+
+    <h4>
+      Time Per Mean: <span id="delay-slider-value" class="slider-value">100</span> ms
+      <input id="delay-slider" data-slider-min="1" data-slider-max="200" data-slider-step="1" data-slider-value="100"/>
+    </h4>
+
+    <br>
+
+    <!--
+    <div class="progress">
+      <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;" id="means-bar">
+        0%
+      </div>
+    </div>
+    -->
+
+    <div id="means"></div>
+
+
+
+  </article>
+</body>

@@ -1,0 +1,66 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>A Modded Mantis: The BeeCNC - travisgeis.com</title><link rel="stylesheet" type="text/css" href="/semantic/dist/semantic.min.css">
+<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<script src="/semantic/dist/semantic.min.js"></script><link href="https://fonts.googleapis.com/css?family=Spectral|Rubik|Anonymous+Pro" rel="stylesheet"><!-- favicon set from favicomatic.com -->
+<meta name="application-name" content="travisgeis.com"/>
+<link rel="apple-touch-icon-precomposed" sizes="57x57" href="/favicons/apple-touch-icon-57x57.png" />
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/favicons/apple-touch-icon-114x114.png" />
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/favicons/apple-touch-icon-72x72.png" />
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/favicons/apple-touch-icon-144x144.png" />
+<link rel="apple-touch-icon-precomposed" sizes="60x60" href="/favicons/apple-touch-icon-60x60.png" />
+<link rel="apple-touch-icon-precomposed" sizes="120x120" href="/favicons/apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon-precomposed" sizes="76x76" href="/favicons/apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon-precomposed" sizes="152x152" href="/favicons/apple-touch-icon-152x152.png" />
+<link rel="icon" type="image/png" href="/favicons/favicon-196x196.png" sizes="196x196" />
+<link rel="icon" type="image/png" href="/favicons/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32" />
+<link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16" />
+<link rel="icon" type="image/png" href="/favicons/favicon-128.png" sizes="128x128" />
+<meta name="msapplication-TileColor" content="#FFFFFF" />
+<meta name="msapplication-TileImage" content="/favicons/mstile-144x144.png" />
+<meta name="msapplication-square70x70logo" content="/favicons/mstile-70x70.png" />
+<meta name="msapplication-square150x150logo" content="/favicons/mstile-150x150.png" />
+<meta name="msapplication-wide310x150logo" content="/favicons/mstile-310x150.png" />
+<meta name="msapplication-square310x310logo" content="/favicons/mstile-310x310.png" />
+<script data-goatcounter="https://ottobonn.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script><link rel="stylesheet" href="/css/boxy.css"><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="atom.xml" title="travisgeis.com" type="application/atom+xml">
+<link rel="alternate" href="rss2.xml" title="travisgeis.com" type="application/rss+xml">
+</head><body><div id="page" class="ui container"><div id="menu"><div class="ui stackable secondary variable item menu"><a href="/" class="item"><i class="icon home"></i>travisgeis.com</a><a href="/contact" class="item"><i class="icon comments"></i>Contact</a></div></div><div id="titles"><h1 class="ui huge header">A Modded Mantis: The BeeCNC</h1><h3 class="ui header">9 June, 2011</h3></div><div id="content"><article id="post"><a href="/uploads/2011/06/beecnc.png"><img src="/uploads/2011/06/body-beecnc.png" alt="The CNC side art" title="BeeCNC Stencil"></a>
+<p>I took a look at the
+<a href="http://makeyourbot.org/mantis9-1" title="David Carr">great work David Carr has done</a>
+with his Mantis CNC mill for PCB fabrication. I love the simplicity of his
+design. I decided to build my own CNC mill, in the spirit of the Mantis but with
+a few modifications. My mill had some extra requirements:</p>
+<ul>
+<li>Build area suitable for 6.125” x 4.5” PCB from Radioshack</li>
+<li>Use salvage stepper motors from discarded printers</li>
+<li>Use ground rods from discarded printers</li>
+<li>Hold a Dremel tool as the primary spindle</li>
+</ul>
+<p>I started my design at the build platform, a 5” x 7” layer of half-inch plywood.
+The tooltip needs to reach every edge of the platform, so the travel should be
+twice the length and twice the width in those respective dimensions. So, the
+interior bounding box is 10” by 14”, and the whole thing is a bit taller than
+the Mantis to accommodate the Dremel.</p>
+<p>I don’t have the oft-used Arduino Mega for the brains of the machine, so I did
+some searching for suitable GCode-parsing firmware that would fit on a
+Duemilanove (with ATmega328P, 32K of program flash). I hope to use
+<a href="http://replicat.org/" title="ReplicatorG Home">ReplicatorG</a> with <a href="http://wiki.bitsfrombytes.com/index.php?title=Skeinforge" title="Skeinforge Page">Skeinforge</a>
+as the go-between for machine and design.</p>
+<p>I found a great project called
+<a href="http://reprap.org/wiki/Teacup_Firmware" title="The Teacup Project">Teacup</a>,
+an optimized rewrite of the FiveD firmware used with RepRaps. The firmware fits
+on the mega328, interprets GCode in real time, and has all the settings I need.
+I believe it’s made for 3D printers, but it should work fine for milling, a
+simpler operation.</p>
+<p>I ordered three
+<a href="http://www.sparkfun.com/products/10267" title="Sparkfun">Sparkfun EasyDriver</a>
+chips for controlling the stepper motors. The motors in question are NEMA 17
+steppers, EM-257, from Epson, 1.8 degrees per step (200 step per rev). They seem
+to be manufactured by Astrosyn, and I found
+<a href="http://www.motors.wrobots.com/EM-257_17PM-K212-PIT.php" title="The EM257 Motors">a datasheet</a>.
+They’re fairly powerful little motors, but are a little bit difficult to mount.</p>
+<p>For the power supply I’m repurposing an old HP server power supply brick. The
+whole machine should make quite a buzzing racket, and for that reason I decided
+I would call the machine the BeeCNC (in the spirit of insects like the Mantis,
+but a bit noisier). I’ll post some pictures soon.</p>
+<a href="/uploads/2011/06/IMG_2002-e1307679550649.jpg"><img src="/uploads/2011/06/body-IMG_2002-e1307679550649.jpg" alt="BeeCNC side wall" title="BeeCNC Plate"></a>
+<h3>Comments</h3><div id="cusdis_thread" data-host="https://cusdis-o3zfswldh-ottobonn.vercel.app" data-app-id="bfc86e4c-f4e1-4135-8790-cf52804a5850" data-page-id="2011/06/09/a-modded-mantis-the-beecnc/" data-page-url="https://travisgeis.com/2011/06/09/a-modded-mantis-the-beecnc/" data-page-title="A Modded Mantis: The BeeCNC"></div><script async src="https://cusdis-o3zfswldh-ottobonn.vercel.app/js/cusdis.es.js"></script></article><nav id="pagination"><div class="ui fluid variable item pagination menu"><a href="../../10/a-note-on-drm-in-the-ebook-world/" class="item"><i class="arrow circle left icon"></i>Previous</a><a href="../../../05/26/propov-build-screenshots/" class="item"><i class="arrow circle right icon"></i>Next</a></div></nav></div></div><div id="footer"><div class="ui stackable secondary menu"><a href="/rss2.xml" class="item"><i class="rss icon"></i>RSS</a><a href="/atom.xml" class="item"><i class="rss icon"></i>Atom</a></div></div></body></html>

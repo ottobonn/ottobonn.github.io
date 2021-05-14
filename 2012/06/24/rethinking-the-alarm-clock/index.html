@@ -1,0 +1,73 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Rethinking the Alarm Clock - travisgeis.com</title><link rel="stylesheet" type="text/css" href="/semantic/dist/semantic.min.css">
+<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<script src="/semantic/dist/semantic.min.js"></script><link href="https://fonts.googleapis.com/css?family=Spectral|Rubik|Anonymous+Pro" rel="stylesheet"><!-- favicon set from favicomatic.com -->
+<meta name="application-name" content="travisgeis.com"/>
+<link rel="apple-touch-icon-precomposed" sizes="57x57" href="/favicons/apple-touch-icon-57x57.png" />
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/favicons/apple-touch-icon-114x114.png" />
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/favicons/apple-touch-icon-72x72.png" />
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/favicons/apple-touch-icon-144x144.png" />
+<link rel="apple-touch-icon-precomposed" sizes="60x60" href="/favicons/apple-touch-icon-60x60.png" />
+<link rel="apple-touch-icon-precomposed" sizes="120x120" href="/favicons/apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon-precomposed" sizes="76x76" href="/favicons/apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon-precomposed" sizes="152x152" href="/favicons/apple-touch-icon-152x152.png" />
+<link rel="icon" type="image/png" href="/favicons/favicon-196x196.png" sizes="196x196" />
+<link rel="icon" type="image/png" href="/favicons/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32" />
+<link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16" />
+<link rel="icon" type="image/png" href="/favicons/favicon-128.png" sizes="128x128" />
+<meta name="msapplication-TileColor" content="#FFFFFF" />
+<meta name="msapplication-TileImage" content="/favicons/mstile-144x144.png" />
+<meta name="msapplication-square70x70logo" content="/favicons/mstile-70x70.png" />
+<meta name="msapplication-square150x150logo" content="/favicons/mstile-150x150.png" />
+<meta name="msapplication-wide310x150logo" content="/favicons/mstile-310x150.png" />
+<meta name="msapplication-square310x310logo" content="/favicons/mstile-310x310.png" />
+<script data-goatcounter="https://ottobonn.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script><link rel="stylesheet" href="/css/boxy.css"><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="atom.xml" title="travisgeis.com" type="application/atom+xml">
+<link rel="alternate" href="rss2.xml" title="travisgeis.com" type="application/rss+xml">
+</head><body><div id="page" class="ui container"><div id="menu"><div class="ui stackable secondary variable item menu"><a href="/" class="item"><i class="icon home"></i>travisgeis.com</a><a href="/contact" class="item"><i class="icon comments"></i>Contact</a></div></div><div id="titles"><h1 class="ui huge header">Rethinking the Alarm Clock</h1><h3 class="ui header">24 June, 2012</h3></div><div id="content"><article id="post"><p>I interact with my alarm clock every day. It wakes me up in the morning, and
+because I get up at different times each day depending on what I need to do, I
+end up setting the alarm time again almost every night. I have been thinking
+about device design and the user experience of an alarm clock, and I have some
+idea that may make it into a new prototype I’m building. The device I have in
+mind isn’t really cost-effective–It won’t compete with the bargain-basement
+plastic clocks pouring out of China–but I would like to explore some new design
+ideas.</p>
+<h2 id="Problems-with-Other-Clocks"><a href="#Problems-with-Other-Clocks" class="headerlink" title="Problems with Other Clocks"></a>Problems with Other Clocks</h2><p>The clock I use every day is bare-bones. I like it, because it has multi-colored
+seven-segment displays. But the interface for setting and checking the time and
+alarm settings is the seemingly-standard four buttons: time and alarm buttons;
+and hour and minute buttons.</p>
+<p>The interface is admirably simple, driven to extremes by the competition for
+lower prices. But it requires two hands to use, and to setting a time earlier
+than the one programmed in the clock is annoying. There is no way to go back;
+the user must go “around the horn” to choose a new time. Simply holding the
+buttons down doesn’t work, either: the clock counts forward so slowly that my
+finger cramps from holding the button for so long. So I end up pressing the
+buttons as quickly as I can, and if I miss the minute I need, it’s another fifty
+nine clicks to get back around. That’s annoying!</p>
+<p>I also generally find myself frustrated with the lack of clarity as to whether
+the alarm is even active. The designers usually hide the alarm switch on the
+side or back of the clock, so if you don’t want to snooze, you’ll have to flip
+the flimsy switch until the evening.</p>
+<h2 id="My-Goals"><a href="#My-Goals" class="headerlink" title="My Goals"></a>My Goals</h2><p>I would like to create the simplest and fastest interface I can. I have many
+thoughts about how to do so, but some ideas are central. Here’s the breakdown:</p>
+<ol>
+<li>Choosing a time is a continuous action. Time (at least as clocks portray it)
+is linear, and the user needs to be able to find a time in the continuum quickly
+and easily. For this task, I have in mind a rotary encoder, like a modern volume
+knob. The detents should be gentle and smooth, and fairly close together so
+going through sixty click doesn’t take too much effort.</li>
+<li>Clocks are important at night, so the screen needs to light up. I don’t want
+to press anything to see what time it is, and I surely don’t want to turn on a
+lamp to see the time. I want to know, still in the dark, whether the alarm is
+on, what time it is now, and whether the clock thinks it is currently morning or
+night.</li>
+<li>The clock needs to survive a small power outage. If I have just fallen
+asleep, a power outage is not going to wake me up. And if the clock doesn’t wake
+me, nothing will. So I need the clock to remember the time for about twelve
+hours when it’s off wall power, and still sound the alarm when I have to get up.
+It doesn’t have to show the time if that takes too much energy, but it does have
+to wake me up.</li>
+<li>The alarm switch and buttons need to feel good. I want a solid click, not a
+wimpy squish.</li>
+<li>The clock needs to look nice. Ugly appliances are garbage.</li>
+</ol>
+<h3>Comments</h3><div id="cusdis_thread" data-host="https://cusdis-o3zfswldh-ottobonn.vercel.app" data-app-id="bfc86e4c-f4e1-4135-8790-cf52804a5850" data-page-id="2012/06/24/rethinking-the-alarm-clock/" data-page-url="https://travisgeis.com/2012/06/24/rethinking-the-alarm-clock/" data-page-title="Rethinking the Alarm Clock"></div><script async src="https://cusdis-o3zfswldh-ottobonn.vercel.app/js/cusdis.es.js"></script></article><nav id="pagination"><div class="ui fluid variable item pagination menu"><a href="../../../12/27/reverse-engineering-the-phonak-europlug/" class="item"><i class="arrow circle left icon"></i>Previous</a><a href="../../10/wall-e-the-linux-based-robot-pet/" class="item"><i class="arrow circle right icon"></i>Next</a></div></nav></div></div><div id="footer"><div class="ui stackable secondary menu"><a href="/rss2.xml" class="item"><i class="rss icon"></i>RSS</a><a href="/atom.xml" class="item"><i class="rss icon"></i>Atom</a></div></div></body></html>

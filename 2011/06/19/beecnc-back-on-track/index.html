@@ -1,0 +1,61 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>BeeCNC Back on Track! - travisgeis.com</title><link rel="stylesheet" type="text/css" href="/semantic/dist/semantic.min.css">
+<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<script src="/semantic/dist/semantic.min.js"></script><link href="https://fonts.googleapis.com/css?family=Spectral|Rubik|Anonymous+Pro" rel="stylesheet"><!-- favicon set from favicomatic.com -->
+<meta name="application-name" content="travisgeis.com"/>
+<link rel="apple-touch-icon-precomposed" sizes="57x57" href="/favicons/apple-touch-icon-57x57.png" />
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/favicons/apple-touch-icon-114x114.png" />
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/favicons/apple-touch-icon-72x72.png" />
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/favicons/apple-touch-icon-144x144.png" />
+<link rel="apple-touch-icon-precomposed" sizes="60x60" href="/favicons/apple-touch-icon-60x60.png" />
+<link rel="apple-touch-icon-precomposed" sizes="120x120" href="/favicons/apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon-precomposed" sizes="76x76" href="/favicons/apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon-precomposed" sizes="152x152" href="/favicons/apple-touch-icon-152x152.png" />
+<link rel="icon" type="image/png" href="/favicons/favicon-196x196.png" sizes="196x196" />
+<link rel="icon" type="image/png" href="/favicons/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32" />
+<link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16" />
+<link rel="icon" type="image/png" href="/favicons/favicon-128.png" sizes="128x128" />
+<meta name="msapplication-TileColor" content="#FFFFFF" />
+<meta name="msapplication-TileImage" content="/favicons/mstile-144x144.png" />
+<meta name="msapplication-square70x70logo" content="/favicons/mstile-70x70.png" />
+<meta name="msapplication-square150x150logo" content="/favicons/mstile-150x150.png" />
+<meta name="msapplication-wide310x150logo" content="/favicons/mstile-310x150.png" />
+<meta name="msapplication-square310x310logo" content="/favicons/mstile-310x310.png" />
+<script data-goatcounter="https://ottobonn.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script><link rel="stylesheet" href="/css/boxy.css"><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="atom.xml" title="travisgeis.com" type="application/atom+xml">
+<link rel="alternate" href="rss2.xml" title="travisgeis.com" type="application/rss+xml">
+</head><body><div id="page" class="ui container"><div id="menu"><div class="ui stackable secondary variable item menu"><a href="/" class="item"><i class="icon home"></i>travisgeis.com</a><a href="/contact" class="item"><i class="icon comments"></i>Contact</a></div></div><div id="titles"><h1 class="ui huge header">BeeCNC Back on Track!</h1><h3 class="ui header">19 June, 2011</h3></div><div id="content"><article id="post"><p>Well,</p>
+<p>After five days of pulling my hair out, I’ve gotten the MCU on the BeeCNC
+Motherboard to respond to programming commands!</p>
+<p>The checklist for possible problems included</p>
+<ul>
+<li>a bad crystal/ the wrong type</li>
+<li>switched input/output lines</li>
+<li>incorrect crystal caps</li>
+<li>bad MCU chip</li>
+<li>RESET line problems</li>
+</ul>
+<a href="/uploads/2011/06/IMG_2039-e1308461619382.jpg"><img src="/uploads/2011/06/body-IMG_2039-e1308461619382.jpg" alt="Uploading with FTDI!" title="Uploading with FTDI!"></a>
+<a href="/uploads/2011/06/IMG_2025-e1308461522340.jpg"><img src="/uploads/2011/06/body-IMG_2025-e1308461522340.jpg" alt="Drilling the Holes" title="Drilling the Holes"></a>
+<a href="/uploads/2011/06/IMG_2024-e1308461575256.jpg"><img src="/uploads/2011/06/body-IMG_2024-e1308461575256.jpg" alt="Etching" title="Etching"></a>
+<p>Unfortunately, the list didn’t include the problem: a short on one of the
+crystal pins to a data line! The data line was not in use and so the crystal
+could not oscillate at all: the microcontroller was stuck on cycle #1 after
+programming. One pass with a razor knife fixed the problem right away.</p>
+<p>Debugging the circuit forced me to learn a huge amount about breadboarding
+Arduino clones. Most of what I learned didn’t help me fix my problem, but I love
+to learn!</p>
+<p>A note to those on Ubuntu who may have trouble uploading sketches to Arduino
+clones with an FTDI cable: It seems the FTDI drivers on Ubuntu have recently
+changed, and the new drivers hold RESET low all the time except a brief moment
+at the start of programming. The problem here is that RESET is supposed to go
+LOW right before upload then <em>remain HIGH</em> for the duration of the upload. With
+RESET LOW the whole time, the ATmega can’t hear programming instructions!</p>
+<p>The fix is a bit disappointing at the moment for those seeking autoreset: cut
+the trace (or remove the wire) between the FTDI “DTR” pin and the AVR’s “RESET”
+pin. Instead of trusting the Arduino IDE to toggle the FTDI’s “DTR” line, just
+press the reset button on your breadboard
+(<a href="http://itp.nyu.edu/physcomp/Tutorials/ArduinoBreadboard" title="ITP Physical Computing">like the one in this tutorial</a>)
+right after the IDE says “Binary sketch size…”</p>
+<p>It may take a few tries, but fiddle with it and eventually you’ll get a good
+sync with successful upload!</p>
+<h3>Comments</h3><div id="cusdis_thread" data-host="https://cusdis-o3zfswldh-ottobonn.vercel.app" data-app-id="bfc86e4c-f4e1-4135-8790-cf52804a5850" data-page-id="2011/06/19/beecnc-back-on-track/" data-page-url="https://travisgeis.com/2011/06/19/beecnc-back-on-track/" data-page-title="BeeCNC Back on Track!"></div><script async src="https://cusdis-o3zfswldh-ottobonn.vercel.app/js/cusdis.es.js"></script></article><nav id="pagination"><div class="ui fluid variable item pagination menu"><a href="../beecnc-motors/" class="item"><i class="arrow circle left icon"></i>Previous</a><a href="../../17/beecnc-motherboard-files/" class="item"><i class="arrow circle right icon"></i>Next</a></div></nav></div></div><div id="footer"><div class="ui stackable secondary menu"><a href="/rss2.xml" class="item"><i class="rss icon"></i>RSS</a><a href="/atom.xml" class="item"><i class="rss icon"></i>Atom</a></div></div></body></html>

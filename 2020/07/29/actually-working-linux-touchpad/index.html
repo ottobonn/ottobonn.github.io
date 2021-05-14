@@ -1,0 +1,40 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>ACTUALLY WORKING LINUX TOUCHPAD - travisgeis.com</title><link rel="stylesheet" type="text/css" href="/semantic/dist/semantic.min.css">
+<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<script src="/semantic/dist/semantic.min.js"></script><link href="https://fonts.googleapis.com/css?family=Spectral|Rubik|Anonymous+Pro" rel="stylesheet"><!-- favicon set from favicomatic.com -->
+<meta name="application-name" content="travisgeis.com"/>
+<link rel="apple-touch-icon-precomposed" sizes="57x57" href="/favicons/apple-touch-icon-57x57.png" />
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/favicons/apple-touch-icon-114x114.png" />
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/favicons/apple-touch-icon-72x72.png" />
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/favicons/apple-touch-icon-144x144.png" />
+<link rel="apple-touch-icon-precomposed" sizes="60x60" href="/favicons/apple-touch-icon-60x60.png" />
+<link rel="apple-touch-icon-precomposed" sizes="120x120" href="/favicons/apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon-precomposed" sizes="76x76" href="/favicons/apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon-precomposed" sizes="152x152" href="/favicons/apple-touch-icon-152x152.png" />
+<link rel="icon" type="image/png" href="/favicons/favicon-196x196.png" sizes="196x196" />
+<link rel="icon" type="image/png" href="/favicons/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32" />
+<link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16" />
+<link rel="icon" type="image/png" href="/favicons/favicon-128.png" sizes="128x128" />
+<meta name="msapplication-TileColor" content="#FFFFFF" />
+<meta name="msapplication-TileImage" content="/favicons/mstile-144x144.png" />
+<meta name="msapplication-square70x70logo" content="/favicons/mstile-70x70.png" />
+<meta name="msapplication-square150x150logo" content="/favicons/mstile-150x150.png" />
+<meta name="msapplication-wide310x150logo" content="/favicons/mstile-310x150.png" />
+<meta name="msapplication-square310x310logo" content="/favicons/mstile-310x310.png" />
+<script data-goatcounter="https://ottobonn.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script><link rel="stylesheet" href="/css/boxy.css"><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="atom.xml" title="travisgeis.com" type="application/atom+xml">
+<link rel="alternate" href="rss2.xml" title="travisgeis.com" type="application/rss+xml">
+</head><body><div id="page" class="ui container"><div id="menu"><div class="ui stackable secondary variable item menu"><a href="/" class="item"><i class="icon home"></i>travisgeis.com</a><a href="/contact" class="item"><i class="icon comments"></i>Contact</a></div></div><div id="titles"><h1 class="ui huge header">ACTUALLY WORKING LINUX TOUCHPAD</h1><h3 class="ui header">29 July, 2020</h3></div><div id="content"><article id="post"><p>Remember <a href="https://www.travisgeis.com/2017/01/01/dell-precision/#3-Adjust-the-touchpad">my post about the Dell Precision 5510</a>? I dwelled quite a while on how to adjust the touchpad to something even slightly workable, to defend against stray taps. My “solution” was to add a deadzone to the top and right of the pad so touches starting there wouldn’t register as mouse movement.</p>
+<p>That solution was always a hack, and I finally decided to pursue a real fix again. I am delighted, thrilled, positively floored to report that good touchpad support is here for Linux in the form of libinput drivers.</p>
+<p>I just upgraded to Linux Mint 20, and noticed that my touchpad was behaving weirdly again. After a deep dive into the touchpad forum rabbit hole, here’s what I learned:</p>
+<ul>
+<li>My laptop is using libinput for mouse support</li>
+<li>libinput <em>should</em> support good palm rejection</li>
+</ul>
+<p>But, there’s a twist! Check out the Linux Mint 20 <a href="https://www.linuxmint.com/rel_ulyana_cinnamon.php">release notes</a>, specifically the “Touchpad drivers” section:</p>
+<blockquote>
+<p>The default touchpad driver in this edition is “libinput” (provided by the xserver-xorg-input-libinput package). […] When both drivers are installed, “synaptics” takes priority.</p>
+</blockquote>
+<p>Searching my selected packages for “synaptics,” I found that somehow I had <code>xserver-xorg-input-synaptics</code> installed! Removing this package and logging in again is <em>all it took</em> to get amazing, MacBook-level touchpad support.</p>
+<a href="/uploads/2020/07/synaptics-package.png"><img src="/uploads/2020/07/body-synaptics-package.png"></a>
+<p>So, here it is: <strong>if you’re running a new Ubuntu-flavored distro, make sure you know which input driver you’re using!</strong></p>
+<h3>Comments</h3><div id="cusdis_thread" data-host="https://cusdis-o3zfswldh-ottobonn.vercel.app" data-app-id="bfc86e4c-f4e1-4135-8790-cf52804a5850" data-page-id="2020/07/29/actually-working-linux-touchpad/" data-page-url="https://travisgeis.com/2020/07/29/actually-working-linux-touchpad/" data-page-title="ACTUALLY WORKING LINUX TOUCHPAD"></div><script async src="https://cusdis-o3zfswldh-ottobonn.vercel.app/js/cusdis.es.js"></script></article><nav id="pagination"><div class="ui fluid variable item pagination menu"><a href="../../30/magic-of-meteor-reactivity/" class="item"><i class="arrow circle left icon"></i>Previous</a><a href="../../28/inside-an-anker-power-strip-with-usb-power/" class="item"><i class="arrow circle right icon"></i>Next</a></div></nav></div></div><div id="footer"><div class="ui stackable secondary menu"><a href="/rss2.xml" class="item"><i class="rss icon"></i>RSS</a><a href="/atom.xml" class="item"><i class="rss icon"></i>Atom</a></div></div></body></html>

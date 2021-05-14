@@ -1,0 +1,64 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Some SumoBot Stuff - travisgeis.com</title><link rel="stylesheet" type="text/css" href="/semantic/dist/semantic.min.css">
+<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<script src="/semantic/dist/semantic.min.js"></script><link href="https://fonts.googleapis.com/css?family=Spectral|Rubik|Anonymous+Pro" rel="stylesheet"><!-- favicon set from favicomatic.com -->
+<meta name="application-name" content="travisgeis.com"/>
+<link rel="apple-touch-icon-precomposed" sizes="57x57" href="/favicons/apple-touch-icon-57x57.png" />
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/favicons/apple-touch-icon-114x114.png" />
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/favicons/apple-touch-icon-72x72.png" />
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/favicons/apple-touch-icon-144x144.png" />
+<link rel="apple-touch-icon-precomposed" sizes="60x60" href="/favicons/apple-touch-icon-60x60.png" />
+<link rel="apple-touch-icon-precomposed" sizes="120x120" href="/favicons/apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon-precomposed" sizes="76x76" href="/favicons/apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon-precomposed" sizes="152x152" href="/favicons/apple-touch-icon-152x152.png" />
+<link rel="icon" type="image/png" href="/favicons/favicon-196x196.png" sizes="196x196" />
+<link rel="icon" type="image/png" href="/favicons/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32" />
+<link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16" />
+<link rel="icon" type="image/png" href="/favicons/favicon-128.png" sizes="128x128" />
+<meta name="msapplication-TileColor" content="#FFFFFF" />
+<meta name="msapplication-TileImage" content="/favicons/mstile-144x144.png" />
+<meta name="msapplication-square70x70logo" content="/favicons/mstile-70x70.png" />
+<meta name="msapplication-square150x150logo" content="/favicons/mstile-150x150.png" />
+<meta name="msapplication-wide310x150logo" content="/favicons/mstile-310x150.png" />
+<meta name="msapplication-square310x310logo" content="/favicons/mstile-310x310.png" />
+<script data-goatcounter="https://ottobonn.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script><link rel="stylesheet" href="/css/boxy.css"><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="atom.xml" title="travisgeis.com" type="application/atom+xml">
+<link rel="alternate" href="rss2.xml" title="travisgeis.com" type="application/rss+xml">
+</head><body><div id="page" class="ui container"><div id="menu"><div class="ui stackable secondary variable item menu"><a href="/" class="item"><i class="icon home"></i>travisgeis.com</a><a href="/contact" class="item"><i class="icon comments"></i>Contact</a></div></div><div id="titles"><h1 class="ui huge header">Some SumoBot Stuff</h1><h3 class="ui header">1 March, 2011</h3></div><div id="content"><article id="post"><p>I belong to LVL1 Hackerspace in Louisville. We have a SumoBot team competing in
+a Hive13 competition coming up, in Cincinnati. Searching for wheels for a
+Mini-class bot, I happened across the 1.25” rubber-tired wheels from Solarbotics
+(the <a href="http://www.solarbotics.com/products/rw2i/" title="Solarbotics RW2">RW2</a>s). I
+like the small diameter and grippy material, but I have their GM8 gearmotors
+with double-flat axles. To work both into my design, I decided I would make a 3D
+model for a rim that would both fit in those tires and work with the GM8-style
+output shaft.</p>
+<p>After four iterations, the plastic wheel does what I want. It’s intended for
+printing on a MakerBot or similar plastic-enabled printer, specifically in ABS.
+I tried PLA and the close tolerances were a bit off, but I’m sure a bit of
+variable-tweaking would fix that. I printed mine in black ABS, and they fit the
+GM8s just right. I hope these rims are useful to other makers, and I’ve uploaded
+<a href="http://www.thingiverse.com/thing:6748" title="The wheels on Thingiverse">the designs</a>
+to Thingiverse. See after the break for details.</p>
+<span id="more"></span>
+<p>The wheel had several design requirements:</p>
+<ol>
+<li>Fit on the GM-style double-flat axle tab</li>
+<li>Fit in the RW2 tires from Solarbotics</li>
+<li>Be printable on the MakerBot</li>
+</ol>
+<p>I designed the wheel in OpenSCAD and compiled and printed it with ReplicatorG.</p>
+<p>Measuring the tab came first. It’s 7mm in diameter and 5mm wide between flats,
+with a 7mm diameter of curvature on the rounded ends. I made a cylinder of the
+same curvature and intersected a rectangular prism of 5mm width with it.</p>
+<p>The original wheels are cylinders with three ridges, one on each end and one in
+the center. The center ridge is 2mm high by 1mm wide, and the outside ones are
+1mm by 1mm. The diameter of the rim without ridges is 17mm, and the wheel width
+is 13.2mm. A 2mm-tall center ridge doesn’t print well on the MakerBot, so I
+compromised and made the ridge 1.75mm.</p>
+<p>The outboard side of the wheel has a conic inset, a shape the MakerBot can print
+under the rest of the wheel. The wheel has a screw hole 2mm in diameter for the
+GM screws, though it fits quite snugly on its own. =</p>
+<p>A flag in the OpenSCAD file disables the tab inset so you can print freewheeling
+rims as well.</p>
+<p>See <a href="http://www.thingiverse.com/thing:6748" title="The wheels on Thingiverse">the thing on Thingiverse</a>
+and <a href="http://www.solarbotics.com/products/rw2i/" title="The RW2 wheels on Solarbotics">the originals on Solarbotics</a>.</p>
+<h3>Comments</h3><div id="cusdis_thread" data-host="https://cusdis-o3zfswldh-ottobonn.vercel.app" data-app-id="bfc86e4c-f4e1-4135-8790-cf52804a5850" data-page-id="2011/03/01/some-sumobot-stuff/" data-page-url="https://travisgeis.com/2011/03/01/some-sumobot-stuff/" data-page-title="Some SumoBot Stuff"></div><script async src="https://cusdis-o3zfswldh-ottobonn.vercel.app/js/cusdis.es.js"></script></article><nav id="pagination"><div class="ui fluid variable item pagination menu"><a href="../../16/sumo-build-1/" class="item"><i class="arrow circle left icon"></i>Previous</a><a href="../../../01/24/ardwoggles/" class="item"><i class="arrow circle right icon"></i>Next</a></div></nav></div></div><div id="footer"><div class="ui stackable secondary menu"><a href="/rss2.xml" class="item"><i class="rss icon"></i>RSS</a><a href="/atom.xml" class="item"><i class="rss icon"></i>Atom</a></div></div></body></html>
