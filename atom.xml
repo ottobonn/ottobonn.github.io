@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://travisgeis.com/"/>
-  <updated>2020-10-06T04:27:52.041Z</updated>
+  <updated>2021-05-26T03:27:30.138Z</updated>
   <id>https://travisgeis.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>STL Viewer Custom HTML Element</title>
+    <link href="https://travisgeis.com/2021/05/25/stl-viewer/"/>
+    <id>https://travisgeis.com/2021/05/25/stl-viewer/</id>
+    <published>2021-05-26T03:16:00.000Z</published>
+    <updated>2021-05-26T03:27:30.138Z</updated>
+    
+    <content type="html"><![CDATA[<p><stl-viewer model="/uploads/2021/05/example.stl"></stl-viewer></p><p>I made this little <a href="https://github.com/ottobonn/stl-viewer">STL viewer</a> to show off the 3D models I have been making to print. Click and drag to change the view!</p><p>The model shown here is a plastic bracket to hold an LED bar in a greenhouse cabinet.</p><p>It’s implemented as an HTML custom element. I haven’t used them before and it was pretty simple to make, and I think the best part is how streamlined it is to use:</p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">stl-viewer</span> <span class="attr">model</span>=<span class="string">&quot;/uploads/2021/05/example.stl&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">stl-viewer</span>&gt;</span></span><br></pre></td></tr></table></figure><p>The <a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements">custom element spec</a> lets you add your own attributes to the elements, like <code>model</code> in this example. I found <a href="https://alligator.io/web-components/attributes-properties/">this article</a> helpful in showing practical examples.</p><p>Find it on GitHub <a href="https://github.com/ottobonn/stl-viewer">here</a>!</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;stl-viewer model=&quot;/uploads/2021/05/example.stl&quot;&gt;&lt;/stl-viewer&gt;&lt;/p&gt;
+&lt;p&gt;I made this little &lt;a href=&quot;https://github.com/ottobonn/stl-viewer&quot;
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>Adding Persistent Settings to Drop CTRL</title>
@@ -449,29 +472,6 @@ sound, almost like the chugging of a toy train. My instinct wa
       
         &lt;p&gt;I just upgraded my Thinkpad T420 to a new Dell Precision m5510, the 15-inch
 Developer Edition laptop. In one word, it’s &lt;em&gt;awesome&lt;/em&gt;.
-      
-    
-    </summary>
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>New Site</title>
-    <link href="https://travisgeis.com/2016/08/29/new-site/"/>
-    <id>https://travisgeis.com/2016/08/29/new-site/</id>
-    <published>2016-08-30T02:46:26.000Z</published>
-    <updated>2020-07-12T03:10:31.034Z</updated>
-    
-    <content type="html"><![CDATA[<p>I moved my blog to Hexo, a static site generator. It’s easier for me toreason about what’s going on in the site now, since each post is just a file.</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;I moved my blog to Hexo, a static site generator. It’s easier for me to
-reason about what’s going on in the site now, since each post is 
       
     
     </summary>
